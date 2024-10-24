@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECKDESIGN</strong></title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>DECK<strong>DESIGN</strong></h1>
+        <p>Logan Loves his girlfriend Fenella so so much because she's amazing</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+
+        <div class="tab" id="customisation"> 
+            <!-- Card Backside Customization -->
+            <section id="card-backside">
+                <h2>Back of Card</h2>
+                <button class="editButton" id="editBackBtn">Hide</button>
+                <div id="editBack" class="minimise">
+                     <!-- Preset Options for Backside -->
+                    <div id="backside-presets">
+                        <h3>Choose a Preset:</h3>
+                        <button class="preset-option">Preset 1</button>
+                        <button class="preset-option">Preset 2</button>
+                        <button class="preset-option">Preset 3</button>
+                    </div>
+                    <label for="backside-upload">Upload Card Back Image:</label>
+                    <input type="file" id="backside-upload" accept="image/*">
+                </div>        
+            </section>
+
+            <!-- Suit Icon Customization -->
+            <section id="suit-icons">
+                <h2>Suit Icons</h2>
+                <button id="editSuitBtn" class="editButton">Hide</button>
+                <div id="suit-selection">
+                    <div id="editSuit">
+                        <label for="club-icon">Clubs Icon:</label>
+                        <input type="file" id="club-icon" accept="image/*">
+                        
+                        <label for="spade-icon">Spades Icon:</label>
+                        <input type="file" id="spade-icon" accept="image/*">
+                        
+                        <label for="heart-icon">Hearts Icon:</label>
+                        <input type="file" id="heart-icon" accept="image/*">
+                        
+                        <label for="diamond-icon">Diamonds Icon:</label>
+                        <input type="file" id="diamond-icon" accept="image/*">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Font Customization -->
+            <section id="font-customization">
+                <h2>Font Selection</h2>
+                <label for="font-select">Choose Font:</label>
+                <select id="font-select">
+                    <option value="default">Default</option>
+                    <option value="font1">Font 1</option>
+                    <option value="font2">Font 2</option>
+                    <option value="font3">Font 3</option>
+                </select>
+            </section>
+        
+
+            <section id="picture-cards">
+                <h2>Picture Cards</h2>
+                <button class="editButton" id="editPicBtn">Hide</button>
+                <div id="editPic" class="minimise">
+                    <!-- Preset Options for Backside -->
+                    <div id="picture-presets">
+                        <h3>Choose a Preset:</h3>
+                        <button class="preset-option">Preset 1</button>
+                        <button class="preset-option">Preset 2</button>
+                        <button class="preset-option">Preset 3</button>
+                    </div>
+                    <label for="picture-upload">Upload Card Back Image:</label>
+                    <input type="file" id="picture-upload" accept="image/*">
+                </div>        
+            </section>
+        </div>
+
+        <div class="tab" id="preview">   
+            <!-- Preview Section -->
+            <section id="card-preview">
+                <h2>Card Preview</h2>
+                <div id="preview-container">
+                    <!-- The dynamically updated card preview will be displayed here -->
+                    <div id="card">
+                        <div id="card-front">
+                            <p>Flip Card to Front</p>
+                        </div>
+                        <div id="card-back">
+                            <p>Flip Card to Back</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div> 
+        
+        
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Created by Logan McQuirk</p>
+        <p>&copy; 2024 DeckDesign</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
