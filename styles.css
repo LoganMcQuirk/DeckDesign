@@ -52,13 +52,26 @@ main {
 #customisation {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     justify-content: space-between;
     
 }
 
+.tab h2 {
+    margin-bottom: 0px;
+}
+
+/* #customisation button.editButton {
+    margin-top: 0px;
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px #ff1e1e solid;
+} */
+
 section {
     margin: 0px 10px 40px;
     min-width: 327px;
+    min-height: 100px;
 }
 
 section label,h3 {
@@ -81,26 +94,47 @@ width: 100%;
 
 
 .minimise {
-
+   display: none;
    color: #fff;
 }
 
 #toggleBack {
-    display: block; /* Reset in script */
+    display: none; /* Reset in script */
 }
 
 h2 {
     color: #fff;
     font-size: 1.8em;
-    border-bottom: 2px solid #ff1e1e; /* Red Section Titles */
+   /* border-bottom: 2px solid #ff1e1e;*/ /* Red Section Titles */
     padding-bottom: 10px;
     margin-bottom: 20px;
+}
+
+.tab-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ff1e1e;
+}
+
+.tab-title button {
+    max-width: fit-content;
+    color: #f0f0f0;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(187, 187, 187);
+    border-radius: 3px;
+    padding: 4px 6px;
+    transition: 0.3s;
+}
+
+.tab-title button:hover {
+    border-color: #ff1e1e;
 }
 
 label {
     display: block;
     font-size: 1.1em;
-    margin-bottom: 8px;
+    margin: 8px;
 }
 
 input {
@@ -170,10 +204,12 @@ button.preset-option:hover {
 }
 
 #card-front {
-    border-bottom: 2px solid #ff1e1e;
+    border: 6px solid #dddddd;
+    border-radius: 4px;
 }
 
 #card-back {
+    display: none;
     background-color: #ff1e1e;
     color: white;
 }

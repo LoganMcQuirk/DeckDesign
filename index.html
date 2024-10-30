@@ -20,8 +20,10 @@
         <div class="tab" id="customisation"> 
             <!-- Card Backside Customization -->
             <section id="card-backside">
-                <h2>Back of Card</h2>
-                <button class="editButton" id="editBackBtn">Hide</button>
+                <div class="tab-title">
+                    <h2>Back of Card</h2>
+                    <button class="editButton" id="editBackBtn">Edit</button>
+                </div>
                 <div id="editBack" class="minimise">
                      <!-- Preset Options for Backside -->
                     <div id="backside-presets">
@@ -37,8 +39,10 @@
 
             <!-- Suit Icon Customization -->
             <section id="suit-icons">
-                <h2>Suit Icons</h2>
-                <button id="editSuitBtn" class="editButton">Hide</button>
+                <div class="tab-title">
+                    <h2>Suit Icons</h2>
+                    <button id="editSuitBtn" class="editButton">Edit</button>
+                </div>
                 <div id="suit-selection">
                     <div id="editSuit">
                         <label for="club-icon">Clubs Icon:</label>
@@ -58,20 +62,29 @@
 
             <!-- Font Customization -->
             <section id="font-customization">
-                <h2>Font Selection</h2>
-                <label for="font-select">Choose Font:</label>
-                <select id="font-select">
-                    <option value="default">Default</option>
-                    <option value="font1">Font 1</option>
-                    <option value="font2">Font 2</option>
-                    <option value="font3">Font 3</option>
-                </select>
+                <div class="tab-title">
+                    <h2>Font Selection</h2>
+                    <button id="editFontBtn" class="editButton">Edit</button>
+                </div>
+                <div id="editFont">
+                    <label for="font-select">Choose Font:</label>
+                    <select id="font-select">
+                        <option value="default">Default</option>
+                        <option value="font1">Font 1</option>
+                        <option value="font2">Font 2</option>
+                        <option value="font3">Font 3</option>
+                    </select>
+                    <label for="color-select">Choose Colour:</label>
+                    <input id="color-select" type="color">
+                </div>
             </section>
         
 
             <section id="picture-cards">
-                <h2>Picture Cards</h2>
-                <button class="editButton" id="editPicBtn">Hide</button>
+                <div class="tab-title">
+                    <h2>Picture Cards</h2>
+                    <button class="editButton" id="editPicBtn">Edit</button>
+                </div>
                 <div id="editPic" class="minimise">
                     <!-- Preset Options for Backside -->
                     <div id="picture-presets">
@@ -86,10 +99,14 @@
             </section>
         </div>
 
+
+        
         <div class="tab" id="preview">   
             <!-- Preview Section -->
             <section id="card-preview">
-                <h2>Card Preview</h2>
+                <div class="tab-title">
+                    <h2>Card Preview</h2>
+                </div>
                 <div id="preview-container">
                     <!-- The dynamically updated card preview will be displayed here -->
                     <div id="card">
