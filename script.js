@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let cardSide = cardFrontBtn;
     let cardNotSide = cardBackBtn;
 
+    const cardImage = document.getElementById("card-image");
+    cardImage.src = "images/CardPreset1.2.svg";
+
     toggleBackBtn.addEventListener('click', function() {
         if (editBack.style.display === "none") {
             // close
@@ -90,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cardSide = cardBackBtn;
         cardNotSide = cardFrontBtn;
 
+        cardImage.src = "images/CardFrontPlaceholder.svg";
+
     });
     cardBackBtn.addEventListener('click', function() {
         cardBackBtn.style.display = 'none';
@@ -97,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         cardSide = cardFrontBtn;
         cardNotSide = cardBackBtn;
+
+        cardImage.src = "images/CardPreset1.2.svg";
 
     });
 

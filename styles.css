@@ -187,27 +187,42 @@ button.preset-option:hover {
 }
 
 #card {
+    position: relative;
     width: 300px;
-    height: 450px;
+    height: 420px;
     background-color: white;
+    /* background-image: url(images/vecteezy_free-playing-card-back-vector_101503.svg);
+    background-repeat: no-repeat; */
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     text-align: center;
 }
 
+#card img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    border: 10px solid white;
+}
+
 #card-front,
 #card-back {
+    position: absolute;
+    width: 100%;
+    top: 0px;
     display: none;
     padding: 20px;
     font-size: 1.5em;
     color: #333;
     transition: ease 0.1s;
-    
+    z-index: 2;
 }
 
 #card-front {
-    
+    background-color: rgba(255, 255, 255, 0.9);
     border: 6px solid #dddddd;
     border-radius: 4px;
     
@@ -218,7 +233,7 @@ button.preset-option:hover {
     font-size: 23px ;
     border: 10px solid #dddddd;
     padding: 16px;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(255, 255, 255, 1);
     transition: .1s;
     
 }
@@ -226,7 +241,7 @@ button.preset-option:hover {
 #card-back {
     background-color: #ff1e1e;
     color: white;
-    border: 6px solid rgb(200,20,20);
+    border: 6px solid rgba(200, 20, 20, 0.8);
     border-radius: 4px;
     
     
@@ -234,7 +249,7 @@ button.preset-option:hover {
 
 #card-back:hover {
     font-size: 23px ;
-    border: 10px solid rgb(200,20,20);
+    border: 10px solid rgba(200, 20, 20, 1);
     padding: 16px;
     transition: .1s;
 }
