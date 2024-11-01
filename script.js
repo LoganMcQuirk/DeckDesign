@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const sectionBackside = document.getElementById("card-backside");
 
+    const cardFrontBtn = document.getElementById("card-front");
+    const cardBackBtn = document.getElementById("card-back");
+
+    const previewTab = document.getElementById("preview");
+    let cardSide = cardFrontBtn;
+    let cardNotSide = cardBackBtn;
+
     toggleBackBtn.addEventListener('click', function() {
         if (editBack.style.display === "none") {
             // close
@@ -76,5 +83,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
+    cardFrontBtn.addEventListener('click', function() {
+        cardFrontBtn.style.display = 'none';
+        cardBackBtn.style.display = 'block';
 
+        cardSide = cardBackBtn;
+        cardNotSide = cardFrontBtn;
+
+    });
+    cardBackBtn.addEventListener('click', function() {
+        cardBackBtn.style.display = 'none';
+        cardFrontBtn.style.display = 'block';
+
+        cardSide = cardFrontBtn;
+        cardNotSide = cardBackBtn;
+
+    });
+
+    previewTab.addEventListener('mouseover', function() { 
+        cardSide.style.opacity = '1';
+        cardSide.style.display = 'block';
+        
+
+
+    });
+    previewTab.addEventListener('mouseleave', function() { 
+        cardSide.style.opacity = '0';
+        cardSide.style.display = 'none';
+        
+
+    });
 });

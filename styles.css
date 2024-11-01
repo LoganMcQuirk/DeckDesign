@@ -198,20 +198,45 @@ button.preset-option:hover {
 
 #card-front,
 #card-back {
+    display: none;
     padding: 20px;
     font-size: 1.5em;
     color: #333;
+    transition: ease 0.1s;
+    
 }
 
 #card-front {
+    
     border: 6px solid #dddddd;
     border-radius: 4px;
+    
+    
+}
+
+#card-front:hover {
+    font-size: 23px ;
+    border: 10px solid #dddddd;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.04);
+    transition: .1s;
+    
 }
 
 #card-back {
-    display: none;
     background-color: #ff1e1e;
     color: white;
+    border: 6px solid rgb(200,20,20);
+    border-radius: 4px;
+    
+    
+}
+
+#card-back:hover {
+    font-size: 23px ;
+    border: 10px solid rgb(200,20,20);
+    padding: 16px;
+    transition: .1s;
 }
 
 footer {
