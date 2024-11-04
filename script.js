@@ -30,11 +30,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const card = document.getElementById("card");
     const cardHeight = card.offsetHeight / 2;
 
+
+    const cardIMGStyle = document.querySelector('#card img');
+    function CoverModeON() {
+        cardIMGStyle.style.objectFit = 'cover';
+    }
+    function CoverModeOFF() {
+        cardIMGStyle.style.objectFit = 'fill';
+    }
     const cardImageBack = document.getElementById("card-image-back");
     const cardImageFront = document.getElementById("card-image");
 
-    let cardBackPreset = "images/CardPresetOne.png";
-    cardImageBack.src = cardBackPreset;
+    let cardBackCurrentImage = "images/CardPresetOne.png";
+    cardImageBack.src = cardBackCurrentImage;
 
     const presetButtons = document.querySelectorAll('.preset-option');
 
@@ -43,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const preset3Btn = presetButtons[2];
 
     const backsideUpload = document.getElementById("backside-upload");
-    let uploadedBackImage = backsideUpload.value;
+    const applyBackImage = document.getElementById("apply-back-image");
+    
 
     //Back designer
     toggleBackBtn.addEventListener('click', function() {
@@ -98,12 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function switchToFront() {
-        cardFrontBtn.style.display = 'none';
-        cardBackBtn.style.display = 'block';
-
         cardSideBtn = cardBackBtn;
         cardNotSide = cardFrontBtn;
 
+        cardFrontBtn.style.display = 'none';
+        cardBackBtn.style.display = 'block';
 
         cardImageFront.src = "images/CardFrontPlaceholder.svg";
         cardImageFront.style.zIndex = '101';
@@ -118,13 +126,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     function switchToBack() {
-        cardBackBtn.style.display = 'none';
-        cardFrontBtn.style.display = 'block';
-
         cardSideBtn = cardFrontBtn;
         cardNotSide = cardBackBtn;
 
-        cardImageBack.src = cardBackPreset;
+        cardBackBtn.style.display = 'none';
+        cardFrontBtn.style.display = 'block';
+
+        cardImageBack.src = cardBackCurrentImage;
         cardImageFront.style.zIndex = '100';
         cardImageFront.style.visibility = 'hidden';
         cardImageBack.style.zIndex = '101';
@@ -151,29 +159,67 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     preset1Btn.addEventListener('click', function() {
-        cardBackPreset = "images/CardPresetOne.png";
+        cardBackCurrentImage = "images/CardPresetOne.png";
+        CoverModeOFF();
         switchToBack();
         hideFlipBtn();
     });
     preset2Btn.addEventListener('click', function() {
-        cardBackPreset = "images/CardPreset2.png";
+        cardBackCurrentImage = "images/CardPreset2.png";
+        CoverModeOFF();
         switchToBack();
         hideFlipBtn();
     });
     preset3Btn.addEventListener('click', function() {
-        cardBackPreset = "images/CardPreset3.png";
+        cardBackCurrentImage = "images/CardPreset3.png";
+        CoverModeOFF();
         switchToBack();
         hideFlipBtn();
         console.log(uploadedBackImage);
     });
+    function CUSTOMIMAGE() {
 
-    backsideUpload.addEventListener('input', function() {
-        cardBackPreset = uploadedBackImage;
-        console.log(uploadedBackImage);
-        switchToBack();
+        if (backsideUpload.files && backsideUpload.files[0]) {
+            const file = backsideUpload.files[0];
+            
+            // Check if it's an image file
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+
+            const reader = new FileReader(); // Create a new FileReader object
+
+            // Function to run when the file is read
+            reader.onload = function(e) {
+                // Set the card back image to the uploaded image
+                cardBackCurrentImage = e.target.result; // e.target.result contains the image data URL
+                console.log("Uploaded image set as card back", e.target.result); // Debugging output
+                CoverModeON();
+                switchToBack(); // Optionally, switch the preview to show the back side
+                cardIMGStyle.style.objectFit = 'cover';
+                
+            };
+
+            // Read the uploaded image as a data URL
+            reader.readAsDataURL(file);
+
+        } else {
+            console.error("No file was selected for upload."); // Debugging output
+        }
+
+    }
+    backsideUpload.addEventListener('change', function(event) {
+        // Check if a file has been uploaded
+        CUSTOMIMAGE();
         hideFlipBtn();
     });
     
+    applyBackImage.addEventListener('click', function() {
+        CUSTOMIMAGE();
+        hideFlipBtn();
+        switchToBack();
+    });
 
     // cardSide button to follow mouse
     card.addEventListener("mouseenter", function() {
@@ -229,5 +275,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
 
     // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
-    console.log(uploadedBackImage);
 });

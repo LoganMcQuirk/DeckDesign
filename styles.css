@@ -71,7 +71,9 @@ main {
 section {
     margin: 0px 10px 40px;
     min-width: 327px;
+    max-width: min-content;
     min-height: 100px;
+
 }
 
 section label,h3 {
@@ -287,6 +289,12 @@ button.preset-option:hover {
 #card-image {
     height: 100%;
     z-index: 100;
+}
+
+#upload-buttons {
+    display: flex;
+    max-width: 100%;
+    align-content: space-between;
 }
 
 #card-border {
