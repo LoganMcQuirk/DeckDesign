@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cardImageBack = document.getElementById("card-image-back");
     const cardImageFront = document.getElementById("card-image");
 
-    let cardBackPreset = "images/CardPreset1.2.svg";
+    let cardBackPreset = "images/CardPresetOne.png";
     cardImageBack.src = cardBackPreset;
 
     const presetButtons = document.querySelectorAll('.preset-option');
@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const preset1Btn = presetButtons[0];
     const preset2Btn = presetButtons[1];
     const preset3Btn = presetButtons[2];
+
+    const backsideUpload = document.getElementById("backside-upload");
+    let uploadedBackImage = backsideUpload.value;
 
     //Back designer
     toggleBackBtn.addEventListener('click', function() {
@@ -148,17 +151,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     preset1Btn.addEventListener('click', function() {
-        cardBackPreset = "images/CardPreset1.2.svg";
+        cardBackPreset = "images/CardPresetOne.png";
         switchToBack();
         hideFlipBtn();
     });
     preset2Btn.addEventListener('click', function() {
-        cardBackPreset = "images/CardPreset2.svg";
+        cardBackPreset = "images/CardPreset2.png";
         switchToBack();
         hideFlipBtn();
     });
     preset3Btn.addEventListener('click', function() {
-        cardBackPreset = "images/CardPreset3.svg";
+        cardBackPreset = "images/CardPreset3.png";
+        switchToBack();
+        hideFlipBtn();
+        console.log(uploadedBackImage);
+    });
+
+    backsideUpload.addEventListener('input', function() {
+        cardBackPreset = uploadedBackImage;
+        console.log(uploadedBackImage);
         switchToBack();
         hideFlipBtn();
     });
@@ -183,4 +194,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update the cardSide element's Y position
         cardSideBtn.style.top = `${mouseY - cardSideHeight}px`;
     }
+
+    // const cardBorderDiv = document.getElementById("card-border");
+    const borderControl = document.getElementById('border-control');
+    const cardBorderDiv = document.getElementById("card-border");
+    
+    // borderControl.addEventListener('input', function() { 
+    //     let borderSliderValue = borderControl.value;
+    //     let cardImageBorderRadius = borderSliderValue * 1.2;
+    //     const borderFill = borderSliderValue * 1.4;
+    //     const borderFillRadius = borderFill * 1.2;
+    //     cardImageBack.style.borderWidth = borderSliderValue + 'px';
+    //     cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
+    //     cardBorderDiv.style.borderWidth = borderFill + 'px';
+    //     cardBorderDiv.style.borderRadius = borderFillRadius + 'px';
+
+    // });
+    borderControl.addEventListener('input', function() { 
+        let borderSliderValue = borderControl.value;
+        let cardImageBorderRadius = borderSliderValue;
+        if (borderSliderValue > 0) {
+            cardImageBorderRadius = (borderSliderValue*1) + 8;
+        }
+        cardImageBack.style.borderWidth = borderSliderValue + 'px';
+        cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
+        cardBorderDiv.style.borderWidth = borderSliderValue + 'px';
+        cardBorderDiv.style.borderRadius = cardImageBorderRadius + 'px';
+
+    });
+    
+    // let borderSliderValue = borderControl.value;
+    // let cardImageBorderRadius = borderControl.value * 1.2;
+    // cardImageBack.style.borderWidth = borderControl.value + 'px';
+    // cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
+
+    // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
+    console.log(uploadedBackImage);
 });

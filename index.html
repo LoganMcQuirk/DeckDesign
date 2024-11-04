@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DECKDESIGN</strong></title>
+    <title>DECKDESIGN</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
@@ -12,6 +12,7 @@
     <header>
         <h1>DECK<strong>DESIGN</strong></h1>
         <p>Logan Loves his girlfriend Fenella so so much because she's amazing</p>
+        
     </header>
 
     <!-- Main Content Section -->
@@ -35,7 +36,7 @@
                     <label for="backside-upload">Upload Card Back Image:</label>
                     <input type="file" id="backside-upload" accept="image/*">
                     <label for="border-control">Border Thickness</label>
-                    <input type="range" id="border-control">
+                    <input type="range" min="0" max="30" value="8" id="border-control">
                 </div>        
             </section>
 
@@ -112,7 +113,9 @@
                 <div id="preview-container">
                     <!-- The dynamically updated card preview will be displayed here -->
                     <div id="card">
-                        <img id="card-image-back" src="images/CardPreset1.2.svg">
+                        <div id="card-border"></div>
+                            <img id="card-image-back" src="images/CardPresetOne.png">
+                        
                         <img id="card-image" src="images/CardFrontPlaceholder.svg">
                         <div id="card-front">
                             <a>Flip Card to Front</a>

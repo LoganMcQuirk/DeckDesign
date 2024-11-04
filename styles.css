@@ -219,14 +219,13 @@ button.preset-option:hover {
 
 #card img {
     position: absolute;
-    height: 100%;
     width: 100%;
     top: 0px;
     left: 0px;
-    border: 8px solid white;
-    
-    
+    object-fit: fill;
 }
+
+
 
 #card-front,
 #card-back {
@@ -274,12 +273,33 @@ button.preset-option:hover {
     transition: .1s;
 }
 
+
 #card-image-back {
+    height: 100%;
+    border: solid;
+    border-color: white;
+    border-width: 8px;
+    border-radius: 14px;
     z-index: 101;
+    object-fit: fill;
 }
+
 #card-image {
+    height: 100%;
     z-index: 100;
 }
+
+#card-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none white;
+    border-width: 8px;
+    border-radius: 30px;
+    z-index: 998;
+}
+
+
 
 footer {
     text-align: center;
