@@ -30,16 +30,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const card = document.getElementById("card");
     const cardHeight = card.offsetHeight / 2;
 
+    const allIcons = document.querySelectorAll('.icon');
+    let currentSuit = "diamond";
+    document.getElementById("diamondBtn").addEventListener('click', changeSuitDiamonds);
+    document.getElementById("heartBtn").addEventListener('click', changeSuitHearts);
+    document.getElementById("clubBtn").addEventListener('click', changeSuitClubs);
+    document.getElementById("spadeBtn").addEventListener('click', changeSuitSpades);
+    
+    const cardImageBack = document.getElementById("card-image-back");
+    const cardImageFront = document.getElementById("front-layout");
 
-    const cardIMGStyle = document.querySelector('#card img');
+    const cardIMGStyle = cardImageBack;
     function CoverModeON() {
         cardIMGStyle.style.objectFit = 'cover';
     }
     function CoverModeOFF() {
         cardIMGStyle.style.objectFit = 'fill';
     }
-    const cardImageBack = document.getElementById("card-image-back");
-    const cardImageFront = document.getElementById("card-image");
 
     let cardBackCurrentImage = "images/CardPresetOne.png";
     cardImageBack.src = cardBackCurrentImage;
@@ -52,6 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const backsideUpload = document.getElementById("backside-upload");
     const applyBackImage = document.getElementById("apply-back-image");
+    
+    const borderControl = document.getElementById('border-control');
+    const cardBorderDiv = document.getElementById("card-border");
+
+    const tallyIcon = document.querySelector("#tally-layout img");
+    const tallyIconStyle = tallyIcon.style;
+
     
 
     //Back designer
@@ -113,7 +127,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cardFrontBtn.style.display = 'none';
         cardBackBtn.style.display = 'block';
 
-        cardImageFront.src = "images/CardFrontPlaceholder.svg";
+        cardBorderDiv.style.display = 'none';
+
+        // cardImageFront.src = "images/CardFrontPlaceholder.svg";
         cardImageFront.style.zIndex = '101';
         cardImageFront.style.visibility = 'visible';
         cardImageBack.style.zIndex = '100';
@@ -131,6 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         cardBackBtn.style.display = 'none';
         cardFrontBtn.style.display = 'block';
+
+        cardBorderDiv.style.display = 'block';
 
         cardImageBack.src = cardBackCurrentImage;
         cardImageFront.style.zIndex = '100';
@@ -178,10 +196,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(uploadedBackImage);
     });
     function CUSTOMIMAGE() {
-
+        
         if (backsideUpload.files && backsideUpload.files[0]) {
             const file = backsideUpload.files[0];
             
+
             // Check if it's an image file
             if (!file.type.startsWith("image/")) {
                 alert("Please upload a valid image file.");
@@ -197,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Uploaded image set as card back", e.target.result); // Debugging output
                 CoverModeON();
                 switchToBack(); // Optionally, switch the preview to show the back side
-                cardIMGStyle.style.objectFit = 'cover';
                 
             };
 
@@ -212,11 +230,13 @@ document.addEventListener('DOMContentLoaded', function() {
     backsideUpload.addEventListener('change', function(event) {
         // Check if a file has been uploaded
         CUSTOMIMAGE();
+        CoverModeON();
         hideFlipBtn();
     });
     
     applyBackImage.addEventListener('click', function() {
         CUSTOMIMAGE();
+        CoverModeON();
         hideFlipBtn();
         switchToBack();
     });
@@ -241,21 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cardSideBtn.style.top = `${mouseY - cardSideHeight}px`;
     }
 
-    // const cardBorderDiv = document.getElementById("card-border");
-    const borderControl = document.getElementById('border-control');
-    const cardBorderDiv = document.getElementById("card-border");
-    
-    // borderControl.addEventListener('input', function() { 
-    //     let borderSliderValue = borderControl.value;
-    //     let cardImageBorderRadius = borderSliderValue * 1.2;
-    //     const borderFill = borderSliderValue * 1.4;
-    //     const borderFillRadius = borderFill * 1.2;
-    //     cardImageBack.style.borderWidth = borderSliderValue + 'px';
-    //     cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
-    //     cardBorderDiv.style.borderWidth = borderFill + 'px';
-    //     cardBorderDiv.style.borderRadius = borderFillRadius + 'px';
-
-    // });
     borderControl.addEventListener('input', function() { 
         let borderSliderValue = borderControl.value;
         let cardImageBorderRadius = borderSliderValue;
@@ -275,4 +280,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
 
     // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
+
+    const iconNormalHeight = "6em";
+
+    function changeSuitDiamonds() {
+        if (currentSuit !== "diamond") {
+            allIcons.forEach(icon => {
+                icon.src = "images/DiamondIcon-1.png";
+            });
+            tallyIconStyle.maxHeight = iconNormalHeight;
+            currentSuit = "diamond";
+            cardImageFront.style.color = '#BC2024';
+        }
+    }
+    function changeSuitHearts() {
+        if (currentSuit !== "heart") {
+            allIcons.forEach(icon => {
+                icon.src = "images/HeartIcon-1.png";
+            });
+            tallyIconStyle.maxHeight = iconNormalHeight;
+            currentSuit = "heart";
+            cardImageFront.style.color = '#BC2024';
+        } 
+        
+    }
+    function changeSuitClubs() {
+        if (currentSuit !== "Club") {
+            allIcons.forEach(icon => {
+                icon.src = "images/ClubIcon-1.png";
+            });
+            tallyIconStyle.maxHeight = iconNormalHeight;
+            currentSuit = "club";
+            cardImageFront.style.color = '#000';
+        }
+    }
+    function changeSuitSpades() {
+        if (currentSuit !== "spade") {
+            allIcons.forEach(icon => {
+                icon.src = "images/SpadeIcon-1.png";
+            });
+            tallyIconStyle.maxHeight = '9em';
+            cardImageFront.style.color = '#000';
+            currentSuit = "spade";
+            
+            
+        }
+    }
+
+    
+    
+
 });
+

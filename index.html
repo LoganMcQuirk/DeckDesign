@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DECKDESIGN</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400..900&family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -37,6 +40,7 @@
                     <div id="upload-buttons">
                         <input type="file" id="backside-upload" accept="image/*">
                         <button id="apply-back-image" class="preset-option">Apply</button>
+                        <!-- Apply also changes objectFill to cover ATM -->
                     </div>
                     <label for="border-control">Border Thickness</label>
                     <input type="range" min="0" max="30" value="8" id="border-control">
@@ -116,19 +120,40 @@
                 <div id="preview-container">
                     <!-- The dynamically updated card preview will be displayed here -->
                     <div id="card">
-                        <div id="card-border"></div>
-                            <img id="card-image-back" src="images/CardPresetOne.png">
-                        
+                        <div id="card-border">    
+                        </div>
+                            <div id="front-layout">
+                                <div id="top-left-id" class="id-front-layout">
+                                    <p>A</p>
+                                    <img src="images/DiamondIcon-1.png" id="top-left-icon" class="icon corner-suit">
+                                </div>
+                                
+                                    <div id="tally-layout">
+                                        <img src="images/DiamondIcon-1.png" id="center-icon" class="icon tally-icon">
+                                    </div>
+
+                                <div id="bottom-right-id" class="id-front-layout">
+                                    <p class="bottom-right-class">A</p>
+                                    <img src="images/DiamondIcon-1.png" id="bottom-right-icon" class="icon corner-suit bottom-right-class">
+                                </div>
+                            
+                            </div>
                         <img id="card-image" src="images/CardFrontPlaceholder.svg">
                         <div id="card-front">
                             <a>Flip Card to Front</a>
                         </div>
+
+                        <img id="card-image-back" src="images/CardPresetOne.png">
                         <div id="card-back">
                             <a>Flip Card to Back</a>
                         </div>
                         
                     </div>
                 </div>
+                <button class="change-suit" id="diamondBtn">Diamonds</button>
+                <button class="change-suit" id="heartBtn">Hearts</button>
+                <button class="change-suit" id="clubBtn">Clubs</button>
+                <button class="change-suit" id="spadeBtn">Spades</button>
             </section>
         </div> 
         
