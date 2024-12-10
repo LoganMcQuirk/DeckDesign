@@ -32,7 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const allIcons = document.querySelectorAll('.icon');
     let currentSuit = "diamond";
-    document.getElementById("diamondBtn").addEventListener('click', changeSuitDiamonds);
+    document.getElementById("diamondBtn").addEventListener('click', function() {
+        UPLOADICONDIAMOND();
+        changeSuitDiamonds();
+    });
     document.getElementById("heartBtn").addEventListener('click', changeSuitHearts);
     document.getElementById("clubBtn").addEventListener('click', changeSuitClubs);
     document.getElementById("spadeBtn").addEventListener('click', changeSuitSpades);
@@ -66,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tallyIcon = document.querySelector("#tally-layout img");
     const tallyIconStyle = tallyIcon.style;
 
-    
+    const diamondUpload = document.getElementById("diamond-icon");
 
     //Back designer
     toggleBackBtn.addEventListener('click', function() {
@@ -283,10 +286,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const iconNormalHeight = "6em";
 
+    let diamondIcon = "images/DiamondIcon-1.png";
+    let heartIcon = "images/HeartIcon-1.png";
+    let clubIcon = "images/clubIcon-1.png";
+    let spadeIcon = "images/spadeIcon-1.png";
+
+    
+
+    function UPLOADICONDIAMOND() {
+        if (diamondUpload.files && diamondUpload.files[0]) {
+            const file = diamondUpload.files[0];
+        
+            // Check if it's an image file
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+            const reader = new FileReader(); // Create a new FileReader object
+            // Function to run when the file is read
+            reader.onload = function(e) {
+                // Set the card back image to the uploaded image
+                diamondIcon = e.target.result; // e.target.result contains the image data URL
+                console.log("Uploaded image set as Diamond", e.target.result); // Debugging output
+                changeSuitDiamonds();
+            };
+
+            // Read the uploaded image as a data URL
+            reader.readAsDataURL(file);
+        } else {
+            console.error("No file was selected for upload."); // Debugging output
+        }
+    }
+    diamondUpload.addEventListener('change', function(event) {
+        // Check if a file has been uploaded
+        UPLOADICONDIAMOND();
+        changeSuitDiamonds();
+    });
+    function UPLOADICONHEART() {
+        
+    }
+    function UPLOADICONCLUB() {
+        
+    }
+
+    function UPLOADICONSPADE() {
+        
+    }
+
     function changeSuitDiamonds() {
         if (currentSuit !== "diamond") {
             allIcons.forEach(icon => {
-                icon.src = "images/DiamondIcon-1.png";
+                icon.src = diamondIcon;
             });
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
@@ -296,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function changeSuitHearts() {
         if (currentSuit !== "heart") {
             allIcons.forEach(icon => {
-                icon.src = "images/HeartIcon-1.png";
+                icon.src = heartIcon;
             });
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "heart";
@@ -307,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function changeSuitClubs() {
         if (currentSuit !== "Club") {
             allIcons.forEach(icon => {
-                icon.src = "images/ClubIcon-1.png";
+                icon.src = clubIcon;
             });
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "club";
@@ -317,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function changeSuitSpades() {
         if (currentSuit !== "spade") {
             allIcons.forEach(icon => {
-                icon.src = "images/SpadeIcon-1.png";
+                icon.src = spadeIcon;
             });
             tallyIconStyle.maxHeight = '9em';
             cardImageFront.style.color = '#000';
