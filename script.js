@@ -30,16 +30,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const card = document.getElementById("card");
     const cardHeight = card.offsetHeight / 2;
 
+    const diamondUpload = document.getElementById("diamond-icon");
     const allIcons = document.querySelectorAll('.icon');
     let currentSuit = "diamond";
     document.getElementById("diamondBtn").addEventListener('click', function() {
-        UPLOADICONDIAMOND();
         changeSuitDiamonds();
+        switchToFront();
     });
-    document.getElementById("heartBtn").addEventListener('click', changeSuitHearts);
-    document.getElementById("clubBtn").addEventListener('click', changeSuitClubs);
-    document.getElementById("spadeBtn").addEventListener('click', changeSuitSpades);
-    
+    document.getElementById("heartBtn").addEventListener('click', function() {
+        changeSuitHearts();
+        switchToFront();
+    });
+    document.getElementById("clubBtn").addEventListener('click', function() {
+        changeSuitClubs(); 
+        switchToFront();
+    });
+    document.getElementById("spadeBtn").addEventListener('click', function() {
+        changeSuitSpades();
+        switchToFront();
+    }); 
     const cardImageBack = document.getElementById("card-image-back");
     const cardImageFront = document.getElementById("front-layout");
 
@@ -69,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tallyIcon = document.querySelector("#tally-layout img");
     const tallyIconStyle = tallyIcon.style;
 
-    const diamondUpload = document.getElementById("diamond-icon");
+    
 
     //Back designer
     toggleBackBtn.addEventListener('click', function() {
@@ -290,6 +299,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let heartIcon = "images/HeartIcon-1.png";
     let clubIcon = "images/clubIcon-1.png";
     let spadeIcon = "images/spadeIcon-1.png";
+    let currentIcon = diamondIcon;
+    allIcons.src = currentIcon;
 
     
 
@@ -317,11 +328,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("No file was selected for upload."); // Debugging output
         }
     }
+
     diamondUpload.addEventListener('change', function(event) {
         // Check if a file has been uploaded
-        UPLOADICONDIAMOND();
         changeSuitDiamonds();
+        UPLOADICONDIAMOND();
     });
+
     function UPLOADICONHEART() {
         
     }
@@ -334,19 +347,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function changeSuitDiamonds() {
+        currentIcon = diamondIcon;
         if (currentSuit !== "diamond") {
             allIcons.forEach(icon => {
-                icon.src = diamondIcon;
+                icon.src = currentIcon;
             });
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
             cardImageFront.style.color = '#BC2024';
         }
     }
+    
     function changeSuitHearts() {
+        currentIcon = heartIcon;
         if (currentSuit !== "heart") {
             allIcons.forEach(icon => {
-                icon.src = heartIcon;
+                icon.src = currentIcon;
             });
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "heart";
@@ -355,9 +371,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
     }
     function changeSuitClubs() {
+        currentIcon = clubIcon;
         if (currentSuit !== "Club") {
             allIcons.forEach(icon => {
-                icon.src = clubIcon;
+                icon.src = currentIcon;
             });
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "club";
@@ -365,9 +382,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     function changeSuitSpades() {
+        currentIcon = spadeIcon;
         if (currentSuit !== "spade") {
             allIcons.forEach(icon => {
-                icon.src = spadeIcon;
+                icon.src = currentIcon;
             });
             tallyIconStyle.maxHeight = '9em';
             cardImageFront.style.color = '#000';
