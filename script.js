@@ -32,7 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const diamondUpload = document.getElementById("diamond-icon");
     const allIcons = document.querySelectorAll('.icon');
+    
     let currentSuit = "diamond";
+    
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
         switchToFront();
@@ -193,6 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
+        cardSideBtn.style.opacity = '0';
+        cardSideBtn.style.display = 'none';
     });
     preset2Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPreset2.png";
@@ -244,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
         CUSTOMIMAGE();
         CoverModeON();
         hideFlipBtn();
+
     });
     
     applyBackImage.addEventListener('click', function() {
@@ -303,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
     allIcons.src = currentIcon;
 
     
-
+    // THIS FUNCIION IS NOT FULLY WORKING, NEEDS TO AUTO SWITCH TO DIAMOND CARD AND!!!&&& SHOW UPLOADED ICON
     function UPLOADICONDIAMOND() {
         if (diamondUpload.files && diamondUpload.files[0]) {
             const file = diamondUpload.files[0];
