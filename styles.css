@@ -386,7 +386,7 @@ button.preset-option:hover {
 #suit-selection {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 2em;
+    padding-top: 1.4em;
 }
 #suit-selection button {
     display: flex;
@@ -407,6 +407,11 @@ button.preset-option:hover {
     background-color: #dadada;
     
     transition: .3s;
+
+}
+#suit-selection button.selected {
+    border-color: #ff1e1e;
+    background-color: #fcd8d8;
 
 }
 #suit-selection button:nth-child(1) {

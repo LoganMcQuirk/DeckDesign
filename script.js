@@ -31,13 +31,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const cardHeight = card.offsetHeight / 2;
 
     const diamondUpload = document.getElementById("diamond-icon");
+    const heartUpload = document.getElementById("heart-icon");
+    const clubUpload = document.getElementById("club-icon");
+    const spadeUpload = document.getElementById("spade-icon");
     const allIcons = document.querySelectorAll('.icon');
+
+    const diamondBtn = document.getElementById("diamondBtn");
+    const heartBtn = document.getElementById("heartBtn");
+    const clubBtn = document.getElementById("clubBtn");
+    const spadeBtn = document.getElementById("spadeBtn");
     
     let currentSuit = "diamond";
     
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
         switchToFront();
+       
     });
     document.getElementById("heartBtn").addEventListener('click', function() {
         changeSuitHearts();
@@ -307,8 +316,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIcon = diamondIcon;
     allIcons.src = currentIcon;
 
-    
+    let changeSuitUnconditally = false;
     // THIS FUNCIION IS NOT FULLY WORKING, NEEDS TO AUTO SWITCH TO DIAMOND CARD AND!!!&&& SHOW UPLOADED ICON
+    diamondUpload.addEventListener('change', function(event) {
+        // Check if a file has been uploaded
+        UPLOADICONDIAMOND();
+    });
     function UPLOADICONDIAMOND() {
         if (diamondUpload.files && diamondUpload.files[0]) {
             const file = diamondUpload.files[0];
@@ -324,7 +337,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Set the card back image to the uploaded image
                 diamondIcon = e.target.result; // e.target.result contains the image data URL
                 console.log("Uploaded image set as Diamond", e.target.result); // Debugging output
+                currentIcon = diamondIcon;
+                
+                changeSuitUnconditally = true;
                 changeSuitDiamonds();
+            
             };
 
             // Read the uploaded image as a data URL
@@ -334,24 +351,113 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    diamondUpload.addEventListener('change', function(event) {
+    
+    heartUpload.addEventListener('change', function(event) {
         // Check if a file has been uploaded
-        changeSuitDiamonds();
-        UPLOADICONDIAMOND();
+        UPLOADICONHEART();
     });
-
     function UPLOADICONHEART() {
+        if (heartUpload.files && heartUpload.files[0]) {
+            const file = heartUpload.files[0];
         
-    }
-    function UPLOADICONCLUB() {
-        
+            // Check if it's an image file
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+            const reader = new FileReader(); // Create a new FileReader object
+            // Function to run when the file is read
+            reader.onload = function(e) {
+                // Set the card back image to the uploaded image
+                heartIcon = e.target.result; // e.target.result contains the image data URL
+                console.log("Uploaded image set as Heart", e.target.result); // Debugging output
+                currentIcon = heartIcon;
+                
+                changeSuitUnconditally = true;
+                changeSuitHearts();
+            
+            };
+
+            // Read the uploaded image as a data URL
+            reader.readAsDataURL(file);
+        } else {
+            console.error("No file was selected for upload."); // Debugging output
+        }
     }
 
-    function UPLOADICONSPADE() {
+    // CLUB UPLOAD
+    clubUpload.addEventListener('change', function(event) {
+        // Trigger the club upload handler
+        UPLOADICONCLUB();
+    });
+    function UPLOADICONCLUB() {
+        if (clubUpload.files && clubUpload.files[0]) {
+            const file = clubUpload.files[0];
         
+            
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+            const reader = new FileReader(); 
+            
+            
+            reader.onload = function(e) {
+                
+                clubIcon = e.target.result; 
+                console.log("Uploaded image set as Club", e.target.result); // Debugging output
+                currentIcon = clubIcon;
+                
+                changeSuitUnconditally = true;
+                changeSuitClubs();
+            };
+    
+            
+            reader.readAsDataURL(file);
+        } else {
+            console.error("No file was selected for upload."); 
+        }
     }
+
+    spadeUpload.addEventListener('change', function(event) {
+        // Trigger the spade upload handler
+        UPLOADICONSPADE();
+    });
+    
+    // Spade upload handler
+    function UPLOADICONSPADE() {
+        if (spadeUpload.files && spadeUpload.files[0]) {
+            const file = spadeUpload.files[0];
+        
+           
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+            const reader = new FileReader(); 
+            
+            
+            reader.onload = function(e) {
+                
+                spadeIcon = e.target.result; 
+                console.log("Uploaded image set as Spade", e.target.result); // Debugging output
+                currentIcon = spadeIcon;
+                
+                changeSuitUnconditally = true;
+                changeSuitSpades() 
+            };
+    
+            
+            reader.readAsDataURL(file);
+        } else {
+            console.error("No file was selected for upload."); // Debugging output
+        }
+    }
+
+// Change Suit conditional Functions
 
     function changeSuitDiamonds() {
+        resetSuitSelection();
         currentIcon = diamondIcon;
         if (currentSuit !== "diamond") {
             allIcons.forEach(icon => {
@@ -360,10 +466,26 @@ document.addEventListener('DOMContentLoaded', function() {
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
             cardImageFront.style.color = '#BC2024';
+        } else if (changeSuitUnconditally == true) {
+            allIcons.forEach(icon => {
+                icon.src = currentIcon;
+            });
+            tallyIconStyle.maxHeight = iconNormalHeight;
+            currentSuit = "diamond";
+            cardImageFront.style.color = '#BC2024';
+
+            changeSuitUnconditally = false;
         }
+
+        if (diamondBtn) diamondBtn.classList.add('selected');
     }
     
+        
+        
+     
+    
     function changeSuitHearts() {
+        resetSuitSelection();
         currentIcon = heartIcon;
         if (currentSuit !== "heart") {
             allIcons.forEach(icon => {
@@ -372,10 +494,22 @@ document.addEventListener('DOMContentLoaded', function() {
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "heart";
             cardImageFront.style.color = '#BC2024';
-        } 
-        
+        } else if (changeSuitUnconditally == true) {
+            allIcons.forEach(icon => {
+                icon.src = currentIcon;
+            });
+            tallyIconStyle.maxHeight = iconNormalHeight;
+            currentSuit = "heart";
+            cardImageFront.style.color = '#BC2024';
+            
+            changeSuitUnconditally = false;
+        }
+        if (heartBtn) heartBtn.classList.add('selected');
     }
+
+    
     function changeSuitClubs() {
+        resetSuitSelection();
         currentIcon = clubIcon;
         if (currentSuit !== "Club") {
             allIcons.forEach(icon => {
@@ -384,9 +518,21 @@ document.addEventListener('DOMContentLoaded', function() {
             tallyIconStyle.maxHeight = iconNormalHeight;
             currentSuit = "club";
             cardImageFront.style.color = '#000';
+        } else if (changeSuitUnconditally == true) {
+            allIcons.forEach(icon => {
+                icon.src = currentIcon;
+            });
+            tallyIconStyle.maxHeight = iconNormalHeight;
+            currentSuit = "club";
+            cardImageFront.style.color = '#000';
+
+            changeSuitUnconditally = false;
         }
+        if (clubBtn) clubBtn.classList.add('selected');
     }
+    
     function changeSuitSpades() {
+        resetSuitSelection();
         currentIcon = spadeIcon;
         if (currentSuit !== "spade") {
             allIcons.forEach(icon => {
@@ -397,8 +543,29 @@ document.addEventListener('DOMContentLoaded', function() {
             currentSuit = "spade";
             
             
+        } else if (changeSuitUnconditally == true) {
+            allIcons.forEach(icon => {
+                icon.src = currentIcon;
+            });
+            tallyIconStyle.maxHeight = '9em';
+            cardImageFront.style.color = '#000';
+            currentSuit = "spade";
+
+            changeSuitUnconditally = false;
         }
+        if (spadeBtn) spadeBtn.classList.add('selected');
     }
+    
+    function resetSuitSelection() {
+        // Remove 'selected' class from all suit buttons
+        const suitButtons = document.querySelectorAll('.change-suit');
+        suitButtons.forEach(button => {
+            button.classList.remove('selected');
+        });
+    }
+        
+            
+          
 
     
     
