@@ -22,10 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cardFrontBtn = document.getElementById("card-front");
     const cardBackBtn = document.getElementById("card-back");
+    const flipperBtn = document.getElementById("flipper");
 
     const previewTab = document.getElementById("preview-container");
     let cardSideBtn = cardFrontBtn;
     let cardNotSide = cardBackBtn;
+    let cardIsOnBack = true;
 
     const card = document.getElementById("card");
     const cardHeight = card.offsetHeight / 2;
@@ -147,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cardSideBtn = cardBackBtn;
         cardNotSide = cardFrontBtn;
 
-        cardFrontBtn.style.display = 'none';
-        cardBackBtn.style.display = 'block';
+        // cardFrontBtn.style.display = 'none';
+        // cardBackBtn.style.display = 'block';
 
         cardBorderDiv.style.display = 'none';
 
@@ -157,10 +159,20 @@ document.addEventListener('DOMContentLoaded', function() {
         cardImageFront.style.visibility = 'visible';
         cardImageBack.style.zIndex = '100';
         cardImageBack.style.visibility = 'hidden';
+
+        cardIsOnBack = false;
     }
     // Flip card and switch button on click
     cardFrontBtn.addEventListener('click', function() {
         switchToFront();
+    });
+
+    flipperBtn.addEventListener('click', function() {
+            if (cardIsOnBack) {
+                switchToFront();
+            } else {
+                switchToBack();
+            }
     });
 
     
@@ -168,8 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cardSideBtn = cardFrontBtn;
         cardNotSide = cardBackBtn;
 
-        cardBackBtn.style.display = 'none';
-        cardFrontBtn.style.display = 'block';
+        // cardBackBtn.style.display = 'none';
+        // cardFrontBtn.style.display = 'block';
 
         cardBorderDiv.style.display = 'block';
 
@@ -178,15 +190,18 @@ document.addEventListener('DOMContentLoaded', function() {
         cardImageFront.style.visibility = 'hidden';
         cardImageBack.style.zIndex = '101';
         cardImageBack.style.visibility = 'visible';
+
+        cardIsOnBack = true;
     }
-    cardBackBtn.addEventListener('click', function() {
-        switchToBack();
+    cardFrontBtn.addEventListener('click', function() {
+        switchToFront();
     });
+    
     
     // Show or hide flip button
     previewTab.addEventListener('mouseover', function() { 
-        cardSideBtn.style.opacity = '1';
-        cardSideBtn.style.display = 'block';
+        // cardSideBtn.style.opacity = '1';
+        // cardSideBtn.style.display = 'block';
 
     });
     function hideFlipBtn() {
@@ -458,6 +473,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function changeSuitDiamonds() {
         resetSuitSelection();
+        
         currentIcon = diamondIcon;
         if (currentSuit !== "diamond") {
             allIcons.forEach(icon => {
@@ -478,6 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (diamondBtn) diamondBtn.classList.add('selected');
+        switchToFront();
     }
     
         
@@ -505,6 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
             changeSuitUnconditally = false;
         }
         if (heartBtn) heartBtn.classList.add('selected');
+        switchToFront();
     }
 
     
@@ -529,6 +547,7 @@ document.addEventListener('DOMContentLoaded', function() {
             changeSuitUnconditally = false;
         }
         if (clubBtn) clubBtn.classList.add('selected');
+        switchToFront();
     }
     
     function changeSuitSpades() {
@@ -554,6 +573,7 @@ document.addEventListener('DOMContentLoaded', function() {
             changeSuitUnconditally = false;
         }
         if (spadeBtn) spadeBtn.classList.add('selected');
+        switchToFront();
     }
     
     function resetSuitSelection() {
@@ -564,8 +584,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
         
-            
-          
+    // document.addEventListener('click', function() {
+
+    // });      
+
+    // function ShowAce() {
+        
+    // }  
 
     
     

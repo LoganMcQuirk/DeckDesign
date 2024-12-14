@@ -69,7 +69,7 @@ main {
 } */
 
 section {
-    margin: 0px 10px 40px;
+    margin: 0px 10px 30px;
     min-width: 327px;
     max-width: min-content;
     min-height: 100px;
@@ -411,7 +411,7 @@ button.preset-option:hover {
 }
 #suit-selection button.selected {
     border-color: #ff1e1e;
-    background-color: #fcd8d8;
+    background-color: #ffe4e4;
 
 }
 #suit-selection button:nth-child(1) {
@@ -438,6 +438,34 @@ button.preset-option:hover {
 
 #suit-selection button img:last-child {
     align-self: flex-end;
+}
+
+#number-selection {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px ;
+    padding: 10px;
+}
+
+.card-number-option button {
+    padding: .5em;
+    font-family: "Solway", Courier, monospace;
+    font-weight: 400;
+    
+    border: 1px solid gainsboro;
+
+
+}
+
+.card-number-option button:hover {
+    border-color: #ff1e1e;
+    background-color: #dadada;
+    transition: .2s;
+}
+
+.card-number-option button.selected {
+    border-color: #ff1e1e;
+    background-color: #ffe4e4;
 }
 
 footer {
@@ -470,7 +498,7 @@ footer p {
     }
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1296px) {
     
     main {
         justify-content: center;
