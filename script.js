@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
 
-    const iconNormalHeight = "6em";
+    const iconNormalHeight = "9em";
 
     let diamondIcon = "images/DiamondIcon-1.png";
     let heartIcon = "images/HeartIcon-1.png";
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentIcon = spadeIcon;
                 
                 changeSuitUnconditally = true;
-                changeSuitSpades() 
+                changeSuitSpades();
             };
     
             
@@ -592,8 +592,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
     // }  
 
+    // The 10button needs to select the styles of all icon-number images-5b and turn them to block. 
+    // also access id <p> element and change innerHTML to 10
     
+    // The 9 button needs to select all icon images-5b-6
     
-
+    // 8 button select icon images -3-9 turn to block,  image 5b become block and visibility: hidden
+    // iconMiddleColumn must become justify content center
 });
 

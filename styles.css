@@ -339,6 +339,13 @@ button.preset-option:hover {
 #bottom-right-id {
     
     flex-direction: column-reverse;
+    min-width: 40px;
+    max-width: 40px;
+    
+}
+#top-left-id {
+    min-width: 40px;
+    max-width: 40px;
     
 }
 .bottom-right-class {
@@ -358,8 +365,6 @@ button.preset-option:hover {
 
 #tally-layout {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: relative;
     z-index: 104;
     
@@ -368,13 +373,51 @@ button.preset-option:hover {
 #tally-layout img {
     position: relative;
     max-height: 6em;
+    
 
 }
 
 #tally-layout img.icon-number {
-    display: none;
+    /* Make column icons exceed colums if larger */
+    object-fit: cover;
+    overflow: visible;
+    /* */
     position: relative;
     max-height: 6em;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+
+#tally-layout div {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+#tally-layout div#iconColumnMiddle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+#center-icon {
+    display: none;
+}
+
+#Icon-5b.icon.tally-icon.icon-number {
+    display: block;
+    visibility: hidden;
+}
+
+#Icon-6.icon.tally-icon.icon-number {
+    display: block;
+}
+#Icon-3.icon.tally-icon.icon-number {
+    display: none;
+}
+#Icon-9.icon.tally-icon.icon-number {
+    display: none;
 }
 
 #upload-buttons {
