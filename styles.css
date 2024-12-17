@@ -384,6 +384,7 @@ button.preset-option:hover {
     /* */
     position: relative;
     max-height: 6em;
+    height: 64px;
     padding-left: 2px;
     padding-right: 2px;
 }
@@ -403,21 +404,50 @@ button.preset-option:hover {
 
 #center-icon {
     display: none;
-}
-
-#Icon-5b.icon.tally-icon.icon-number {
-    display: block;
     visibility: hidden;
 }
-
-#Icon-6.icon.tally-icon.icon-number {
+#Icon-1.icon.tally-icon.icon-number {
     display: block;
+    visibility: visible;
+}
+#Icon-2.icon.tally-icon.icon-number {
+    display: block;
+    visibility: hidden;
 }
 #Icon-3.icon.tally-icon.icon-number {
     display: none;
 }
+#Icon-4.icon.tally-icon.icon-number {
+    display: block;
+    visibility: visible;
+}
+#Icon-5.icon.tally-icon.icon-number {
+    display: none;
+    visibility: hidden;
+}
+#Icon-5b.icon.tally-icon.icon-number {
+    display: block;
+    visibility: hidden;
+}
+#Icon-6.icon.tally-icon.icon-number {
+    display: none;
+    visibility: hidden;
+}
+#Icon-7.icon.tally-icon.icon-number {
+    display: block;
+    visibility: visible;
+}
+#Icon-8.icon.tally-icon.icon-number {
+    display: block;
+    visibility: hidden;
+}
 #Icon-9.icon.tally-icon.icon-number {
     display: none;
+    visibility: hidden;
+}
+#Icon-10.icon.tally-icon.icon-number {
+    display: block;
+    visibility: visible;
 }
 
 #upload-buttons {

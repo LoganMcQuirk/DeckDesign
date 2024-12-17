@@ -599,5 +599,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 8 button select icon images -3-9 turn to block,  image 5b become block and visibility: hidden
     // iconMiddleColumn must become justify content center
+
+    // 7 button same as 8 but set image 6 to visibility hidden
+
+    // 6 is same a 7 with allcenter icons set to display none
+
+    // 5 is 1,4,7,10 and 5b icons with 2 and 8 set to hidden turn all others to none
+
+    // 4 is 5 but all center icons set to none
+
+    // 3 has middle column 5,5b,6 images set to visible and block all others set to hidden and none, middle column set to space-around jc
+
+    // 2 is same as 3 but 5b set to hidden visibilty
+
+    // Ace is set to center-icon visible block and all other images set to displau none
+    // also set bool for isAceDisplayed to change spade icon size
+
+
+
 });
+
 
