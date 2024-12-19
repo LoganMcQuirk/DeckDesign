@@ -349,7 +349,7 @@ button.preset-option:hover {
     
 }
 .bottom-right-class {
-    transform: scaleY(-1);
+    transform: scale(-1, -1);
 }
 
 
@@ -373,7 +373,7 @@ button.preset-option:hover {
 #tally-layout img {
     position: relative;
     max-height: 6em;
-    
+    align-self: center;
 
 }
 
@@ -402,52 +402,55 @@ button.preset-option:hover {
 }
 
 
-#center-icon {
+
+#Icon-1.icon.tally-icon.icon-number {
     display: none;
     visibility: hidden;
 }
-#Icon-1.icon.tally-icon.icon-number {
-    display: block;
-    visibility: visible;
-}
 #Icon-2.icon.tally-icon.icon-number {
-    display: block;
+    display: none;
     visibility: hidden;
 }
 #Icon-3.icon.tally-icon.icon-number {
     display: none;
+    visibility: hidden;
+    transform: scale(-1, -1);
 }
 #Icon-4.icon.tally-icon.icon-number {
-    display: block;
-    visibility: visible;
+    display: none;
+    visibility: hidden;
+    transform: scale(-1, -1);
 }
 #Icon-5.icon.tally-icon.icon-number {
     display: none;
     visibility: hidden;
 }
 #Icon-5b.icon.tally-icon.icon-number {
-    display: block;
+    display: none;
     visibility: hidden;
 }
 #Icon-6.icon.tally-icon.icon-number {
     display: none;
     visibility: hidden;
+    transform: scale(-1, -1);
 }
 #Icon-7.icon.tally-icon.icon-number {
-    display: block;
-    visibility: visible;
+    display: none;
+    visibility: hidden;
 }
 #Icon-8.icon.tally-icon.icon-number {
-    display: block;
+    display: none;
     visibility: hidden;
 }
 #Icon-9.icon.tally-icon.icon-number {
     display: none;
     visibility: hidden;
+    transform: scale(-1, -1);
 }
 #Icon-10.icon.tally-icon.icon-number {
-    display: block;
-    visibility: visible;
+    display: none;
+    visibility: hidden;
+    transform: scale(-1, -1);
 }
 
 #upload-buttons {

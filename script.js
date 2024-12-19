@@ -88,8 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const borderControl = document.getElementById('border-control');
     const cardBorderDiv = document.getElementById("card-border");
 
-    const tallyIcon = document.querySelector("#tally-layout img");
-    const tallyIconStyle = tallyIcon.style;
+    const tallyImage = document.querySelector("#tally-layout img");
+    const tallyImageStyle = tallyImage.style;
+    const AceIcon = document.getElementById("center-icon");
 
     
 
@@ -322,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
 
-    const iconNormalHeight = "9em";
+    const iconNormalHeight = "6em";
 
     let diamondIcon = "images/DiamondIcon-1.png";
     let heartIcon = "images/HeartIcon-1.png";
@@ -479,20 +480,20 @@ document.addEventListener('DOMContentLoaded', function() {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = iconNormalHeight;
+            AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
             cardImageFront.style.color = '#BC2024';
         } else if (changeSuitUnconditally == true) {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = iconNormalHeight;
+            AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
             cardImageFront.style.color = '#BC2024';
 
             changeSuitUnconditally = false;
         }
-
+        
         if (diamondBtn) diamondBtn.classList.add('selected');
         switchToFront();
     }
@@ -508,19 +509,20 @@ document.addEventListener('DOMContentLoaded', function() {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = iconNormalHeight;
+            AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "heart";
             cardImageFront.style.color = '#BC2024';
         } else if (changeSuitUnconditally == true) {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = iconNormalHeight;
+            AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "heart";
             cardImageFront.style.color = '#BC2024';
             
             changeSuitUnconditally = false;
         }
+        
         if (heartBtn) heartBtn.classList.add('selected');
         switchToFront();
     }
@@ -533,19 +535,20 @@ document.addEventListener('DOMContentLoaded', function() {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = iconNormalHeight;
+            AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "club";
             cardImageFront.style.color = '#000';
         } else if (changeSuitUnconditally == true) {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = iconNormalHeight;
+            AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "club";
             cardImageFront.style.color = '#000';
 
             changeSuitUnconditally = false;
         }
+        tallyImageStyle.maxHeight = iconNormalHeight;
         if (clubBtn) clubBtn.classList.add('selected');
         switchToFront();
     }
@@ -557,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = '9em';
+            AceIcon.style.maxHeight = '9em';
             cardImageFront.style.color = '#000';
             currentSuit = "spade";
             
@@ -566,12 +569,13 @@ document.addEventListener('DOMContentLoaded', function() {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            tallyIconStyle.maxHeight = '9em';
+            AceIcon.style.maxHeight = '9em';
             cardImageFront.style.color = '#000';
             currentSuit = "spade";
 
             changeSuitUnconditally = false;
         }
+        
         if (spadeBtn) spadeBtn.classList.add('selected');
         switchToFront();
     }
@@ -583,7 +587,218 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.remove('selected');
         });
     }
+
+    const cornerClass = document.querySelectorAll("p.corner-class");
+    
+
+    const iconMiddleColumn = document.querySelector("#tally-layout div#iconColumnMiddle");
+    const iconLeftColumn = document.querySelector("#tally-layout div#iconColumnLeft");   
+    const iconRightColumn = document.querySelector("#tally-layout div#iconColumnRight");
+
+    
+    
+    const tallyIcon1 = document.querySelector("#Icon-1.icon.tally-icon.icon-number");
+    const tallyIconStyle1 = tallyIcon1.style;
+
+    const tallyIcon2 = document.querySelector("#Icon-2.icon.tally-icon.icon-number");
+    const tallyIconStyle2 = tallyIcon2.style;
+
+    const tallyIcon3 = document.querySelector("#Icon-3.icon.tally-icon.icon-number");
+    const tallyIconStyle3 = tallyIcon3.style;
+
+    const tallyIcon4 = document.querySelector("#Icon-4.icon.tally-icon.icon-number");
+    const tallyIconStyle4 = tallyIcon4.style;
+
+    const tallyIcon5 = document.querySelector("#Icon-5.icon.tally-icon.icon-number");
+    const tallyIconStyle5 = tallyIcon5.style;
+    const tallyIcon5b = document.querySelector("#Icon-5b.icon.tally-icon.icon-number");
+    const tallyIconStyle5b = tallyIcon5b.style;
+    const tallyIcon6 = document.querySelector("#Icon-6.icon.tally-icon.icon-number");
+    const tallyIconStyle6 = tallyIcon6.style;
+
+    const tallyIcon7 = document.querySelector("#Icon-7.icon.tally-icon.icon-number");
+    const tallyIconStyle7 = tallyIcon7.style;
+
+    const tallyIcon8 = document.querySelector("#Icon-8.icon.tally-icon.icon-number");
+    const tallyIconStyle8 = tallyIcon8.style;
+
+    const tallyIcon9 = document.querySelector("#Icon-9.icon.tally-icon.icon-number");
+    const tallyIconStyle9 = tallyIcon9.style;
+
+    const tallyIcon10 = document.querySelector("#Icon-10.icon.tally-icon.icon-number");
+    const tallyIconStyle10 = tallyIcon10.style;
+
+    let selectedCardClass = 1;
+
+
+    const classBtns = document.querySelectorAll("#number-selection button");
+    const aceButton = classBtns[0];
+    const twoButton = classBtns[1];
+    const threeButton = classBtns[2];
+    const fourButton = classBtns[3];
+    const fiveButton = classBtns[4];
+    const sixButton = classBtns[5];
+    const sevenButton = classBtns[6];
+    const eightButton = classBtns[7];
+    const nineButton = classBtns[8];
+    const tenButton = classBtns[9];
+    const jackButton = classBtns[10];
+    const queenButton = classBtns[11];
+    const kingButton = classBtns[12];
+    const jokerButton = classBtns[13];
+
+    tenButton.addEventListener('click', function() {
+        IconLayout10();
+    });
+    function IconLayout10() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+        const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+        tallyIcon.style.display = "block";
+        }
+        tallyIconStyle5b.display = "none"; 
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            } 
+
+        iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "10";  
+        });
+        AceIcon.style.display = 'none';
+
+    }
+    nineButton.addEventListener('click', function() {
+        IconLayout9();
+    });
+    function IconLayout9() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+        const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+        tallyIcon.style.display = "block";
+        }
+        tallyIconStyle5b.display = "none"; 
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            } 
+        tallyIconStyle6.visibility = "hidden";
+
+        iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "9";  
+        });
+        AceIcon.style.display = 'none';
+
+    }
+    eightButton.addEventListener('click', function() {
+        IconLayout8();
+    });
+    function IconLayout8() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+        const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+        tallyIcon.style.display = "block";
+        }
+        tallyIconStyle3.display = "none";
+        tallyIconStyle8.display = "none";
+        tallyIconStyle5b.display = "block";
         
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            } 
+        tallyIconStyle5b.visibility = "hidden"; 
+        
+
+        iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "8";  
+        });
+        AceIcon.style.display = 'none';
+
+    }
+    sevenButton.addEventListener('click', function() {
+        IconLayout7();
+    });
+    function IconLayout7() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+        const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+        tallyIcon.style.display = "block";
+        }
+        tallyIconStyle3.display = "none";
+        tallyIconStyle8.display = "none";
+        tallyIconStyle5b.display = "block";
+        
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            } 
+        tallyIconStyle5b.visibility = "hidden";
+        tallyIconStyle6.visibility = "hidden"; 
+        
+
+        iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "7";  
+        });
+        AceIcon.style.display = 'none';
+
+    }
+    sixButton.addEventListener('click', function() {
+        IconLayout6();
+    });
+    function IconLayout6() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+        const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+        tallyIcon.style.display = "block";
+        }
+        tallyIconStyle3.display = "none";
+        tallyIconStyle8.display = "none";
+        tallyIconStyle5b.display = "block";
+        
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            }
+        tallyIconStyle5.visibility = "hidden"; 
+        tallyIconStyle5b.visibility = "hidden";
+        tallyIconStyle6.visibility = "hidden"; 
+        
+
+        iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "6";  
+        });
+        AceIcon.style.display = 'none';
+
+    }
+
+
+
     // document.addEventListener('click', function() {
 
     // });      
