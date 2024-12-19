@@ -682,12 +682,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
         tallyIcon.style.display = "block";
         }
-        tallyIconStyle5b.display = "none"; 
+        tallyIconStyle5b.display = "block"; 
 
         for (let i = 1; i <= 10; i++) { // Set icon visibility
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
             tallyIcon.style.visibility = "visible";
             } 
+        tallyIconStyle5.visibility = "hidden";
+        tallyIconStyle5b.visibility = "visible";
         tallyIconStyle6.visibility = "hidden";
 
         iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
