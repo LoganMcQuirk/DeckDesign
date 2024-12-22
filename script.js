@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
 
-    const iconNormalHeight = "6em";
+    const iconNormalHeight = "64px";
 
     let diamondIcon = "images/DiamondIcon-1.png";
     let heartIcon = "images/HeartIcon-1.png";
@@ -775,7 +775,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIcon.style.display = "block";
         }
         tallyIconStyle3.display = "none";
-        tallyIconStyle8.display = "none";
+        tallyIconStyle9.display = "none";
         tallyIconStyle5b.display = "block";
         
 
@@ -799,7 +799,205 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
+    fiveButton.addEventListener('click', function() {
+        IconLayout5();
+    });
+    function IconLayout5() { 
 
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.display = "block";
+        }
+        tallyIconStyle3.display = "none";
+        tallyIconStyle5.display = "none";
+        tallyIconStyle6.display = "none";
+        tallyIconStyle9.display = "none";
+        tallyIconStyle5b.display = "block";
+    
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            }
+        tallyIconStyle2.visibility = "hidden"; 
+        tallyIconStyle8.visibility = "hidden"; 
+        tallyIconStyle5b.visibility = "visible";
+        
+        
+
+        iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "5";  
+        });
+        AceIcon.style.display = 'none';
+            
+
+    }
+
+    fourButton.addEventListener('click', function() {
+        IconLayout4();
+    });
+    function IconLayout4() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.display = "block";
+        }
+        tallyIconStyle3.display = "none";
+        tallyIconStyle5.display = "none";
+        tallyIconStyle6.display = "none";
+        tallyIconStyle9.display = "none";
+        tallyIconStyle5b.display = "block";
+    
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "visible";
+            }
+        tallyIconStyle2.visibility = "hidden"; 
+        tallyIconStyle8.visibility = "hidden"; 
+        tallyIconStyle5b.visibility = "hidden";
+        
+        
+
+        iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "4";  
+        });
+        AceIcon.style.display = 'none';
+            
+
+    }
+    threeButton.addEventListener('click', function() {
+        IconLayout3();
+    });
+    function IconLayout3() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.display = "none";
+        }
+        tallyIconStyle1.display = "block";
+        tallyIconStyle7.display = "block";
+        tallyIconStyle5.display = "block";
+        tallyIconStyle5b.display = "block";
+        tallyIconStyle6.display = "block";
+    
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "hidden";
+            }
+            tallyIcon5.style.visibility = "visible";
+            tallyIcon5b.style.visibility = "visible";
+            tallyIcon6.style.visibility = "visible";
+        
+        
+
+        iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "3";  
+        });
+        AceIcon.style.display = 'none';
+            
+
+    }
+    twoButton.addEventListener('click', function() {
+        IconLayout2();
+    });
+    
+    function IconLayout2() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.display = "none";
+        }
+        tallyIconStyle1.display = "block";
+        tallyIconStyle7.display = "block";
+        tallyIconStyle5.display = "block";
+        tallyIconStyle5b.display = "block";
+        tallyIconStyle6.display = "block";
+    
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "hidden";
+            }
+            tallyIcon5.style.visibility = "visible";
+            tallyIcon5b.style.visibility = "hidden";
+            tallyIcon6.style.visibility = "visible";
+        
+        
+
+        iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "2";  
+        });
+        AceIcon.style.display = 'none';
+            
+
+    }
+
+    aceButton.addEventListener('click', function() {
+        IconLayout1();
+    });
+    function IconLayout1() { 
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.display = "none";
+        }
+        
+        tallyIconStyle5b.display = "none";
+        
+    
+
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "hidden";
+            }
+            
+            tallyIcon5b.style.visibility = "hidden";
+            
+        
+        
+
+        iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
+        iconLeftColumn.style.justifyContent = "space-around";
+        iconRightColumn.style.justifyContent = "space-around";
+
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            p.innerHTML = "A";  
+        });
+        AceIcon.style.display = 'block';
+            
+
+    }
+
+    const iconSizeControl = document.getElementById('SuitIconSizer');
+
+    iconSizeControl.addEventListener('input', function() { 
+        let iconSliderValue = iconSizeControl.value;
+        
+        iconNormalHeight = iconSliderValue + 'px';
+        
+       const iconColumnImage = document.querySelectorAll(".tally-column img");
+
+       iconColumnImage.style.height = iconNormalHeight;
+       iconColumnImage.style.maxHeight = iconNormalHeight;
+    });
 
     // document.addEventListener('click', function() {
 
