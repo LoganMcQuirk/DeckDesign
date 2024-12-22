@@ -649,6 +649,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     tenButton.addEventListener('click', function() {
         IconLayout10();
+        switchToFront();
     });
     function IconLayout10() { 
 
@@ -675,6 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     nineButton.addEventListener('click', function() {
         IconLayout9();
+        switchToFront();
     });
     function IconLayout9() { 
 
@@ -704,6 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     eightButton.addEventListener('click', function() {
         IconLayout8();
+        switchToFront();
     });
     function IconLayout8() { 
 
@@ -712,7 +715,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIcon.style.display = "block";
         }
         tallyIconStyle3.display = "none";
-        tallyIconStyle8.display = "none";
+        tallyIconStyle9.display = "none";
         tallyIconStyle5b.display = "block";
         
 
@@ -735,6 +738,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     sevenButton.addEventListener('click', function() {
         IconLayout7();
+        switchToFront();
     });
     function IconLayout7() { 
 
@@ -743,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIcon.style.display = "block";
         }
         tallyIconStyle3.display = "none";
-        tallyIconStyle8.display = "none";
+        tallyIconStyle9.display = "none";
         tallyIconStyle5b.display = "block";
         
 
@@ -767,6 +771,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     sixButton.addEventListener('click', function() {
         IconLayout6();
+        switchToFront();
     });
     function IconLayout6() { 
 
@@ -801,6 +806,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fiveButton.addEventListener('click', function() {
         IconLayout5();
+        switchToFront();
     });
     function IconLayout5() { 
 
@@ -839,6 +845,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fourButton.addEventListener('click', function() {
         IconLayout4();
+        switchToFront();
     });
     function IconLayout4() { 
 
@@ -876,6 +883,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     threeButton.addEventListener('click', function() {
         IconLayout3();
+        switchToFront();
     });
     function IconLayout3() { 
 
@@ -913,8 +921,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     twoButton.addEventListener('click', function() {
         IconLayout2();
+        switchToFront();
     });
-    
+
     function IconLayout2() { 
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
@@ -952,6 +961,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     aceButton.addEventListener('click', function() {
         IconLayout1();
+        switchToFront();
     });
     function IconLayout1() { 
 
