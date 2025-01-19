@@ -329,6 +329,7 @@ button.preset-option:hover {
 }
 #front-layout img {
     object-fit: contain;
+    filter: grayscale(100%) brightness(0.5) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6);
 }
 #front-layout p {
     font-family: "Solway", Courier, monospace;
@@ -374,17 +375,20 @@ button.preset-option:hover {
 
 #tally-layout {
     display: flex;
+    justify-content: space-evenly;
     position: relative;
     z-index: 104;
-    
+    min-width: 204px;
 }
 
 #tally-layout img {
     position: relative;
     max-height: 6em;
     align-self: center;
+    
 
 }
+
 
 #tally-layout img.icon-number {
     /* Make column icons exceed colums if larger */

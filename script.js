@@ -1,4 +1,4 @@
-// Wait for the DOM to fully load
+// Wait for DOM load
 document.addEventListener('DOMContentLoaded', function() {
 
     const editBack = document.getElementById("editBack");
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clubUpload = document.getElementById("club-icon");
     const spadeUpload = document.getElementById("spade-icon");
     const allIcons = document.querySelectorAll('.icon');
-
+// SUIT CHANGING BUTTONS -----------------------------------------------------------------------v
     const diamondBtn = document.getElementById("diamondBtn");
     const heartBtn = document.getElementById("heartBtn");
     const clubBtn = document.getElementById("clubBtn");
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         changeSuitSpades();
         switchToFront();
     }); 
+    //-------------------------------------------------------------------------------------------^
     const cardImageBack = document.getElementById("card-image-back");
     const cardImageFront = document.getElementById("front-layout");
 
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
 
-    //Back designer
+//Back designer TOGGLE VIEW
     toggleBackBtn.addEventListener('click', function() {
         if (editBack.style.display === "none") {
             // close
@@ -107,9 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
-
-    //Suit Designer
+//Suit Designer -----------------------------------------------------------------------------------------------------------------------
     toggleSuitBtn.addEventListener('click', function() {
         if (editSuit.style.display === "none") {
             // close
@@ -146,7 +145,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    function switchToFront() {
+// Card flipping and switching view functions -----------------------------------------------------------------------------------------   
+   // NEED TO ADD ANIMATION TO FLIP FOR SATISFYING 3D EFFECT
+
+function switchToFront() {
         cardSideBtn = cardBackBtn;
         cardNotSide = cardFrontBtn;
 
@@ -213,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hideFlipBtn();
     });
 
-
+//Back of card customisation controls -------------------------------------------------------------------------------------------------
 
     preset1Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPresetOne.png";
@@ -303,6 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cardSideBtn.style.top = `${mouseY - cardSideHeight}px`;
     }
 
+// Control border thickness slider ----------------------------------------------------------------------------------------------------
     borderControl.addEventListener('input', function() { 
         let borderSliderValue = borderControl.value;
         let cardImageBorderRadius = borderSliderValue;
@@ -323,7 +326,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
 
-    const iconNormalHeight = "64px";
+// Control displayed suit class --------------------------------------------------------------------------------------------------------
+    let iconNormalHeight = "64px";
 
     let diamondIcon = "images/DiamondIcon-1.png";
     let heartIcon = "images/HeartIcon-1.png";
@@ -333,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
     allIcons.src = currentIcon;
 
     let changeSuitUnconditally = false;
-    // THIS FUNCIION IS NOT FULLY WORKING, NEEDS TO AUTO SWITCH TO DIAMOND CARD AND!!!&&& SHOW UPLOADED ICON
+
     diamondUpload.addEventListener('change', function(event) {
         // Check if a file has been uploaded
         UPLOADICONDIAMOND();
@@ -470,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-// Change Suit conditional Functions
+// Change Suit conditional Functions --------------------------------------------------------------------------------------------------
 
     function changeSuitDiamonds() {
         resetSuitSelection();
@@ -498,10 +502,6 @@ document.addEventListener('DOMContentLoaded', function() {
         switchToFront();
     }
     
-        
-        
-     
-    
     function changeSuitHearts() {
         resetSuitSelection();
         currentIcon = heartIcon;
@@ -526,8 +526,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heartBtn) heartBtn.classList.add('selected');
         switchToFront();
     }
-
-    
+ 
     function changeSuitClubs() {
         resetSuitSelection();
         currentIcon = clubIcon;
@@ -560,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
-            AceIcon.style.maxHeight = '9em';
+            AceIcon.style.maxHeight = iconNormalHeight;
             cardImageFront.style.color = '#000';
             currentSuit = "spade";
             
@@ -590,12 +589,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cornerClass = document.querySelectorAll("p.corner-class");
     
+// Choose Card Identity AKA card number/letter ------------------------------------------------------------------------------------
 
     const iconMiddleColumn = document.querySelector("#tally-layout div#iconColumnMiddle");
     const iconLeftColumn = document.querySelector("#tally-layout div#iconColumnLeft");   
     const iconRightColumn = document.querySelector("#tally-layout div#iconColumnRight");
-
-    
     
     const tallyIcon1 = document.querySelector("#Icon-1.icon.tally-icon.icon-number");
     const tallyIconStyle1 = tallyIcon1.style;
@@ -630,7 +628,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let selectedCardClass = 1;
 
-
     const classBtns = document.querySelectorAll("#number-selection button");
     const aceButton = classBtns[0];
     const twoButton = classBtns[1];
@@ -650,8 +647,12 @@ document.addEventListener('DOMContentLoaded', function() {
     tenButton.addEventListener('click', function() {
         IconLayout10();
         switchToFront();
+        
     });
     function IconLayout10() { 
+        selectedCardClass = 10;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
         const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -674,11 +675,16 @@ document.addEventListener('DOMContentLoaded', function() {
         AceIcon.style.display = 'none';
 
     }
+    
     nineButton.addEventListener('click', function() {
         IconLayout9();
         switchToFront();
+        
     });
     function IconLayout9() { 
+        selectedCardClass = 9;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
         const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -702,14 +708,17 @@ document.addEventListener('DOMContentLoaded', function() {
             p.innerHTML = "9";  
         });
         AceIcon.style.display = 'none';
-
     }
+
     eightButton.addEventListener('click', function() {
         IconLayout8();
         switchToFront();
+        
     });
     function IconLayout8() { 
-
+        selectedCardClass = 8;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
         for (let i = 1; i <= 10; i++) { //Set icon display style
         const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
         tallyIcon.style.display = "block";
@@ -718,14 +727,12 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIconStyle9.display = "none";
         tallyIconStyle5b.display = "block";
         
-
         for (let i = 1; i <= 10; i++) { // Set icon visibility
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
             tallyIcon.style.visibility = "visible";
             } 
         tallyIconStyle5b.visibility = "hidden"; 
         
-
         iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
         iconLeftColumn.style.justifyContent = "space-around";
         iconRightColumn.style.justifyContent = "space-around";
@@ -734,13 +741,18 @@ document.addEventListener('DOMContentLoaded', function() {
             p.innerHTML = "8";  
         });
         AceIcon.style.display = 'none';
-
     }
+
     sevenButton.addEventListener('click', function() {
         IconLayout7();
         switchToFront();
+        
+        
     });
     function IconLayout7() { 
+        selectedCardClass = 7;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
         const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -767,13 +779,17 @@ document.addEventListener('DOMContentLoaded', function() {
             p.innerHTML = "7";  
         });
         AceIcon.style.display = 'none';
-
     }
+
     sixButton.addEventListener('click', function() {
         IconLayout6();
         switchToFront();
+        
     });
     function IconLayout6() { 
+        selectedCardClass = 6;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
         const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -801,14 +817,17 @@ document.addEventListener('DOMContentLoaded', function() {
             p.innerHTML = "6";  
         });
         AceIcon.style.display = 'none';
-
     }
 
     fiveButton.addEventListener('click', function() {
         IconLayout5();
         switchToFront();
+        
     });
     function IconLayout5() { 
+        selectedCardClass = 5;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -820,7 +839,6 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIconStyle9.display = "none";
         tallyIconStyle5b.display = "block";
     
-
         for (let i = 1; i <= 10; i++) { // Set icon visibility
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
             tallyIcon.style.visibility = "visible";
@@ -829,8 +847,6 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIconStyle8.visibility = "hidden"; 
         tallyIconStyle5b.visibility = "visible";
         
-        
-
         iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
         iconLeftColumn.style.justifyContent = "space-around";
         iconRightColumn.style.justifyContent = "space-around";
@@ -838,16 +854,19 @@ document.addEventListener('DOMContentLoaded', function() {
         cornerClass.forEach(p => { // Set the innerHTML to 10
             p.innerHTML = "5";  
         });
-        AceIcon.style.display = 'none';
-            
 
+        AceIcon.style.display = 'none';
     }
 
     fourButton.addEventListener('click', function() {
         IconLayout4();
         switchToFront();
+        
     });
     function IconLayout4() { 
+        selectedCardClass = 4;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -867,8 +886,6 @@ document.addEventListener('DOMContentLoaded', function() {
         tallyIconStyle2.visibility = "hidden"; 
         tallyIconStyle8.visibility = "hidden"; 
         tallyIconStyle5b.visibility = "hidden";
-        
-        
 
         iconMiddleColumn.style.justifyContent = "center"; // Align icons correclty
         iconLeftColumn.style.justifyContent = "space-around";
@@ -878,14 +895,16 @@ document.addEventListener('DOMContentLoaded', function() {
             p.innerHTML = "4";  
         });
         AceIcon.style.display = 'none';
-            
-
     }
     threeButton.addEventListener('click', function() {
         IconLayout3();
         switchToFront();
+        
     });
     function IconLayout3() { 
+        selectedCardClass = 3;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -902,12 +921,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
             tallyIcon.style.visibility = "hidden";
             }
-            tallyIcon5.style.visibility = "visible";
-            tallyIcon5b.style.visibility = "visible";
-            tallyIcon6.style.visibility = "visible";
-        
-        
 
+        tallyIcon5.style.visibility = "visible";
+        tallyIcon5b.style.visibility = "visible";
+        tallyIcon6.style.visibility = "visible";
+        
         iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
         iconLeftColumn.style.justifyContent = "space-around";
         iconRightColumn.style.justifyContent = "space-around";
@@ -922,9 +940,13 @@ document.addEventListener('DOMContentLoaded', function() {
     twoButton.addEventListener('click', function() {
         IconLayout2();
         switchToFront();
+        
     });
 
     function IconLayout2() { 
+        selectedCardClass = 2;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -941,12 +963,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
             tallyIcon.style.visibility = "hidden";
             }
-            tallyIcon5.style.visibility = "visible";
-            tallyIcon5b.style.visibility = "hidden";
-            tallyIcon6.style.visibility = "visible";
-        
-        
 
+        tallyIcon5.style.visibility = "visible";
+        tallyIcon5b.style.visibility = "hidden";
+        tallyIcon6.style.visibility = "visible";
+    
         iconMiddleColumn.style.justifyContent = "space-around"; // Align icons correclty
         iconLeftColumn.style.justifyContent = "space-around";
         iconRightColumn.style.justifyContent = "space-around";
@@ -954,16 +975,19 @@ document.addEventListener('DOMContentLoaded', function() {
         cornerClass.forEach(p => { // Set the innerHTML to 10
             p.innerHTML = "2";  
         });
+        
         AceIcon.style.display = 'none';
-            
-
     }
 
     aceButton.addEventListener('click', function() {
         IconLayout1();
         switchToFront();
+        
     });
     function IconLayout1() { 
+        selectedCardClass = 1;
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -972,8 +996,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         tallyIconStyle5b.display = "none";
         
-    
-
         for (let i = 1; i <= 10; i++) { // Set icon visibility
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
             tallyIcon.style.visibility = "hidden";
@@ -992,55 +1014,64 @@ document.addEventListener('DOMContentLoaded', function() {
             p.innerHTML = "A";  
         });
         AceIcon.style.display = 'block';
-            
-
     }
 
+// Control size of card front icons for suits and card identity -----------------------------------------------------------------------
+    
     const iconSizeControl = document.getElementById('SuitIconSizer');
+    const iconSizerDisplay = document.getElementById('icon-sizer-display');
+
+    let adjustCenterHeightValue = (iconSizeControl.value - 64)*-2;
+    function ApplyCenterHeightValue() {
+        if (selectedCardClass === 7 || selectedCardClass === 8) {
+            tallyIconStyle5b.marginTop = adjustCenterHeightValue + "px";
+        } else {
+            tallyIconStyle5b.marginTop = 0;
+        }
+    }
 
     iconSizeControl.addEventListener('input', function() { 
+        
         let iconSliderValue = iconSizeControl.value;
+
+        adjustCenterHeightValue = (iconSliderValue - 64)*-2;
+        
         
         iconNormalHeight = iconSliderValue + 'px';
         
-       const iconColumnImage = document.querySelectorAll(".tally-column img");
+       const iconColumnImages = document.querySelectorAll("#tally-layout img.icon-number");
 
-       iconColumnImage.style.height = iconNormalHeight;
-       iconColumnImage.style.maxHeight = iconNormalHeight;
+       iconColumnImages.forEach(function(image) {
+      
+            image.style.height = iconNormalHeight;
+            image.style.maxHeight = iconNormalHeight;
+
+            // Need to Make the image height of the 5b icon element invert the slider value ONLY when 7 or 8 card is selected to
+            // make layout in cenetr correct - moving on to more important features
+
+        
+        });
+
+        AceIcon.style.height = iconNormalHeight;
+        AceIcon.style.maxHeight = iconNormalHeight;
+
+        if (selectedCardClass === 7 || selectedCardClass === 8) {
+            tallyIconStyle5b.marginTop = adjustCenterHeightValue + "px";
+        } else {
+            tallyIconStyle5b.marginTop = 0;
+        }
+      
+        
+
+       iconSizerDisplay.innerHTML = iconSliderValue - 34;
     });
 
-    // document.addEventListener('click', function() {
+    const cardIdentP = document.getElementById("cardIdent");
 
-    // });      
-
-    // function ShowAce() {
-        
-    // }  
-
-    // The 10button needs to select the styles of all icon-number images-5b and turn them to block. 
-    // also access id <p> element and change innerHTML to 10
-    
-    // The 9 button needs to select all icon images-5b-6
-    
-    // 8 button select icon images -3-9 turn to block,  image 5b become block and visibility: hidden
-    // iconMiddleColumn must become justify content center
-
-    // 7 button same as 8 but set image 6 to visibility hidden
-
-    // 6 is same a 7 with allcenter icons set to display none
-
-    // 5 is 1,4,7,10 and 5b icons with 2 and 8 set to hidden turn all others to none
-
-    // 4 is 5 but all center icons set to none
-
-    // 3 has middle column 5,5b,6 images set to visible and block all others set to hidden and none, middle column set to space-around jc
-
-    // 2 is same as 3 but 5b set to hidden visibilty
-
-    // Ace is set to center-icon visible block and all other images set to displau none
-    // also set bool for isAceDisplayed to change spade icon size
-
-
+    // Features to add next:
+    // Host on Netlify?
+    // SQL save local changes to server
+    // 
 
 });
 
