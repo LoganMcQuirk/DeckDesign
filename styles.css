@@ -270,6 +270,15 @@ button.preset-option:hover {
     
 }
 
+#transparency-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 101;
+}
+
+
 #card-back:hover {
     font-size: 23px ;
     border: 10px solid rgba(200, 20, 20, 1);
