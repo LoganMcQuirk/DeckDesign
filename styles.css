@@ -94,7 +94,15 @@ width: 100%;
 
 }
 
+label {
+    display: inline;
+    max-width: 80%;
+}
 
+section label, h3 {
+    margin-left: 0px;
+    margin-bottom: 2px;
+}
 .minimise {
    display: none;
    color: #fff;
@@ -329,7 +337,7 @@ button.preset-option:hover {
 }
 #front-layout img {
     object-fit: contain;
-    /* filter: grayscale(100%) brightness(0.5) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6); */
+    filter: grayscale(100%) brightness(0.5) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6);
 }
 #front-layout p {
     font-family: "Solway", Courier, monospace;
@@ -518,7 +526,9 @@ button.preset-option:hover {
 
 #suit-selection button img {
     height: 20px;
-    
+}
+#suitBtnImg {
+    transform: scale(-1, -1);
 }
 
 #suit-selection button img:first-child {

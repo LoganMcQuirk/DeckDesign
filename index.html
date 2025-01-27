@@ -68,8 +68,11 @@
                         <input type="file" id="diamond-icon" accept="image/*">
 
                         <div>
-                            <label for="SuitIconSizer">Suit Icon Size</label>
-                                <input type="range" min="34" max="84" value="64" id="SuitIconSizer"> <p id="icon-sizer-display">30</p>
+                            <label for="SuitIconSizer">Suit Icon Size</label><p id="icon-sizer-display">30</p>
+                                <input type="range" min="34" max="84" value="64" id="SuitIconSizer"> 
+
+                                <label for="SuitClassSizer">Suit Corner Icon Size</label><p id="suit-sizer-display">20</p>
+                                <input type="range" min="20" max="40" value="40" id="SuitClassSizer"> 
                         </div>
                         
                     </div>
@@ -186,10 +189,10 @@
                     </div>
                 </div>
                 <div id="suit-selection">
-                    <button class="change-suit" id="diamondBtn"><img src="images/DiamondIcon-1.png">Diamonds<img src="images/DiamondIcon-1.png"></button>
-                    <button class="change-suit" id="heartBtn"><img src="images/HeartIcon-1.png">Hearts<img src="images/HeartIcon-1.png"></button>
-                    <button class="change-suit" id="clubBtn"><img src="images/ClubIcon-1.png">Clubs<img src="images/ClubIcon-1.png"></button>
-                    <button class="change-suit" id="spadeBtn"><img src="images/SpadeIcon-1.png">Spades<img src="images/SpadeIcon-1.png"></button>
+                    <button class="change-suit" id="diamondBtn"><img src="images/DiamondIcon-1.png">Diamonds<img src="images/DiamondIcon-1.png" id="suitBtnImg"></button>
+                    <button class="change-suit" id="heartBtn"><img src="images/HeartIcon-1.png">Hearts<img src="images/HeartIcon-1.png" id="suitBtnImg"></button>
+                    <button class="change-suit" id="clubBtn"><img src="images/ClubIcon-1.png">Clubs<img src="images/ClubIcon-1.png" id="suitBtnImg"></button>
+                    <button class="change-suit" id="spadeBtn"><img src="images/SpadeIcon-1.png">Spades<img src="images/SpadeIcon-1.png" id="suitBtnImg"></button>
                 </div>
 
                 <div id="number-selection">

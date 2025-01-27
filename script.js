@@ -318,13 +318,6 @@ function switchToFront() {
         cardBorderDiv.style.borderRadius = cardImageBorderRadius + 'px';
 
     });
-    
-    // let borderSliderValue = borderControl.value;
-    // let cardImageBorderRadius = borderControl.value * 1.2;
-    // cardImageBack.style.borderWidth = borderControl.value + 'px';
-    // cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
-
-    // const cardImageWidth = parseFloat(window.getComputedStyle(cardImageBack).width);
 
 // Control displayed suit class --------------------------------------------------------------------------------------------------------
     let iconNormalHeight = "64px";
@@ -1060,15 +1053,36 @@ function switchToFront() {
         } else {
             tallyIconStyle5b.marginTop = 0;
         }
-      
         
-
        iconSizerDisplay.innerHTML = iconSliderValue - 34;
+       switchToFront();
     });
 
     const cardIdentP = document.getElementById("cardIdent");
 
+    
+    let suitNormalHeight = 40;
+
+    const suitClassSizeControl = document.getElementById('SuitClassSizer');
+    const suitSizerDisplay = document.getElementById('suit-sizer-display');
+
+    suitClassSizeControl.addEventListener('input', function() { 
+        
+        
+        suitNormalHeight = suitClassSizeControl.value;
+
+        const suitClassImages = document.querySelectorAll("#card img.corner-suit");
+        
+        suitClassImages.forEach(function(image) {
+            image.style.height = suitNormalHeight + "px";
+        });
+        suitSizerDisplay.innerHTML = suitClassSizeControl.value - 20;
+        switchToFront();
+    });
+
+
     // Features to add next:
+    // Saving card images as files
     // Host on Netlify?
     // SQL save local changes to server
     // 
