@@ -244,7 +244,9 @@
                 margin: 2,
                 filename: "resultCard.pdf",
                 html2canvas:{
-                    scale:2
+                    scale:2,
+                    useCORS: true, // Allow CORS for images
+                    allowTaint: true
                 },
                 jspdf:{
                     unit: 'in',
