@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400..900&family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 <body>
@@ -216,8 +216,10 @@
                     
                 </div>
                 <p id="cardIdent">1</p>
-
-                <button id="downloadBtn" type="button">Download Card</button>
+                <div id="download-buttons">
+                    <button id="downloadBtn" class="downloadBtn" type="button">Download Card</button>
+                    <button id="downloadAllBtn" class="downloadBtn" type="button">Download Deck</button>
+                </div>
             </section>
         </div> 
         
@@ -232,6 +234,26 @@
 
     
     <script src="script.js"></script> <!-- Link to my JavaScript file -->
+    <script>
+        document.getElementById("downloadBtn").addEventListener('click', ()=> {
+            console.log("Download button clicked!");
+            // Select section to convert
+            const captureSection = document.getElementById("card")
+
+            html2pdf().from(captureSection).set({
+                margin: 2,
+                filename: "resultCard.pdf",
+                html2canvas:{
+                    scale:2
+                },
+                jspdf:{
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'portrait',
+                }
+            }).save()
+        })
+    </script>
 
     <!-- Library Scripts -->
     

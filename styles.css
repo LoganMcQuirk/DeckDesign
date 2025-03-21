@@ -567,6 +567,25 @@ button.preset-option:hover {
     background-color: #ffe4e4;
 }
 
+#download-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.downloadBtn {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #ff1e1e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.downloadBtn:hover { 
+    background-color: #cc0000;
+
+}
+
 footer {
     text-align: center;
     margin-top: 40px;
