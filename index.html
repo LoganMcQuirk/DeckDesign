@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400..900&family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -166,9 +167,6 @@
                                                 <img src="images/DiamondIcon-1.png" id="Icon-9" class="icon tally-icon icon-number">
                                                 <img src="images/DiamondIcon-1.png" id="Icon-10" class="icon tally-icon icon-number">
                                             </div>    
-                                        
-
-
                                     </div>
 
 
@@ -235,26 +233,56 @@
     
     <script src="script.js"></script> <!-- Link to my JavaScript file -->
     <script>
-        document.getElementById("downloadBtn").addEventListener('click', ()=> {
-            console.log("Download button clicked!");
-            // Select section to convert
-            const captureSection = document.getElementById("card")
+    
+    
+    document.getElementById("downloadBtn").addEventListener('click', () => {
+        console.log("Download button clicked!");
 
-            html2pdf().from(captureSection).set({
-                margin: 2,
-                filename: "resultCard.pdf",
-                html2canvas:{
-                    scale:2,
-                    useCORS: true, // Allow CORS for images
-                    allowTaint: true
-                },
-                jspdf:{
-                    unit: 'in',
-                    format: 'letter',
-                    orientation: 'portrait',
-                }
-            }).save()
-        })
+        // Get the content of the card element
+        const cardElement = document.getElementById("card");
+
+        const originalStyle = cardElement.style.overflow;
+        cardElement.style.overflow = "visible";
+
+        // Use html2canvas to render the card element as an image
+        html2canvas(cardElement, {
+            scale: 3,
+            useCORS: true,
+            
+            allowTaint: true,
+            
+        }).then((canvas) => {
+            // Restore the original styles
+            cardElement.style.overflow = originalStyle;
+
+            // Create a new canvas with extra space for the bleed margin
+            const bleedMargin = 36; // 36 pixels for bleed
+            const newCanvas = document.createElement("canvas");
+            newCanvas.width = canvas.width + bleedMargin * 2;
+            newCanvas.height = canvas.height + bleedMargin * 2;
+
+            const ctx = newCanvas.getContext("2d");
+
+            // Fill the background with white (optional, for transparency handling)
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+            // Draw the original canvas onto the new canvas with the bleed margin
+            ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
+            // Convert the new canvas to a data URL
+            const imgData = newCanvas.toDataURL("image/png");
+
+            // Create a temporary link element
+            const link = document.createElement("a");
+            link.href = imgData;
+            link.download = "card_with_bleed.png"; // Set the filename for the downloaded image
+
+            // Trigger the download
+            link.click();
+        });
+    });
+    
     </script>
 
     <!-- Library Scripts -->
