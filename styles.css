@@ -23,11 +23,15 @@ header {
 }
 
 header h1 {
+    
     font-size: 3em;
+    font-weight: 300;
     color: #030303; /* Red Title */
 }
 header strong {
+    font-family: Arial, Helvetica, sans-serif;
     color: #ff1e1e;
+    font-weight: 800;
 }
 header p {
     color: #000000;
@@ -337,7 +341,7 @@ button.preset-option:hover {
 }
 #front-layout img {
     object-fit: contain;
-   /* filter: grayscale(100%) brightness(1) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6);*/
+   /* filter: grayscale(100%) brightness(1) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6); */
 }
 #front-layout p {
     font-family: "Solway", Courier, monospace;
@@ -375,31 +379,72 @@ button.preset-option:hover {
     display: flex;
     position: relative;
     flex-direction: column;
-    
+    width: auto;
     max-width: 2.5em;
     max-height: 2.5em;
 }
 
-
+.icon-number {
+    position: absolute; /* Allow the image to break free from the column's bounds */
+    top: 0;
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(0%); /* Adjust for centering */
+    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Allow the width to expand freely */
+}
+/*8
 #tally-layout {
     display: flex;
     justify-content: space-evenly;
     position: relative;
     z-index: 104;
     min-width: 204px;
+} 
+*/
+#tally-layout {
+    position: relative; /* Set as the positioning context for child elements */
+    display: block; /* Prevent flexbox behavior */
+    
+    
+    width: 100%; /* Constrain the layout within the parent */
+    height: 100%; /* Ensure it spans the full height */
+}
+
+.icon-column {
+    position: absolute; /* Allow columns to overlap */
+    top: 0; /* Align columns to the top */
+    height: 100%; /* Ensure columns span the full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Space icons vertically */
+    align-items: center; /* Center icons horizontally */
+}
+
+#iconColumnLeft {
+    left: 0%; /* Position the left column */
+}
+
+#iconColumnMiddle {
+    left: 50%; /* Position the middle column */
+    transform: translateX(-50%); /* Center the middle column */
+}
+
+#iconColumnRight {
+    right: 0%; /* Position the right column */
 }
 
 #tally-layout img {
     position: relative;
     max-height: 6em;
     align-self: center;
-    
+    justify-content: center; /* Center horizontally */
 
 }
 
 
+
 #tally-layout img.icon-number {
-    /* Make column icons exceed colums if larger */
+    /* Make column icons exceed columns if larger */
     object-fit: cover;
     overflow: visible;
     /* */
@@ -445,6 +490,7 @@ button.preset-option:hover {
 #Icon-5.icon.tally-icon.icon-number {
     display: none;
     visibility: hidden;
+    
 }
 #Icon-5b.icon.tally-icon.icon-number {
     display: none;

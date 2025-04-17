@@ -37,6 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const clubUpload = document.getElementById("club-icon");
     const spadeUpload = document.getElementById("spade-icon");
     const allIcons = document.querySelectorAll('.icon');
+
+
+    const iconSizeControl = document.getElementById('SuitIconSizer');
+    const iconSizerDisplay = document.getElementById('icon-sizer-display');
 // SUIT CHANGING BUTTONS -----------------------------------------------------------------------v
     const diamondBtn = document.getElementById("diamondBtn");
     const heartBtn = document.getElementById("heartBtn");
@@ -164,6 +168,7 @@ function switchToFront() {
         cardImageBack.style.visibility = 'hidden';
 
         cardIsOnBack = false;
+        AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
     }
     // Flip card and switch button on click
     cardFrontBtn.addEventListener('click', function() {
@@ -637,7 +642,7 @@ function switchToFront() {
     const kingButton = classBtns[12];
     const jokerButton = classBtns[13];
 
-    tenButton.addEventListener('click', function() {
+    tenButton.addEventListener('mouseenter', function() {
         IconLayout10();
         switchToFront();
         
@@ -669,7 +674,7 @@ function switchToFront() {
 
     }
     
-    nineButton.addEventListener('click', function() {
+    nineButton.addEventListener('mouseenter', function() {
         IconLayout9();
         switchToFront();
         
@@ -703,7 +708,7 @@ function switchToFront() {
         AceIcon.style.display = 'none';
     }
 
-    eightButton.addEventListener('click', function() {
+    eightButton.addEventListener('mouseenter', function() {
         IconLayout8();
         switchToFront();
         
@@ -736,7 +741,7 @@ function switchToFront() {
         AceIcon.style.display = 'none';
     }
 
-    sevenButton.addEventListener('click', function() {
+    sevenButton.addEventListener('mouseenter', function() {
         IconLayout7();
         switchToFront();
         
@@ -774,7 +779,7 @@ function switchToFront() {
         AceIcon.style.display = 'none';
     }
 
-    sixButton.addEventListener('click', function() {
+    sixButton.addEventListener('mouseenter', function() {
         IconLayout6();
         switchToFront();
         
@@ -812,7 +817,7 @@ function switchToFront() {
         AceIcon.style.display = 'none';
     }
 
-    fiveButton.addEventListener('click', function() {
+    fiveButton.addEventListener('mouseenter', function() {
         IconLayout5();
         switchToFront();
         
@@ -851,7 +856,7 @@ function switchToFront() {
         AceIcon.style.display = 'none';
     }
 
-    fourButton.addEventListener('click', function() {
+    fourButton.addEventListener('mouseenter', function() {
         IconLayout4();
         switchToFront();
         
@@ -889,7 +894,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
     }
-    threeButton.addEventListener('click', function() {
+    threeButton.addEventListener('mouseenter', function() {
         IconLayout3();
         switchToFront();
         
@@ -930,7 +935,7 @@ function switchToFront() {
             
 
     }
-    twoButton.addEventListener('click', function() {
+    twoButton.addEventListener('mouseenter', function() {
         IconLayout2();
         switchToFront();
         
@@ -972,7 +977,7 @@ function switchToFront() {
         AceIcon.style.display = 'none';
     }
 
-    aceButton.addEventListener('click', function() {
+    aceButton.addEventListener('mouseenter', function() {
         IconLayout1();
         switchToFront();
         
@@ -1007,12 +1012,14 @@ function switchToFront() {
             p.innerHTML = "A";  
         });
         AceIcon.style.display = 'block';
+        AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
     }
 
 // Control size of card front icons for suits and card identity -----------------------------------------------------------------------
     
-    const iconSizeControl = document.getElementById('SuitIconSizer');
-    const iconSizerDisplay = document.getElementById('icon-sizer-display');
+    
+
+    
 
     let adjustCenterHeightValue = (iconSizeControl.value - 64)*-2;
     function ApplyCenterHeightValue() {
@@ -1022,6 +1029,8 @@ function switchToFront() {
             tallyIconStyle5b.marginTop = 0;
         }
     }
+
+    
 
     iconSizeControl.addEventListener('input', function() { 
         
@@ -1038,15 +1047,25 @@ function switchToFront() {
       
             image.style.height = iconNormalHeight;
             image.style.maxHeight = iconNormalHeight;
+            image.style.width = "auto";
 
             // Need to Make the image height of the 5b icon element invert the slider value ONLY when 7 or 8 card is selected to
             // make layout in cenetr correct - moving on to more important features
 
         
         });
+            // Dynamically adjust column positions based on icon size
+        const iconColumnLeft = document.getElementById("iconColumnLeft");
+        const iconColumnMiddle = document.getElementById("iconColumnMiddle");
+        const iconColumnRight = document.getElementById("iconColumnRight");
+
+        const overlapOffset = parseInt(iconNormalHeight) / 2; // Adjust overlap based on icon size
+        iconColumnLeft.style.left = `${32 - overlapOffset}px`;
+        iconColumnRight.style.right = `${32 - overlapOffset}px`;
 
         AceIcon.style.height = iconNormalHeight;
         AceIcon.style.maxHeight = iconNormalHeight;
+        AceIcon.style.top = `${202 - overlapOffset}px`;
 
         if (selectedCardClass === 7 || selectedCardClass === 8) {
             tallyIconStyle5b.marginTop = adjustCenterHeightValue + "px";

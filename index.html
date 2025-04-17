@@ -17,7 +17,7 @@
 
     <!-- Header Section -->
     <header>
-        <h1>DECK<strong>DESIGN</strong></h1>
+        <h1>Deck<strong>Designer</strong></h1>
         <p>Logan Loves his girlfriend Fenella so so much because she's amazing</p>
         
     </header>
@@ -47,7 +47,9 @@
                         <!-- Apply also changes objectFill to cover ATM -->
                     </div>
                     <label for="border-control">Border Thickness</label>
-                    <input type="range" min="0" max="30" value="8" id="border-control">
+                    <input type="range" min="0" max="44" value="8" id="border-control">
+                    <label for="color-select">Choose Background Colour:</label><input id="color-select" type="color">
+                    
                 </div>        
             </section>
 
@@ -117,8 +119,12 @@
                         <button class="preset-option">Preset 2</button>
                         <button class="preset-option">Preset 3</button>
                     </div>
-                    <label for="picture-upload">Upload Card Back Image:</label>
+                    <label for="picture-upload">Upload King Image:</label>
                     <input type="file" id="picture-upload" accept="image/*">
+                    <div id="mirror-btns">
+                        <button id="MirrorBtn" type="button">Mirror Picture Cards</button>
+                        <button id="BorderPicBtn" type="button">Add Inner Border</button>
+                    </div>
                 </div>        
             </section>
         </div>
