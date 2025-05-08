@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: "Russo One", Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", Arial, sans-serif;
     background-color: #030303; /* Light Gray Background */
     color: #fff; /* Dark Gray Text */
     line-height: 1.6;
@@ -24,13 +24,14 @@ header {
 
 header h1 {
     
-    font-size: 3em;
-    font-weight: 300;
-    color: #ff1e1e; /* Red Title */
+    font-size: 4.5em;
+    font-weight: 400;
+    color: #070707; /* Red Title */
+    letter-spacing: 10px;
 }
 header strong {
-    font-family: "Gloria Hallelujah", cursive, Arial, Helvetica, sans-serif;
-    color: #030303;
+    font-family: "Bebas Neue", cursive, Arial, Helvetica, sans-serif;
+    color: #ff1e1e;
     font-weight: 200;
 }
 header p {
@@ -87,10 +88,12 @@ section label,h3 {
 }
 
 button {
-    font-family: "Gloria Hallelujah", cursive, Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
     
 }
-
+input {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
 
 .editButton {
 
@@ -119,12 +122,19 @@ section label, h3 {
     display: none; /* Reset in script */
 }
 
+
+h1 {
+    font-family: "Bebas Neue", "Russo One", Arial, Helvetica, sans-serif;
+    
+}
 h2 {
     color: #fff;
-    font-size: 1.8em;
+    font-size: 2em;
+    font-family: "Montserrat", "Russo One", Arial, Helvetica, sans-serif;
    /* border-bottom: 2px solid #ff1e1e;*/ /* Red Section Titles */
     padding-bottom: 10px;
     margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .tab-title {
@@ -135,7 +145,7 @@ h2 {
 }
 
 .tab-title button {
-    font-family: "Gloria Hallelujah", cursive, Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif, monospace;
     max-width: fit-content;
     color: #f0f0f0;
     background-color: rgba(0, 0, 0, 0);
@@ -227,7 +237,7 @@ button.preset-option:hover {
     position: relative;
     width: 300px;
     height: 420px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     /* background-image: url(images/vecteezy_free-playing-card-back-vector_101503.svg);
     background-repeat: no-repeat; */
     border-radius: 10px;

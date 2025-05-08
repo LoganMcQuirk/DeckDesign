@@ -323,6 +323,16 @@ function switchToFront() {
         cardBorderDiv.style.borderRadius = cardImageBorderRadius + 'px';
 
     });
+// Control border colour select ----------------------------------------------------------------------------------------------------
+    const borderColourer = document.getElementById("color-select");
+    const transparencyBG = document.getElementById("transparency-bg")
+    borderColourer.addEventListener('input', function() { 
+       let borderColourValue = borderColourer.value;
+
+       cardImageBack.style.borderColor = borderColourValue;
+       transparencyBG.style.backgroundColor = borderColourValue;
+
+    });
 
 // Control displayed suit class --------------------------------------------------------------------------------------------------------
     let iconNormalHeight = "64px";
