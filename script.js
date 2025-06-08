@@ -107,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const pictureCardLayout = document.getElementById("pictureCardLayout");
     pictureCardLayout.style.display = 'none';
+
+    const cardNumberOption = document.getElementById("card-number-option");
     
 
 //Back designer TOGGLE VIEW
@@ -675,6 +677,13 @@ function switchToFront() {
     const kingButton = classBtns[12];
     const jokerButton = classBtns[13];
 
+    // classBtns.addEventListener('click', function() { 
+    //     // Reset all buttons to default state
+    //     classBtns.forEach(button => {
+    //         button.classList.add('selected');
+    //     });
+    // });
+
     tenButton.addEventListener('mouseenter', function() {
         IconLayout10();
         switchToFront();
@@ -741,6 +750,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        
     }
 
     eightButton.addEventListener('mouseenter', function() {
