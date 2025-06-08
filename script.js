@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const spadeBtn = document.getElementById("spadeBtn");
     
     let currentSuit = "diamond";
+
+    const borderColourer = document.getElementById("color-select");
+    const transparencyBG = document.getElementById("transparency-bg");
+    let borderColourValue = "white";
     
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
@@ -224,6 +228,8 @@ function switchToFront() {
 
     preset1Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPresetOne.png";
+        borderColourValue = "rgb(255, 255, 255)";
+        RecolourBorder();
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
@@ -232,12 +238,16 @@ function switchToFront() {
     });
     preset2Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPreset2.png";
+        borderColourValue =  "rgb(30, 12, 76)";
+        RecolourBorder();
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
     });
     preset3Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPreset3.png";
+        borderColourValue = "rgb(8, 6, 5)";
+        RecolourBorder();
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
@@ -321,18 +331,25 @@ function switchToFront() {
         cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
         cardBorderDiv.style.borderWidth = borderSliderValue + 'px';
         cardBorderDiv.style.borderRadius = cardImageBorderRadius + 'px';
+        if (!cardIsOnBack) {
+            switchToBack();
+        }
 
     });
 // Control border colour select ----------------------------------------------------------------------------------------------------
-    const borderColourer = document.getElementById("color-select");
-    const transparencyBG = document.getElementById("transparency-bg")
+    
     borderColourer.addEventListener('input', function() { 
-       let borderColourValue = borderColourer.value;
-
-       cardImageBack.style.borderColor = borderColourValue;
-       transparencyBG.style.backgroundColor = borderColourValue;
-
+       borderColourValue = borderColourer.value;
+        RecolourBorder();
+        if (!cardIsOnBack) {
+            switchToBack();
+        }
     });
+
+    function RecolourBorder() {
+        cardImageBack.style.borderColor = borderColourValue;
+        transparencyBG.style.backgroundColor = borderColourValue;
+    }
 
 // Control displayed suit class --------------------------------------------------------------------------------------------------------
     let iconNormalHeight = "64px";
@@ -1110,14 +1127,23 @@ function switchToFront() {
     });
 
 
+
+
+    // cardSideBtn.addEventListener('click', function() {
+
+    //     this.addClass.selected
+
+    // });
+
     // Features to add next:
     // Saving card images as files
     // Host on Netlify?
     // SQL save local changes to server
     // 
-
+    // const cardIDBtn = document.querySelector(".card-number-option button");
+    // cardIDBtn.style.backgroundColor = "azure";
     
-
+    // cardIdentP.style.display = "none";
 });
 
 
