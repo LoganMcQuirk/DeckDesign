@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentSuit = "diamond";
     
+    
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
         switchToFront();
@@ -93,10 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const borderControl = document.getElementById('border-control');
     const cardBorderDiv = document.getElementById("card-border");
 
+    const tallyLayout = document.getElementById("tally-layout");
     const tallyImage = document.querySelector("#tally-layout img");
     const tallyImageStyle = tallyImage.style;
     const AceIcon = document.getElementById("center-icon");
-
+    
+    const pictureCardLayout = document.getElementById("pictureCardLayout");
+    pictureCardLayout.style.display = 'none';
     
 
 //Back designer TOGGLE VIEW
@@ -168,7 +172,8 @@ function switchToFront() {
         cardImageBack.style.visibility = 'hidden';
 
         cardIsOnBack = false;
-        AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
+       // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
+       tallyLayout.style.display = 'flex';
     }
     // Flip card and switch button on click
     cardFrontBtn.addEventListener('click', function() {
@@ -681,6 +686,7 @@ function switchToFront() {
             p.innerHTML = "10";  
         });
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
 
     }
     
@@ -716,6 +722,7 @@ function switchToFront() {
             p.innerHTML = "9";  
         });
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
 
     eightButton.addEventListener('mouseenter', function() {
@@ -749,6 +756,7 @@ function switchToFront() {
             p.innerHTML = "8";  
         });
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
 
     sevenButton.addEventListener('mouseenter', function() {
@@ -787,6 +795,7 @@ function switchToFront() {
             p.innerHTML = "7";  
         });
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
 
     sixButton.addEventListener('mouseenter', function() {
@@ -825,6 +834,7 @@ function switchToFront() {
             p.innerHTML = "6";  
         });
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
 
     fiveButton.addEventListener('mouseenter', function() {
@@ -864,6 +874,7 @@ function switchToFront() {
         });
 
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
 
     fourButton.addEventListener('mouseenter', function() {
@@ -903,6 +914,7 @@ function switchToFront() {
             p.innerHTML = "4";  
         });
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
     threeButton.addEventListener('mouseenter', function() {
         IconLayout3();
@@ -942,7 +954,7 @@ function switchToFront() {
             p.innerHTML = "3";  
         });
         AceIcon.style.display = 'none';
-            
+        pictureCardLayout.style.display = 'none';
 
     }
     twoButton.addEventListener('mouseenter', function() {
@@ -985,6 +997,7 @@ function switchToFront() {
         });
         
         AceIcon.style.display = 'none';
+        pictureCardLayout.style.display = 'none';
     }
 
     aceButton.addEventListener('mouseenter', function() {
@@ -1022,7 +1035,64 @@ function switchToFront() {
             p.innerHTML = "A";  
         });
         AceIcon.style.display = 'block';
-        AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
+        AceIcon.style.top = '0px';
+       // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
+        tallyLayout.style.display = 'flex';
+        pictureCardLayout.style.display = 'none';
+    }
+
+    
+    jackButton.addEventListener('mouseenter', function() {
+        IconLayoutPicture("J");
+        switchToFront();    
+    });
+    queenButton.addEventListener('mouseenter', function() {
+        IconLayoutPicture("Q");
+        switchToFront();    
+    });
+    kingButton.addEventListener('mouseenter', function() {
+        IconLayoutPicture("K");
+        switchToFront();    
+    });
+
+    function IconLayoutPicture(pictureCardIdentity) { 
+
+        cardIdentP.innerHTML = selectedCardClass;
+        ApplyCenterHeightValue();
+
+        for (let i = 1; i <= 10; i++) { //Set icon display style
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.display = "none";
+        }
+        
+        tallyIconStyle5b.display = "none";
+        
+        for (let i = 1; i <= 10; i++) { // Set icon visibility
+            const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
+            tallyIcon.style.visibility = "hidden";
+            }
+            
+            tallyIcon5b.style.visibility = "hidden";
+            
+        cornerClass.forEach(p => { // Set the innerHTML to 10
+            
+         if (pictureCardIdentity === "J") {
+            selectedCardClass = "J";
+            p.innerHTML = "J";   
+            }
+         else if (pictureCardIdentity === "Q") {
+                selectedCardClass = "Q";
+                p.innerHTML = "Q";   
+                }
+         else if (pictureCardIdentity === "K") {
+                selectedCardClass = "K";
+                p.innerHTML = "K";   
+                }
+        });
+        AceIcon.style.display = 'none';
+        // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
+        pictureCardLayout.style.display = 'flex';
+       
     }
 
 // Control size of card front icons for suits and card identity -----------------------------------------------------------------------
@@ -1075,7 +1145,7 @@ function switchToFront() {
 
         AceIcon.style.height = iconNormalHeight;
         AceIcon.style.maxHeight = iconNormalHeight;
-        AceIcon.style.top = `${202 - overlapOffset}px`;
+       // AceIcon.style.top = `${202 - overlapOffset}px`;
 
         if (selectedCardClass === 7 || selectedCardClass === 8) {
             tallyIconStyle5b.marginTop = adjustCenterHeightValue + "px";

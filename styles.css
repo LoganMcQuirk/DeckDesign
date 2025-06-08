@@ -346,7 +346,9 @@ button.preset-option:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 8px;
+    padding: 6px;
+    padding-left: 2px;
+    padding-right: 2px;
     z-index: 100;
     background-color: #fff;
     color: #BC2024;
@@ -358,7 +360,7 @@ button.preset-option:hover {
    /* filter: grayscale(100%) brightness(1) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6); */
 }
 #front-layout p {
-    font-family: "Solway", Courier, monospace;
+    font-family: "Solway", Courier, 'Franklin Gothic Medium', 'Arial Narrow', serif;
     font-weight: 400;
     font-size: 2.5em;
     line-height: 1.1;
@@ -371,6 +373,7 @@ button.preset-option:hover {
 .id-front-layout {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 #bottom-right-id {
     
@@ -397,6 +400,12 @@ button.preset-option:hover {
     max-width: 2.5em;
     max-height: 2.5em;
 }
+.classContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+}
 
 .icon-number {
     position: absolute; /* Allow the image to break free from the column's bounds */
@@ -418,8 +427,8 @@ button.preset-option:hover {
 #tally-layout {
     position: relative; /* Set as the positioning context for child elements */
     display: block; /* Prevent flexbox behavior */
-    
-    
+    justify-content: center;
+    flex-direction: column;
     width: 100%; /* Constrain the layout within the parent */
     height: 100%; /* Ensure it spans the full height */
 }
@@ -481,7 +490,23 @@ button.preset-option:hover {
     flex-direction: column;
 }
 
-
+#pictureCardLayout {
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    width: 102%;
+    height: 100%;
+    margin-left: -1%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 0;
+}
+#pictureContainer {
+    height: 86%;
+    background-color: white;
+    border: 2px solid black;
+}
 
 #Icon-1.icon.tally-icon.icon-number {
     display: none;
