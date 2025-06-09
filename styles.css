@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Montserrat","Montserrat Alternates", Arial, sans-serif;
     background-color: #030303; /* Light Gray Background */
     color: #fff; /* Dark Gray Text */
     line-height: 1.6;
@@ -88,11 +88,11 @@ section label,h3 {
 }
 
 button {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: "Montserrat","Montserrat Alternates", Arial, Helvetica, sans-serif;
     
 }
 input {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: "Montserrat","Montserrat Alternates", Arial, Helvetica, sans-serif;
 }
 
 .editButton {
@@ -130,7 +130,7 @@ h1 {
 h2 {
     color: #fff;
     font-size: 2em;
-    font-family: "Montserrat", "Russo One", Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", "Montserrat Alternates","Russo One", Arial, Helvetica, sans-serif;
    /* border-bottom: 2px solid #ff1e1e;*/ /* Red Section Titles */
     padding-bottom: 10px;
     margin-bottom: 20px;
@@ -145,7 +145,7 @@ h2 {
 }
 
 .tab-title button {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif, monospace;
+    font-family: "Montserrat","Montserrat Alternates", Arial, Helvetica, sans-serif, monospace;
     max-width: fit-content;
     color: #f0f0f0;
     background-color: rgba(0, 0, 0, 0);
