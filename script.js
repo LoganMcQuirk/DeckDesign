@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //-------------------------------------------------------------------------------------------^
     const cardImageBack = document.getElementById("card-image-back");
     const cardImageFront = document.getElementById("front-layout");
+    cardImageFront.classList.add('red-suit-color');
+    
 
     const cardIMGStyle = cardImageBack;
     function CoverModeON() {
@@ -108,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pictureCardLayout = document.getElementById("pictureCardLayout");
     pictureCardLayout.style.display = 'none';
 
-    const cardNumberOption = document.getElementById("card-number-option");
+    
     
 
 //Back designer TOGGLE VIEW
@@ -519,14 +521,15 @@ function switchToFront() {
             });
             AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
-            cardImageFront.style.color = '#BC2024';
+            //cardImageFront.style.color = '#BC2024';
+            applySuitColor();
         } else if (changeSuitUnconditally == true) {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
             AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "diamond";
-            cardImageFront.style.color = '#BC2024';
+            //cardImageFront.style.color = '#BC2024';
 
             changeSuitUnconditally = false;
         }
@@ -544,14 +547,15 @@ function switchToFront() {
             });
             AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "heart";
-            cardImageFront.style.color = '#BC2024';
+            //cardImageFront.style.color = '#BC2024';
+            applySuitColor();
         } else if (changeSuitUnconditally == true) {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
             AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "heart";
-            cardImageFront.style.color = '#BC2024';
+            //cardImageFront.style.color = '#BC2024';
             
             changeSuitUnconditally = false;
         }
@@ -569,14 +573,15 @@ function switchToFront() {
             });
             AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "club";
-            cardImageFront.style.color = '#000';
+            //cardImageFront.style.color = '#000';
+            applySuitColor();
         } else if (changeSuitUnconditally == true) {
             allIcons.forEach(icon => {
                 icon.src = currentIcon;
             });
             AceIcon.style.maxHeight = iconNormalHeight;
             currentSuit = "club";
-            cardImageFront.style.color = '#000';
+            //cardImageFront.style.color = '#000';
 
             changeSuitUnconditally = false;
         }
@@ -593,7 +598,9 @@ function switchToFront() {
                 icon.src = currentIcon;
             });
             AceIcon.style.maxHeight = iconNormalHeight;
-            cardImageFront.style.color = '#000';
+            //cardImageFront.style.color = '#000';
+            applySuitColor();
+            
             currentSuit = "spade";
             
             
@@ -602,7 +609,7 @@ function switchToFront() {
                 icon.src = currentIcon;
             });
             AceIcon.style.maxHeight = '9em';
-            cardImageFront.style.color = '#000';
+            //cardImageFront.style.color = '#000';
             currentSuit = "spade";
 
             changeSuitUnconditally = false;
@@ -621,8 +628,11 @@ function switchToFront() {
     }
 
     const cornerClass = document.querySelectorAll("p.corner-class");
+
+    
     
 // Choose Card Identity AKA card number/letter ------------------------------------------------------------------------------------
+    const cornerImage = document.querySelectorAll("img.corner-suit");
 
     const iconMiddleColumn = document.querySelector("#tally-layout div#iconColumnMiddle");
     const iconLeftColumn = document.querySelector("#tally-layout div#iconColumnLeft");   
@@ -676,27 +686,76 @@ function switchToFront() {
     const queenButton = classBtns[11];
     const kingButton = classBtns[12];
     const jokerButton = classBtns[13];
+    
 
-    aceButton.addEventListener('click', function() { 
-        
-        // Reset all buttons to default state
-        classBtns.forEach(button => {
-            button.classList.remove('selected');
+    classBtns.forEach(button => {
+        button.addEventListener('click', function() {
+            // Reset all buttons to default state
+            classBtns.forEach(btn => btn.classList.remove('selected'));
+            // Add 'selected' class to the clicked button
+            button.classList.add('selected');
         });
-        aceButton.classList.add('selected');
     });
-    twoButton.addEventListener('click', function() { 
-        
-        // Reset all buttons to default state
-        classBtns.forEach(button => {
-            button.classList.remove('selected');
+
+    classBtns.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            switchToFront();
+            checkForJoker();
+            
         });
-        twoButton.classList.add('selected');
+        button.addEventListener('mouseleave', function() {
+            showSelectedIconLayout();
+            checkForJoker();
+            
+        });
     });
+
+    function showSelectedIconLayout() {
+        if (classBtns[0].classList.contains('selected')) {
+            IconLayout1();
+        } else if (classBtns[1].classList.contains('selected')) {
+            IconLayout2();
+        } else if (classBtns[2].classList.contains('selected')) {
+            IconLayout3();
+        } else if (classBtns[3].classList.contains('selected')) {
+            IconLayout4();
+        } else if (classBtns[4].classList.contains('selected')) {
+            IconLayout5();
+        } else if (classBtns[5].classList.contains('selected')) {
+            IconLayout6();
+        } else if (classBtns[6].classList.contains('selected')) {
+            IconLayout7();
+        } else if (classBtns[7].classList.contains('selected')) {
+            IconLayout8();
+        } else if (classBtns[8].classList.contains('selected')) {
+            IconLayout9();
+        } else if (classBtns[9].classList.contains('selected')) {
+            IconLayout10();
+        } else if (classBtns[10].classList.contains('selected')) {
+            IconLayoutPicture("J");
+        } else if (classBtns[11].classList.contains('selected')) {
+            IconLayoutPicture("Q");
+        } else if (classBtns[12].classList.contains('selected')) {
+            IconLayoutPicture("K");
+        } else if (classBtns[13].classList.contains('selected')) {
+            IconLayoutPicture("?");
+        }
+        
+    }
+    function checkForJoker() {
+        if (selectedCardClass === "?") {
+            applySuitColor();
+            cornerImage.style.display = "none";
+        } else {
+            applySuitColor();
+            cornerImage.style.display = "flex";
+        }
+    }
 
     tenButton.addEventListener('mouseenter', function() {
         IconLayout10();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout10() { 
@@ -730,6 +789,7 @@ function switchToFront() {
     nineButton.addEventListener('mouseenter', function() {
         IconLayout9();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout9() { 
@@ -766,6 +826,7 @@ function switchToFront() {
     eightButton.addEventListener('mouseenter', function() {
         IconLayout8();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout8() { 
@@ -800,6 +861,7 @@ function switchToFront() {
     sevenButton.addEventListener('mouseenter', function() {
         IconLayout7();
         switchToFront();
+        applySuitColor();
         
         
     });
@@ -839,6 +901,7 @@ function switchToFront() {
     sixButton.addEventListener('mouseenter', function() {
         IconLayout6();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout6() { 
@@ -878,6 +941,7 @@ function switchToFront() {
     fiveButton.addEventListener('mouseenter', function() {
         IconLayout5();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout5() { 
@@ -918,6 +982,7 @@ function switchToFront() {
     fourButton.addEventListener('mouseenter', function() {
         IconLayout4();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout4() { 
@@ -957,6 +1022,7 @@ function switchToFront() {
     threeButton.addEventListener('mouseenter', function() {
         IconLayout3();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout3() { 
@@ -998,6 +1064,7 @@ function switchToFront() {
     twoButton.addEventListener('mouseenter', function() {
         IconLayout2();
         switchToFront();
+        applySuitColor();
         
     });
 
@@ -1041,6 +1108,7 @@ function switchToFront() {
     aceButton.addEventListener('mouseenter', function() {
         IconLayout1();
         switchToFront();
+        applySuitColor();
         
     });
     function IconLayout1() { 
@@ -1077,20 +1145,33 @@ function switchToFront() {
        // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
         tallyLayout.style.display = 'flex';
         pictureCardLayout.style.display = 'none';
+        
     }
 
     
     jackButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("J");
         switchToFront();    
+        applySuitColor();
     });
     queenButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("Q");
-        switchToFront();    
+        switchToFront();  
+        applySuitColor();  
     });
     kingButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("K");
         switchToFront();    
+        applySuitColor();
+    });
+    jokerButton.addEventListener('mouseenter', function() {
+        IconLayoutPicture("?");
+        switchToFront();    
+        applySuitColor();
+        cardImageFront.classList.add('joker-text');
+    });
+    jokerButton.addEventListener('mouseleave', function() {
+        applySuitColor();
     });
 
     function IconLayoutPicture(pictureCardIdentity) { 
@@ -1111,27 +1192,65 @@ function switchToFront() {
             }
             
             tallyIcon5b.style.visibility = "hidden";
+
+         if (pictureCardIdentity === "?") {
+                selectedCardClass = "?";
+
+            }
             
-        cornerClass.forEach(p => { // Set the innerHTML to 10
+        cornerClass.forEach(p => {
             
          if (pictureCardIdentity === "J") {
-            selectedCardClass = "J";
-            p.innerHTML = "J";   
-            }
+                selectedCardClass = "J";
+                p.innerHTML = "J";   
+                }
          else if (pictureCardIdentity === "Q") {
                 selectedCardClass = "Q";
-                p.innerHTML = "Q";   
+                p.innerHTML = "Q"; 
                 }
          else if (pictureCardIdentity === "K") {
                 selectedCardClass = "K";
-                p.innerHTML = "K";   
+                p.innerHTML = "K";
                 }
+         else if (pictureCardIdentity === "?") {
+                selectedCardClass = "?";
+                p.innerHTML = "J<br>O<br>K<br>E<br>R";
+                }
+
+          
+        });
+
+        cornerImage.forEach(image => {
+            if (["J", "Q", "K"].includes(pictureCardIdentity)) {
+                image.style.display = "flex";
+            } else if (pictureCardIdentity === "?") {
+                image.style.display = "none";
+            }
         });
         AceIcon.style.display = 'none';
         // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
         pictureCardLayout.style.display = 'flex';
        
     }
+
+
+// Change Color of text                      -----------------------------------------------------------------------------------
+
+function applySuitColor() { 
+    if (currentSuit === "diamond" || currentSuit === "heart") {
+        cardImageFront.classList.add('red-suit-color');
+        cardImageFront.classList.remove('black-suit-color');
+        
+    } else if (currentSuit === "club" || currentSuit === "spade") {
+        cardImageFront.classList.add('black-suit-color');
+        cardImageFront.classList.remove('red-suit-color');
+    } 
+    if (selectedCardClass === "?") {
+        cardImageFront.classList.add('joker-text');
+    } else {
+        cardImageFront.classList.remove('joker-text');
+    }
+}
 
 // Control size of card front icons for suits and card identity -----------------------------------------------------------------------
     

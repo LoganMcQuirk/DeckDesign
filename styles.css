@@ -351,7 +351,6 @@ button.preset-option:hover {
     padding-right: 2px;
     z-index: 100;
     background-color: #fff;
-    color: #BC2024;
     visibility: hidden;
     
 }
@@ -415,6 +414,20 @@ button.preset-option:hover {
     height: auto; /* Maintain aspect ratio */
     width: auto; /* Allow the width to expand freely */
 }
+
+
+
+.black-suit-color {
+    color: #000;
+}
+.red-suit-color {
+    color: #BC2024;
+}
+
+.joker-text {
+    color: #000000;
+}
+
 /*8
 #tally-layout {
     display: flex;
