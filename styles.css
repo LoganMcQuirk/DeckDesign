@@ -517,8 +517,11 @@ button.preset-option:hover {
 }
 #pictureContainer {
     height: 86%;
-    background-color: white;
+    /*background-color: white;*/
     border: 2px solid black;
+}
+#pictureContainer.borderless {
+    border: none;
 }
 
 #Icon-1.icon.tally-icon.icon-number {

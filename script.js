@@ -108,7 +108,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const AceIcon = document.getElementById("center-icon");
     
     const pictureCardLayout = document.getElementById("pictureCardLayout");
+    const pictureContainer = document.getElementById("pictureContainer");
     pictureCardLayout.style.display = 'none';
+
+    const kingUpload = document.getElementById('king-upload');
+    const queenUpload = document.getElementById('queen-upload');
+    const jackUpload = document.getElementById('jack-upload');
+    const jokerUpload = document.getElementById('joker-upload');
+
+    const kingImage = document.querySelector("#picture-image.king");
+    const queenImage = document.querySelector("#picture-image.queen");
+    const jackImage = document.querySelector("#picture-image.jack");
+    const jokerImage = document.querySelector("#picture-image.joker");
 
     
     
@@ -632,7 +643,7 @@ function switchToFront() {
     
     
 // Choose Card Identity AKA card number/letter ------------------------------------------------------------------------------------
-    const cornerImage = document.querySelectorAll("img.corner-suit");
+    const cornerImage = document.querySelectorAll("#card img.corner-suit");
 
     const iconMiddleColumn = document.querySelector("#tally-layout div#iconColumnMiddle");
     const iconLeftColumn = document.querySelector("#tally-layout div#iconColumnLeft");   
@@ -700,13 +711,11 @@ function switchToFront() {
     classBtns.forEach(button => {
         button.addEventListener('mouseenter', function() {
             switchToFront();
-            checkForJoker();
-            
+            applySuitColor();
         });
         button.addEventListener('mouseleave', function() {
             showSelectedIconLayout();
-            checkForJoker();
-            
+            applySuitColor();
         });
     });
 
@@ -742,15 +751,7 @@ function switchToFront() {
         }
         
     }
-    function checkForJoker() {
-        if (selectedCardClass === "?") {
-            applySuitColor();
-            
-        } else {
-            applySuitColor();
-            
-        }
-    }
+    
 
     tenButton.addEventListener('mouseenter', function() {
         IconLayout10();
@@ -1110,6 +1111,7 @@ function switchToFront() {
         switchToFront();
         applySuitColor();
         
+        
     });
     function IconLayout1() { 
         selectedCardClass = 1;
@@ -1165,10 +1167,12 @@ function switchToFront() {
         applySuitColor();
     });
     jokerButton.addEventListener('mouseenter', function() {
+        
         IconLayoutPicture("?");
         switchToFront();    
         applySuitColor();
         cardImageFront.classList.add('joker-text');
+        
     });
     jokerButton.addEventListener('mouseleave', function() {
         applySuitColor();
@@ -1178,6 +1182,7 @@ function switchToFront() {
 
         cardIdentP.innerHTML = selectedCardClass;
         ApplyCenterHeightValue();
+        
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -1193,10 +1198,7 @@ function switchToFront() {
             
             tallyIcon5b.style.visibility = "hidden";
 
-         if (pictureCardIdentity === "?") {
-                selectedCardClass = "?";
-
-            }
+        
             
         cornerClass.forEach(p => {
             
@@ -1214,22 +1216,32 @@ function switchToFront() {
                 }
          else if (pictureCardIdentity === "?") {
                 selectedCardClass = "?";
+                
                 p.innerHTML = "J<br>O<br>K<br>E<br>R";
                 }
 
           
         });
 
-        cornerImage.forEach(image => {
-            if (["J", "Q", "K"].includes(pictureCardIdentity)) {
-                image.style.display = "flex";
+        
+        
+            if (pictureCardIdentity === "K") {
+                pictureImage.classList.add('king');
             } else if (pictureCardIdentity === "?") {
-                image.style.display = "none";
+                selectedCardClass = "?";
+                cornerImage.style.display = "none";
+                cardImageFront.classList.add('joker-text');
             }
-        });
+            
+        
         AceIcon.style.display = 'none';
         // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
         pictureCardLayout.style.display = 'flex';
+        if (pictureCardIdentity === "?") {
+            pictureContainer.classList.add('borderless');
+        } else {
+            pictureContainer.classList.remove('borderless');
+        }
        
     }
 
@@ -1245,10 +1257,13 @@ function applySuitColor() {
         cardImageFront.classList.add('black-suit-color');
         cardImageFront.classList.remove('red-suit-color');
     } 
+    
     if (selectedCardClass === "?") {
         cardImageFront.classList.add('joker-text');
+        
     } else {
         cardImageFront.classList.remove('joker-text');
+        
     }
 }
 
@@ -1336,6 +1351,38 @@ function applySuitColor() {
         switchToFront();
     });
 
+    
+
+    kingUpload.addEventListener('change', function(event) {
+        // Check if a file has been uploaded
+        UPLOADKING();
+    });
+    function UPLOADKING() {
+        if (kingUpload.files && kingUpload.files[0]) {
+            const file = kingUpload.files[0];
+        
+            // Check if it's an image file
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+            const reader = new FileReader(); // Create a new FileReader object
+            // Function to run when the file is read
+            reader.onload = function(e) {
+                // Set the card back image to the uploaded image
+                kingImage = e.target.result; // e.target.result contains the image data URL
+                console.log("Uploaded image set as King", e.target.result); // Debugging output
+                
+                // Update the king image
+            
+            };
+
+            // Read the uploaded image as a data URL
+            reader.readAsDataURL(file);
+        } else {
+            console.error("No file was selected for upload."); // Debugging output
+        }
+    }
 
     // Features to add next:
     // Saving card images as files
