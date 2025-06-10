@@ -612,7 +612,7 @@ button.preset-option:hover {
 #suit-selection button img {
     height: 20px;
 }
-#suit-selection p {
+.change-suit p {
     transform: rotate(-40deg);
 }
 
