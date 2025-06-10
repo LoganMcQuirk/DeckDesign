@@ -745,10 +745,10 @@ function switchToFront() {
     function checkForJoker() {
         if (selectedCardClass === "?") {
             applySuitColor();
-            cornerImage.style.display = "none";
+            
         } else {
             applySuitColor();
-            cornerImage.style.display = "flex";
+            
         }
     }
 
