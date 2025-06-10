@@ -612,6 +612,10 @@ button.preset-option:hover {
 #suit-selection button img {
     height: 20px;
 }
+#suit-selection p {
+    transform: rotate(-40deg);
+}
+
 #suitBtnImg {
     transform: scale(-1, -1);
 }
@@ -701,7 +705,7 @@ footer p {
     }
 }
 
-@media (max-width: 1296px) {
+@media (max-width: 1276px) {
     
     main {
         justify-content: center;

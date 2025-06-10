@@ -677,12 +677,22 @@ function switchToFront() {
     const kingButton = classBtns[12];
     const jokerButton = classBtns[13];
 
-    // classBtns.addEventListener('click', function() { 
-    //     // Reset all buttons to default state
-    //     classBtns.forEach(button => {
-    //         button.classList.add('selected');
-    //     });
-    // });
+    aceButton.addEventListener('click', function() { 
+        
+        // Reset all buttons to default state
+        classBtns.forEach(button => {
+            button.classList.remove('selected');
+        });
+        aceButton.classList.add('selected');
+    });
+    twoButton.addEventListener('click', function() { 
+        
+        // Reset all buttons to default state
+        classBtns.forEach(button => {
+            button.classList.remove('selected');
+        });
+        twoButton.classList.add('selected');
+    });
 
     tenButton.addEventListener('mouseenter', function() {
         IconLayout10();
