@@ -121,7 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const jackImage = document.querySelector("#picture-image.jack");
     const jokerImage = document.querySelector("#picture-image.joker");
 
-    
+    let redSuitColor = "#BC2024";
+    let blackSuitColor = "#000000";
     
 
 //Back designer TOGGLE VIEW
@@ -547,6 +548,7 @@ function switchToFront() {
         
         if (diamondBtn) diamondBtn.classList.add('selected');
         switchToFront();
+        updateJokerDisplay();
     }
     
     function changeSuitHearts() {
@@ -573,6 +575,7 @@ function switchToFront() {
         
         if (heartBtn) heartBtn.classList.add('selected');
         switchToFront();
+        updateJokerDisplay();
     }
  
     function changeSuitClubs() {
@@ -599,6 +602,7 @@ function switchToFront() {
         tallyImageStyle.maxHeight = iconNormalHeight;
         if (clubBtn) clubBtn.classList.add('selected');
         switchToFront();
+        updateJokerDisplay();
     }
     
     function changeSuitSpades() {
@@ -628,6 +632,7 @@ function switchToFront() {
         
         if (spadeBtn) spadeBtn.classList.add('selected');
         switchToFront();
+        updateJokerDisplay();
     }
     
     function resetSuitSelection() {
@@ -708,14 +713,35 @@ function switchToFront() {
         });
     });
 
+    let hoveredBtnIndex = null;
+
+    classBtns.forEach((button, idx) => {
+        button.addEventListener('mouseenter', function() {
+            hoveredBtnIndex = idx;
+            updateJokerDisplay();
+        });
+        button.addEventListener('mouseleave', function() {
+            hoveredBtnIndex = null;
+            updateJokerDisplay();
+        });
+        button.addEventListener('click', function() {
+            classBtns.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+            updateJokerDisplay();
+        });
+    });
+
     classBtns.forEach(button => {
         button.addEventListener('mouseenter', function() {
             switchToFront();
             applySuitColor();
+            updateJokerDisplay();
         });
         button.addEventListener('mouseleave', function() {
             showSelectedIconLayout();
             applySuitColor();
+            updateJokerDisplay();
+            
         });
     });
 
@@ -749,6 +775,7 @@ function switchToFront() {
         } else if (classBtns[13].classList.contains('selected')) {
             IconLayoutPicture("?");
         }
+        updateJokerDisplay();
         
     }
     
@@ -757,6 +784,7 @@ function switchToFront() {
         IconLayout10();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout10() { 
@@ -791,6 +819,7 @@ function switchToFront() {
         IconLayout9();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout9() { 
@@ -828,6 +857,7 @@ function switchToFront() {
         IconLayout8();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout8() { 
@@ -863,6 +893,7 @@ function switchToFront() {
         IconLayout7();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
         
     });
@@ -903,6 +934,7 @@ function switchToFront() {
         IconLayout6();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout6() { 
@@ -943,6 +975,7 @@ function switchToFront() {
         IconLayout5();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout5() { 
@@ -984,6 +1017,7 @@ function switchToFront() {
         IconLayout4();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout4() { 
@@ -1024,6 +1058,7 @@ function switchToFront() {
         IconLayout3();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
     function IconLayout3() { 
@@ -1066,6 +1101,7 @@ function switchToFront() {
         IconLayout2();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
     });
 
@@ -1110,6 +1146,7 @@ function switchToFront() {
         IconLayout1();
         switchToFront();
         applySuitColor();
+        updateJokerDisplay();
         
         
     });
@@ -1155,22 +1192,26 @@ function switchToFront() {
         IconLayoutPicture("J");
         switchToFront();    
         applySuitColor();
+        updateJokerDisplay();
     });
     queenButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("Q");
         switchToFront();  
         applySuitColor();  
+        updateJokerDisplay();
     });
     kingButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("K");
         switchToFront();    
         applySuitColor();
+        updateJokerDisplay();
     });
     jokerButton.addEventListener('mouseenter', function() {
         
         IconLayoutPicture("?");
         switchToFront();    
         applySuitColor();
+        updateJokerDisplay();
         cardImageFront.classList.add('joker-text');
         
     });
@@ -1232,6 +1273,7 @@ function switchToFront() {
                 cornerImage.style.display = "none";
                 cardImageFront.classList.add('joker-text');
             }
+            updateJokerDisplay();
             
         
         AceIcon.style.display = 'none';
@@ -1243,6 +1285,54 @@ function switchToFront() {
             pictureContainer.classList.remove('borderless');
         }
        
+    }
+
+    
+    function updateJokerDisplay() {
+    const cornerPs = document.querySelectorAll('.corner-class');
+    const cornerIcons = document.querySelectorAll('.icon.corner-suit');
+    const jokerBtnIndex = 13; // update if your joker button index is different
+
+    // If a button is hovered, use its state; otherwise use selected
+    let isJokerActive = false;
+    let color = blackSuitColor; // default black
+
+    if (hoveredBtnIndex !== null) {
+        // If hovering Joker
+        if (hoveredBtnIndex === jokerBtnIndex) {
+            isJokerActive = true;
+            color = blackSuitColor;
+            pictureContainer.classList.add('borderless');
+        } else {
+            // Not Joker: set color based on hovered button's suit
+            isJokerActive = false;
+            // Example: map hoveredBtnIndex to suit
+            if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(hoveredBtnIndex)) {
+                // Use your own mapping logic for suit
+                color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
+                
+            }
+            pictureContainer.classList.remove('borderless');
+        }
+    } else {
+        // No hover: use selected
+        if (classBtns[jokerBtnIndex].classList.contains('selected')) {
+            isJokerActive = true;
+            color = blackSuitColor;
+            pictureContainer.classList.add('borderless');
+        } else {
+            pictureContainer.classList.remove('borderless');
+            color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
+        }
+    }
+
+    // Apply styles
+    cornerPs.forEach(p => {
+        p.style.color = color;
+    });
+    cornerIcons.forEach(icon => {
+        icon.style.display = isJokerActive ? "none" : "";
+    });
     }
 
 
@@ -1260,7 +1350,7 @@ function applySuitColor() {
     
     if (selectedCardClass === "?") {
         cardImageFront.classList.add('joker-text');
-        
+        cardImageFront.classList.remove('red-suit-color');
     } else {
         cardImageFront.classList.remove('joker-text');
         
