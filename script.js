@@ -116,11 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const jackUpload = document.getElementById('jack-upload');
     const jokerUpload = document.getElementById('joker-upload');
 
-    const kingImage = document.querySelector("#picture-image.king");
-    const queenImage = document.querySelector("#picture-image.queen");
-    const jackImage = document.querySelector("#picture-image.jack");
-    const jokerImage = document.querySelector("#picture-image.joker");
-
+    const picCardImage = document.getElementById("pictureImage");
+    let kingImage = "images/CardPreset3.svg";
+    
     let redSuitColor = "#BC2024";
     let blackSuitColor = "#000000";
     
@@ -1307,7 +1305,7 @@ function switchToFront() {
             // Not Joker: set color based on hovered button's suit
             isJokerActive = false;
             // Example: map hoveredBtnIndex to suit
-            if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(hoveredBtnIndex)) {
+            if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(hoveredBtnIndex)) {
                 // Use your own mapping logic for suit
                 color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
                 
@@ -1391,9 +1389,7 @@ function applySuitColor() {
             image.style.maxHeight = iconNormalHeight;
             image.style.width = "auto";
 
-            // Need to Make the image height of the 5b icon element invert the slider value ONLY when 7 or 8 card is selected to
-            // make layout in cenetr correct - moving on to more important features
-
+            
         
         });
             // Dynamically adjust column positions based on icon size
@@ -1446,6 +1442,7 @@ function applySuitColor() {
     kingUpload.addEventListener('change', function(event) {
         // Check if a file has been uploaded
         UPLOADKING();
+        
     });
     function UPLOADKING() {
         if (kingUpload.files && kingUpload.files[0]) {
@@ -1464,7 +1461,7 @@ function applySuitColor() {
                 console.log("Uploaded image set as King", e.target.result); // Debugging output
                 
                 // Update the king image
-            
+                picCardImage.src = kingImage; 
             };
 
             // Read the uploaded image as a data URL
@@ -1480,7 +1477,10 @@ function applySuitColor() {
     // SQL save local changes to server
     // 
 
-    
+    // TO DO = = = = = = = = = = = = = = = = = = = v v v
+
+    // Add variable image for each picture card type so images are separate for each
+    // Suit dependant variations also for picture cards
 
 });
 
