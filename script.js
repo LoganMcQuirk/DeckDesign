@@ -118,6 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const picCardImage = document.getElementById("pictureImage");
     let kingImage = "images/CardPreset3.svg";
+    let queenImage = "images/CardPreset3.svg";
+    let jackImage = "images/CardPreset3.svg"; 
+    let jokerImage = "images/CardPreset3.svg";
     
     let redSuitColor = "#BC2024";
     let blackSuitColor = "#000000";
@@ -1283,6 +1286,8 @@ function switchToFront() {
             pictureContainer.classList.remove('borderless');
         }
        
+
+        updatePicCardImage();
     }
 
     
@@ -1470,7 +1475,86 @@ function applySuitColor() {
             console.error("No file was selected for upload."); // Debugging output
         }
     }
+    queenUpload.addEventListener('change', function(event) {
+    UPLOADQUEEN();
+});
+function UPLOADQUEEN() {
+    if (queenUpload.files && queenUpload.files[0]) {
+        const file = queenUpload.files[0];
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            queenImage = e.target.result;
+            console.log("Uploaded image set as Queen", e.target.result);
+            picCardImage.src = queenImage;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload.");
+    }
+}
 
+jackUpload.addEventListener('change', function(event) {
+    UPLOADJACK();
+});
+function UPLOADJACK() {
+    if (jackUpload.files && jackUpload.files[0]) {
+        const file = jackUpload.files[0];
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            jackImage = e.target.result;
+            console.log("Uploaded image set as Jack", e.target.result);
+            picCardImage.src = jackImage;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload.");
+    }
+}
+
+jokerUpload.addEventListener('change', function(event) {
+    UPLOADJOKER();
+});
+function UPLOADJOKER() {
+    if (jokerUpload.files && jokerUpload.files[0]) {
+        const file = jokerUpload.files[0];
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            jokerImage = e.target.result;
+            console.log("Uploaded image set as Joker", e.target.result);
+            picCardImage.src = jokerImage;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload.");
+    }
+}
+
+    function updatePicCardImage() {
+        // Update the picture card image based on the selected class
+        if (selectedCardClass === "J") {      
+            picCardImage.src = jackImage; // Path to your Jack image
+        } else if (selectedCardClass === "Q") {     
+            picCardImage.src = queenImage; // Path to your Queen image
+        } else if (selectedCardClass === "K") {     
+            picCardImage.src = kingImage; // Path to your King image
+        } else if (selectedCardClass === "?") {     
+            picCardImage.src = jokerImage; // Path to your Joker image
+        } else {
+            picCardImage.src = "images/CardPreset3.svg"; // Default image for other classes
+        }
+    }
     // Features to add next:
     // Saving card images as files
     // Host on Netlify?
