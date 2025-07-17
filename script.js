@@ -1555,6 +1555,19 @@ function UPLOADJOKER() {
             picCardImage.src = "images/CardPreset3.svg"; // Default image for other classes
         }
     }
+
+    function checkPicCardSuit() {
+        // Check the current suit and update the card image accordingly
+        if (currentSuit === "diamond") {
+            
+        } else if (currentSuit === "heart") {
+            
+        } else if (currentSuit === "club") {
+            
+        } else if (currentSuit === "spade") {
+            
+        }
+    }
     // Features to add next:
     // Saving card images as files
     // Host on Netlify?

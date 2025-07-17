@@ -217,6 +217,30 @@ button.preset-option:hover {
     background-color: #cc0000;
 }
 
+
+#editPic {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.pic-card-upload {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    flex-direction: row;
+}
+.pic-card-upload label {
+    display: block;
+    width: 100%;
+
+}
+.pic-card-upload input[type="file"] {
+    display: block;
+    max-width: 45%;
+
+}
+
 #card-preview {
     position: sticky;
     top: 18px;
