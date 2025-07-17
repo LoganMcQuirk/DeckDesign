@@ -95,6 +95,7 @@ input {
     font-family: "Montserrat","Montserrat Alternates", Arial, Helvetica, sans-serif;
 }
 
+
 .editButton {
 
 color: #030303;
@@ -539,13 +540,31 @@ button.preset-option:hover {
     background-color: rgba(0, 0, 0, 0);
     z-index: 0;
 }
-#pictureContainer {
+#pictureContainer.picture-card {
     height: 86%;
     /*background-color: white;*/
     border: 2px solid black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 #pictureContainer.borderless {
     border: none;
+}
+
+img#pictureImage {
+    width: 100%;
+    height: 100%;
+    max-height: 50%;
+    
+}
+img#pictureImage2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 50%;
+    transform: scale(-1, -1);
+    
 }
 
 #Icon-1.icon.tally-icon.icon-number {

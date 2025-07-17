@@ -111,12 +111,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const pictureContainer = document.getElementById("pictureContainer");
     pictureCardLayout.style.display = 'none';
 
-    const kingUpload = document.getElementById('king-upload');
-    const queenUpload = document.getElementById('queen-upload');
-    const jackUpload = document.getElementById('jack-upload');
+    const kingHeartsUpload = document.getElementById('king-upload-hearts');
+    const kingDiamondsUpload = document.getElementById('king-upload-diamonds');
+    const kingClubsUpload = document.getElementById('king-upload-clubs');
+    const kingSpadesUpload = document.getElementById('king-upload-spades');
+
+    const queenDiamondsUpload = document.getElementById('queen-upload-diamonds');
+    const queenHeartsUpload = document.getElementById('queen-upload-hearts');
+    const queenClubsUpload = document.getElementById('queen-upload-clubs');
+    const queenSpadesUpload = document.getElementById('queen-upload-spades');
+
+    const jackDiamondsUpload = document.getElementById('jack-upload-diamonds');
+    const jackHeartsUpload = document.getElementById('jack-upload-hearts');
+    const jackClubsUpload = document.getElementById('jack-upload-clubs');
+    const jackSpadesUpload = document.getElementById('jack-upload-spades');
+
     const jokerUpload = document.getElementById('joker-upload');
 
     const picCardImage = document.getElementById("pictureImage");
+    const picCardImage2 = document.getElementById("pictureImage2");
     let kingImage = "images/CardPreset3.svg";
     let queenImage = "images/CardPreset3.svg";
     let jackImage = "images/CardPreset3.svg"; 
@@ -1444,7 +1457,7 @@ function applySuitColor() {
 
     
 
-    kingUpload.addEventListener('change', function(event) {
+    kingHeartsUpload.addEventListener('change', function(event) {
         // Check if a file has been uploaded
         UPLOADKING();
         
@@ -1467,6 +1480,7 @@ function applySuitColor() {
                 
                 // Update the king image
                 picCardImage.src = kingImage; 
+                picCardImage2.src = kingImage;
             };
 
             // Read the uploaded image as a data URL
@@ -1475,12 +1489,12 @@ function applySuitColor() {
             console.error("No file was selected for upload."); // Debugging output
         }
     }
-    queenUpload.addEventListener('change', function(event) {
+    queenHeartsUpload.addEventListener('change', function(event) {
     UPLOADQUEEN();
 });
 function UPLOADQUEEN() {
-    if (queenUpload.files && queenUpload.files[0]) {
-        const file = queenUpload.files[0];
+    if (queenHeartsUpload.files && queenHeartsUpload.files[0]) {
+        const file = queenHeartsUpload.files[0];
         if (!file.type.startsWith("image/")) {
             alert("Please upload a valid image file.");
             return;
@@ -1490,6 +1504,7 @@ function UPLOADQUEEN() {
             queenImage = e.target.result;
             console.log("Uploaded image set as Queen", e.target.result);
             picCardImage.src = queenImage;
+            picCardImage2.src = queenImage;
         };
         reader.readAsDataURL(file);
     } else {
@@ -1497,7 +1512,7 @@ function UPLOADQUEEN() {
     }
 }
 
-jackUpload.addEventListener('change', function(event) {
+jackHeartsUpload.addEventListener('change', function(event) {
     UPLOADJACK();
 });
 function UPLOADJACK() {
@@ -1512,6 +1527,7 @@ function UPLOADJACK() {
             jackImage = e.target.result;
             console.log("Uploaded image set as Jack", e.target.result);
             picCardImage.src = jackImage;
+            picCardImage2.src = jackImage;
         };
         reader.readAsDataURL(file);
     } else {
@@ -1556,18 +1572,18 @@ function UPLOADJOKER() {
         }
     }
 
-    function checkPicCardSuit() {
-        // Check the current suit and update the card image accordingly
-        if (currentSuit === "diamond") {
+    // function checkPicCardSuit() {
+    //     // Check the current suit and update the card image accordingly
+    //     if (currentSuit === "diamond") {
             
-        } else if (currentSuit === "heart") {
+    //     } else if (currentSuit === "heart") {
             
-        } else if (currentSuit === "club") {
+    //     } else if (currentSuit === "club") {
             
-        } else if (currentSuit === "spade") {
+    //     } else if (currentSuit === "spade") {
             
-        }
-    }
+    //     }
+    // }
     // Features to add next:
     // Saving card images as files
     // Host on Netlify?
@@ -1577,7 +1593,13 @@ function UPLOADJOKER() {
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
 
     // Add variable image for each picture card type so images are separate for each
-    // Suit dependant variations also for picture cards
+    // Suit dependant variations also for picture cards - SEPARATE BUTTONS - option to have black/red?
+
+    // pic card mirror button/ pic card img resizer
+    // pic card borderless button scrpt
+    // remove object fit from apply btn
+
+
 
 });
 
