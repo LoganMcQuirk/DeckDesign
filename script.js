@@ -134,6 +134,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let queenImage = "images/CardPreset3.svg";
     let jackImage = "images/CardPreset3.svg"; 
     let jokerImage = "images/CardPreset3.svg";
+
+    let jackImageDiamond = "images/CardPreset3.svg";
+    let queenImageDiamond = "images/CardPreset3.svg";
+    let kingImageDiamond = "images/CardPreset3.svg";
+    let jackImageHeart = "images/CardPreset3.svg"; 
+    let queenImageHeart = "images/CardPreset3.svg";
+    let kingImageHeart = "images/CardPreset3.svg";
+    let jackImageClub = "images/CardPreset3.svg";
+    let queenImageClub = "images/CardPreset3.svg";
+    let kingImageClub = "images/CardPreset3.svg";
+    let jackImageSpade = "images/CardPreset3.svg";
+    let queenImageSpade = "images/CardPreset3.svg";
+    let kingImageSpade = "images/CardPreset3.svg";
+       
     
     let redSuitColor = "#BC2024";
     let blackSuitColor = "#000000";
@@ -1207,18 +1221,27 @@ function switchToFront() {
         switchToFront();    
         applySuitColor();
         updateJokerDisplay();
+        selectedCardClass = 'J';
+        cardIdentP.innerHTML = selectedCardClass;
+        updatePicCardImage("J");
     });
     queenButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("Q");
         switchToFront();  
         applySuitColor();  
         updateJokerDisplay();
+        selectedCardClass = 'Q';
+        cardIdentP.innerHTML = selectedCardClass;
+        updatePicCardImage("Q");
     });
     kingButton.addEventListener('mouseenter', function() {
         IconLayoutPicture("K");
         switchToFront();    
         applySuitColor();
         updateJokerDisplay();
+        selectedCardClass = 'K';
+        cardIdentP.innerHTML = selectedCardClass;
+        updatePicCardImage("K");
     });
     jokerButton.addEventListener('mouseenter', function() {
         
@@ -1227,10 +1250,13 @@ function switchToFront() {
         applySuitColor();
         updateJokerDisplay();
         cardImageFront.classList.add('joker-text');
-        
+        selectedCardClass = '?';
+        cardIdentP.innerHTML = selectedCardClass;
+        updatePicCardImage("?");
     });
     jokerButton.addEventListener('mouseleave', function() {
         applySuitColor();
+        
     });
 
     function IconLayoutPicture(pictureCardIdentity) { 
@@ -1300,11 +1326,13 @@ function switchToFront() {
         }
        
 
-        updatePicCardImage();
+        updatePicCardImage(pictureCardIdentity);
     }
 
     
     function updateJokerDisplay() {
+
+        
     const cornerPs = document.querySelectorAll('.corner-class');
     const cornerIcons = document.querySelectorAll('.icon.corner-suit');
     const jokerBtnIndex = 13; // update if your joker button index is different
@@ -1316,12 +1344,14 @@ function switchToFront() {
     if (hoveredBtnIndex !== null) {
         // If hovering Joker
         if (hoveredBtnIndex === jokerBtnIndex) {
+            picCardImage2.style.display = 'none';
             isJokerActive = true;
             color = blackSuitColor;
             pictureContainer.classList.add('borderless');
         } else {
             // Not Joker: set color based on hovered button's suit
             isJokerActive = false;
+            picCardImage2.style.display = 'block';
             // Example: map hoveredBtnIndex to suit
             if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(hoveredBtnIndex)) {
                 // Use your own mapping logic for suit
@@ -1463,8 +1493,8 @@ function applySuitColor() {
         
     });
     function UPLOADKING() {
-        if (kingUpload.files && kingUpload.files[0]) {
-            const file = kingUpload.files[0];
+        if (kingHeartsUpload.files && kingHeartsUpload.files[0]) {
+            const file = kingHeartsUpload.files[0];
         
             // Check if it's an image file
             if (!file.type.startsWith("image/")) {
@@ -1516,8 +1546,8 @@ jackHeartsUpload.addEventListener('change', function(event) {
     UPLOADJACK();
 });
 function UPLOADJACK() {
-    if (jackUpload.files && jackUpload.files[0]) {
-        const file = jackUpload.files[0];
+    if (jackHeartsUpload.files && jackHeartsUpload.files[0]) {
+        const file = jackHeartsUpload.files[0];
         if (!file.type.startsWith("image/")) {
             alert("Please upload a valid image file.");
             return;
@@ -1557,16 +1587,27 @@ function UPLOADJOKER() {
     }
 }
 
-    function updatePicCardImage() {
+    function updatePicCardImage(pictureCardIdentity) {
         // Update the picture card image based on the selected class
-        if (selectedCardClass === "J") {      
-            picCardImage.src = jackImage; // Path to your Jack image
-        } else if (selectedCardClass === "Q") {     
-            picCardImage.src = queenImage; // Path to your Queen image
-        } else if (selectedCardClass === "K") {     
+        if (pictureCardIdentity === "J") {      
+            if (currentSuit === "diamond") {
+                jackImage = jackImageDiamond; // Path to your Jack of Diamonds image
+            }
+            picCardImage.src = jackImage;
+            picCardImage2.src = jackImage;
+            picCardImage2.style.display = 'block'; // Path to your Jack image
+        } else if (pictureCardIdentity === "Q") {     
+            picCardImage.src = queenImage;
+            picCardImage2.src = queenImage;
+            picCardImage2.style.display = 'block'; // Path to your Queen image
+        } else if (pictureCardIdentity === "K") {     
             picCardImage.src = kingImage; // Path to your King image
-        } else if (selectedCardClass === "?") {     
-            picCardImage.src = jokerImage; // Path to your Joker image
+            picCardImage2.src = kingImage;
+            picCardImage2.style.display = 'block';
+        } else if (pictureCardIdentity === "?") {     
+            picCardImage.src = jokerImage;
+            picCardImage2.src = jokerImage;
+            picCardImage2.style.display = 'none'; // Path to your Joker image
         } else {
             picCardImage.src = "images/CardPreset3.svg"; // Default image for other classes
         }
@@ -1599,6 +1640,10 @@ function UPLOADJOKER() {
     // pic card borderless button scrpt
     // remove object fit from apply btn
 
+    // PIC CARDS BUGGY AS HECK FIX JOKER LOGIC, ILLOGICAL
+//
+//
+//    
 
 
 });
