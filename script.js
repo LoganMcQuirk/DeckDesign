@@ -577,6 +577,7 @@ function switchToFront() {
         if (diamondBtn) diamondBtn.classList.add('selected');
         switchToFront();
         updateJokerDisplay();
+        updatePicCardImage();
     }
     
     function changeSuitHearts() {
@@ -604,6 +605,7 @@ function switchToFront() {
         if (heartBtn) heartBtn.classList.add('selected');
         switchToFront();
         updateJokerDisplay();
+        updatePicCardImage();
     }
  
     function changeSuitClubs() {
@@ -631,6 +633,7 @@ function switchToFront() {
         if (clubBtn) clubBtn.classList.add('selected');
         switchToFront();
         updateJokerDisplay();
+        updatePicCardImage();
     }
     
     function changeSuitSpades() {
@@ -661,6 +664,7 @@ function switchToFront() {
         if (spadeBtn) spadeBtn.classList.add('selected');
         switchToFront();
         updateJokerDisplay();
+        updatePicCardImage();
     }
     
     function resetSuitSelection() {
@@ -1326,7 +1330,7 @@ function switchToFront() {
         }
        
 
-        updatePicCardImage(pictureCardIdentity);
+        updatePicCardImage();
     }
 
     
@@ -1344,10 +1348,14 @@ function switchToFront() {
     if (hoveredBtnIndex !== null) {
         // If hovering Joker
         if (hoveredBtnIndex === jokerBtnIndex) {
-            picCardImage2.style.display = 'none';
+            
             isJokerActive = true;
             color = blackSuitColor;
             pictureContainer.classList.add('borderless');
+            selectedCardClass = '?';
+            AceIcon.style.display = 'none';
+            picCardImage2.style.display = 'none';
+            picCardImage.style.display = 'block';
         } else {
             // Not Joker: set color based on hovered button's suit
             isJokerActive = false;
@@ -1379,6 +1387,7 @@ function switchToFront() {
     cornerIcons.forEach(icon => {
         icon.style.display = isJokerActive ? "none" : "";
     });
+    updatePicCardImage(); // Update the picture card image based on the current state
     }
 
 
@@ -1486,82 +1495,354 @@ function applySuitColor() {
     });
 
     
-
-    kingHeartsUpload.addEventListener('change', function(event) {
-        // Check if a file has been uploaded
-        UPLOADKING();
-        
+    kingDiamondsUpload.addEventListener('change', function(event) {
+    UPLOADKINGDIAMONDS();
     });
-    function UPLOADKING() {
-        if (kingHeartsUpload.files && kingHeartsUpload.files[0]) {
-            const file = kingHeartsUpload.files[0];
+    kingHeartsUpload.addEventListener('change', function(event) {
+        UPLOADKINGHEARTS();
+    });
+    kingClubsUpload.addEventListener('change', function(event) {
+        UPLOADKINGCLUBS();
+    });
+    kingSpadesUpload.addEventListener('change', function(event) {
+        UPLOADKINGSPADES();
+    });
         
-            // Check if it's an image file
-            if (!file.type.startsWith("image/")) {
-                alert("Please upload a valid image file.");
-                return;
-            }
-            const reader = new FileReader(); // Create a new FileReader object
-            // Function to run when the file is read
-            reader.onload = function(e) {
-                // Set the card back image to the uploaded image
-                kingImage = e.target.result; // e.target.result contains the image data URL
-                console.log("Uploaded image set as King", e.target.result); // Debugging output
-                
-                // Update the king image
-                picCardImage.src = kingImage; 
-                picCardImage2.src = kingImage;
-            };
 
-            // Read the uploaded image as a data URL
-            reader.readAsDataURL(file);
-        } else {
-            console.error("No file was selected for upload."); // Debugging output
-        }
+    function UPLOADKINGDIAMONDS() {
+        
+         if (kingDiamondsUpload.files && kingDiamondsUpload.files[0]) {
+                const file = kingDiamondsUpload.files[0];
+            
+                // Check if it's an image file
+                if (!file.type.startsWith("image/")) {
+                    alert("Please upload a valid image file.");
+                    return;
+                }
+                const reader = new FileReader(); // Create a new FileReader object
+                // Function to run when the file is read
+                reader.onload = function(e) {
+                    // Set the card back image to the uploaded image
+                    kingImageDiamond = e.target.result; // e.target.result contains the image data URL
+                    console.log("Uploaded image set as King", e.target.result); // Debugging output
+                    picCardImage.src = kingImage; // Update the picture card image
+                    picCardImage2.src = kingImage; // Update the second picture card image
+                    updatePicCardImage(); // Update the picture card image
+                };
+
+                // Read the uploaded image as a data URL
+                reader.readAsDataURL(file);
+            } else {
+                console.error("No file was selected for upload."); // Debugging output
+            }
     }
-    queenHeartsUpload.addEventListener('change', function(event) {
-    UPLOADQUEEN();
-});
-function UPLOADQUEEN() {
-    if (queenHeartsUpload.files && queenHeartsUpload.files[0]) {
-        const file = queenHeartsUpload.files[0];
+    function UPLOADKINGHEARTS() {
+        
+         if (kingHeartsUpload.files && kingHeartsUpload.files[0]) {
+                const file = kingHeartsUpload.files[0];
+            
+                // Check if it's an image file
+                if (!file.type.startsWith("image/")) {
+                    alert("Please upload a valid image file.");
+                    return;
+                }
+                const reader = new FileReader(); // Create a new FileReader object
+                // Function to run when the file is read
+                reader.onload = function(e) {
+                    // Set the card back image to the uploaded image
+                    kingImageHeart = e.target.result; // e.target.result contains the image data URL
+                    console.log("Uploaded image set as King", e.target.result); // Debugging output
+                    
+                    updatePicCardImage(); // Update the picture card image
+                };
+
+                // Read the uploaded image as a data URL
+                reader.readAsDataURL(file);
+            } else {
+                console.error("No file was selected for upload."); // Debugging output
+            }
+    }
+    function UPLOADKINGCLUBS() {
+    if (kingClubsUpload.files && kingClubsUpload.files[0]) {
+        const file = kingClubsUpload.files[0];
+
+        // Check if it's an image file
         if (!file.type.startsWith("image/")) {
             alert("Please upload a valid image file.");
             return;
         }
-        const reader = new FileReader();
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
         reader.onload = function(e) {
-            queenImage = e.target.result;
-            console.log("Uploaded image set as Queen", e.target.result);
-            picCardImage.src = queenImage;
-            picCardImage2.src = queenImage;
+            // Set the card back image to the uploaded image
+            kingImageClub = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as King", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
         };
+
+        // Read the uploaded image as a data URL
         reader.readAsDataURL(file);
     } else {
-        console.error("No file was selected for upload.");
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+    function UPLOADKINGSPADES() {
+    if (kingSpadesUpload.files && kingSpadesUpload.files[0]) {
+        const file = kingSpadesUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            kingImageSpade = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as King", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
     }
 }
 
-jackHeartsUpload.addEventListener('change', function(event) {
-    UPLOADJACK();
+
+queenDiamondsUpload.addEventListener('change', function(event) {
+    UPLOADQUEENDIAMONDS();
 });
-function UPLOADJACK() {
-    if (jackHeartsUpload.files && jackHeartsUpload.files[0]) {
-        const file = jackHeartsUpload.files[0];
+queenHeartsUpload.addEventListener('change', function(event) {
+    UPLOADQUEENHEARTS();
+});
+queenClubsUpload.addEventListener('change', function(event) {
+    UPLOADQUEENCLUBS();
+});
+queenSpadesUpload.addEventListener('change', function(event) {
+    UPLOADQUEENSPADES();
+});
+
+function UPLOADQUEENDIAMONDS() {
+    if (queenDiamondsUpload.files && queenDiamondsUpload.files[0]) {
+        const file = queenDiamondsUpload.files[0];
+
+        // Check if it's an image file
         if (!file.type.startsWith("image/")) {
             alert("Please upload a valid image file.");
             return;
         }
-        const reader = new FileReader();
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
         reader.onload = function(e) {
-            jackImage = e.target.result;
-            console.log("Uploaded image set as Jack", e.target.result);
-            picCardImage.src = jackImage;
-            picCardImage2.src = jackImage;
+            // Set the card back image to the uploaded image
+            queenImageDiamond = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Queen", e.target.result); // Debugging output
+            picCardImage.src = queenImage; // Update the picture card image
+            picCardImage2.src = queenImage; // Update the second picture card image
+            updatePicCardImage(); // Update the picture card image
         };
+
+        // Read the uploaded image as a data URL
         reader.readAsDataURL(file);
     } else {
-        console.error("No file was selected for upload.");
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+function UPLOADQUEENHEARTS() {
+    if (queenHeartsUpload.files && queenHeartsUpload.files[0]) {
+        const file = queenHeartsUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            queenImageHeart = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Queen", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+function UPLOADQUEENCLUBS() {
+    if (queenClubsUpload.files && queenClubsUpload.files[0]) {
+        const file = queenClubsUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            queenImageClub = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Queen", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+function UPLOADQUEENSPADES() {
+    if (queenSpadesUpload.files && queenSpadesUpload.files[0]) {
+        const file = queenSpadesUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            queenImageSpade = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Queen", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+
+    
+
+jackDiamondsUpload.addEventListener('change', function(event) {
+    UPLOADJACKDIAMONDS();
+});
+jackHeartsUpload.addEventListener('change', function(event) {
+    UPLOADJACKHEARTS();
+});
+jackClubsUpload.addEventListener('change', function(event) {
+    UPLOADJACKCLUBS();
+});
+jackSpadesUpload.addEventListener('change', function(event) {
+    UPLOADJACKSPADES();
+});
+
+function UPLOADJACKDIAMONDS() {
+    if (jackDiamondsUpload.files && jackDiamondsUpload.files[0]) {
+        const file = jackDiamondsUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            jackImageDiamond = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Jack", e.target.result); // Debugging output
+            picCardImage.src = jackImage; // Update the picture card image
+            picCardImage2.src = jackImage; // Update the second picture card image
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+function UPLOADJACKHEARTS() {
+    if (jackHeartsUpload.files && jackHeartsUpload.files[0]) {
+        const file = jackHeartsUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            jackImageHeart = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Jack", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+function UPLOADJACKCLUBS() {
+    if (jackClubsUpload.files && jackClubsUpload.files[0]) {
+        const file = jackClubsUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            jackImageClub = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Jack", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
+    }
+}
+function UPLOADJACKSPADES() {
+    if (jackSpadesUpload.files && jackSpadesUpload.files[0]) {
+        const file = jackSpadesUpload.files[0];
+
+        // Check if it's an image file
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+        const reader = new FileReader(); // Create a new FileReader object
+        // Function to run when the file is read
+        reader.onload = function(e) {
+            // Set the card back image to the uploaded image
+            jackImageSpade = e.target.result; // e.target.result contains the image data URL
+            console.log("Uploaded image set as Jack", e.target.result); // Debugging output
+
+            updatePicCardImage(); // Update the picture card image
+        };
+
+        // Read the uploaded image as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file was selected for upload."); // Debugging output
     }
 }
 
@@ -1579,7 +1860,7 @@ function UPLOADJOKER() {
         reader.onload = function(e) {
             jokerImage = e.target.result;
             console.log("Uploaded image set as Joker", e.target.result);
-            picCardImage.src = jokerImage;
+            updatePicCardImage(); // Update the picture card image
         };
         reader.readAsDataURL(file);
     } else {
@@ -1587,31 +1868,51 @@ function UPLOADJOKER() {
     }
 }
 
-    function updatePicCardImage(pictureCardIdentity) {
-        // Update the picture card image based on the selected class
-        if (pictureCardIdentity === "J") {      
-            if (currentSuit === "diamond") {
-                jackImage = jackImageDiamond; // Path to your Jack of Diamonds image
-            }
-            picCardImage.src = jackImage;
-            picCardImage2.src = jackImage;
-            picCardImage2.style.display = 'block'; // Path to your Jack image
-        } else if (pictureCardIdentity === "Q") {     
-            picCardImage.src = queenImage;
-            picCardImage2.src = queenImage;
-            picCardImage2.style.display = 'block'; // Path to your Queen image
-        } else if (pictureCardIdentity === "K") {     
-            picCardImage.src = kingImage; // Path to your King image
-            picCardImage2.src = kingImage;
-            picCardImage2.style.display = 'block';
-        } else if (pictureCardIdentity === "?") {     
-            picCardImage.src = jokerImage;
-            picCardImage2.src = jokerImage;
-            picCardImage2.style.display = 'none'; // Path to your Joker image
-        } else {
-            picCardImage.src = "images/CardPreset3.svg"; // Default image for other classes
-        }
+    function updatePicCardImage() {
+        
+    // Update the picture card image based on the selected suit
+    if (currentSuit === "diamond") {
+            kingImage = kingImageDiamond;
+            queenImage = queenImageDiamond;
+            jackImage = jackImageDiamond;
+        } else if (currentSuit === "heart") {
+            kingImage = kingImageHeart;
+            jackImage = jackImageHeart;
+            queenImage = queenImageHeart;
+        } else if (currentSuit === "club") {
+            kingImage = kingImageClub;
+            jackImage = jackImageClub;
+            queenImage = queenImageClub;
+        } else if (currentSuit === "spade") {
+            kingImage = kingImageSpade;
+            jackImage = jackImageSpade;
+            queenImage = queenImageSpade;
+        } 
+    // Set the image source based on the selected card class
+
+    if (selectedCardClass === "J") {      
+
+        picCardImage.src = jackImage;
+        picCardImage2.src = jackImage;
+        picCardImage2.style.display = 'block';
+    } else if (selectedCardClass === "Q") {     
+        
+        picCardImage.src = queenImage;
+        picCardImage2.src = queenImage;
+        picCardImage2.style.display = 'block';
+    } else if (selectedCardClass === "K") {     
+        
+        picCardImage.src = kingImage;
+        picCardImage2.src = kingImage;
+        picCardImage2.style.display = 'block';
+    } else if (selectedCardClass === "?") {     
+        picCardImage.src = jokerImage;
+        picCardImage2.src = jokerImage;
+        picCardImage2.style.display = 'none';
+    } else {
+        picCardImage.src = "images/CardPreset3.svg";
     }
+}
 
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
