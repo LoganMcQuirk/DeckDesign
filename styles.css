@@ -555,18 +555,32 @@ button.preset-option:hover {
 }
 
 img#pictureImage {
-    width: 100%;
-    height: 100%;
-    max-height: 50%;
+    
+    display: block;
+    
     
 }
 img#pictureImage2 {
     display: block;
-    width: 100%;
-    height: 100%;
-    max-height: 50%;
+    
+    
+    
     transform: scale(-1, -1);
     
+}
+
+/* Fix for picture card images */
+img.pic-img#pictureImage,
+img.pic-img#pictureImage2,
+.pic-img {
+    width: auto;
+    max-width: 100%;
+    max-height: 50%;
+    object-fit: contain;
+    left: unset;
+    top: unset;
+    display: block;
+    margin: 0 auto;
 }
 
 #Icon-1.icon.tally-icon.icon-number {
