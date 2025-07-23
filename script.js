@@ -1941,7 +1941,10 @@ function UPLOADJOKER() {
     // pic card borderless button scrpt
     // remove object fit from apply btn
 
-    // PIC CARDS BUGGY AS HECK FIX JOKER LOGIC, ILLOGICAL
+    // font selection and size control
+    // pic card image size controls
+    // pic card image suit corner option
+    // css mediaqueries for mobile
 //
 //
 //    

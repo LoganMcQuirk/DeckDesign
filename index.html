@@ -62,17 +62,40 @@
                 </div>
                 <div id="suit-selection">
                     <div id="editSuit" class="minimise">
-                        <label for="club-icon">Clubs Icon:</label>
-                        <input type="file" id="club-icon" accept="image/*">
-                        
-                        <label for="spade-icon">Spades Icon:</label>
-                        <input type="file" id="spade-icon" accept="image/*">
-                        
-                        <label for="heart-icon">Hearts Icon:</label>
-                        <input type="file" id="heart-icon" accept="image/*">
-                        
-                        <label for="diamond-icon">Diamonds Icon:</label>
-                        <input type="file" id="diamond-icon" accept="image/*">
+                        <div id="icon-upload">
+                            <label class="icon-upload-buttons" for="diamond-icon">
+                                <label for="diamond-icon">Diamonds Icon:</label>
+                                <div class="suit-btn-img-container">
+                                    <img src="images/DiamondIcon-1.png">
+                                    <img src="images/DiamondIcon-1.png" class="suit-upload-img-right">
+                                    <input type="file" id="diamond-icon" accept="image/*">
+                                </div>
+                            </label>
+                            <label class="icon-upload-buttons" for="heart-icon">
+                                <label for="heart-icon">Hearts Icon:</label>
+                                <div class="suit-btn-img-container">
+                                    <img src="images/HeartIcon-1.png">
+                                    <img src="images/HeartIcon-1.png" class="suit-upload-img-right">
+                                    <input type="file" id="heart-icon" accept="image/*">
+                                </div>
+                            </label>
+                            <label class="icon-upload-buttons" for="club-icon">
+                                <label for="club-icon">Clubs Icon:</label>
+                                <div class="suit-btn-img-container">
+                                    <img src="images/ClubIcon-1.png">
+                                    <img src="images/ClubIcon-1.png" class="suit-upload-img-right">
+                                    <input type="file" id="club-icon" accept="image/*">
+                                </div>
+                            </label>
+                            <label class="icon-upload-buttons" for="spade-icon">
+                                <label for="spade-icon">Spades Icon:</label>
+                                <div class="suit-btn-img-container">
+                                    <img src="images/SpadeIcon-1.png">
+                                    <img src="images/SpadeIcon-1.png" class="suit-upload-img-right">
+                                    <input type="file" id="spade-icon" accept="image/*">
+                                </div>
+                            </label>
+                        </div>
 
                         <div>
                             <label for="SuitIconSizer">Suit Icon Size</label><p id="icon-sizer-display">30</p>
@@ -123,31 +146,79 @@
                     
                     <div class="pic-card-upload">
                         <label>King Images:</label>
-                        <input type="file" id="king-upload-diamonds" accept="image/*" placeholder="Diamonds">
-                        <input type="file" id="king-upload-hearts" accept="image/*" placeholder="Hearts">
-                        <input type="file" id="king-upload-clubs" accept="image/*" placeholder="Clubs">
-                        <input type="file" id="king-upload-spades" accept="image/*" placeholder="Spades">
+                        <label for="king-upload-diamonds" class="pic-card-upload-mask">
+                            <img src="images/DiamondIcon-1.png">
+                            <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="king-upload-diamonds" accept="image/*" placeholder="Diamonds">
+                        </label>
+                        <label for="king-upload-hearts" class="pic-card-upload-mask">
+                            <img src="images/HeartIcon-1.png">
+                            <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="king-upload-hearts" accept="image/*" placeholder="Hearts">
+                        </label>
+                        <label for="king-upload-clubs" class="pic-card-upload-mask">
+                            <img src="images/ClubIcon-1.png">
+                            <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="king-upload-clubs" accept="image/*" placeholder="Clubs">
+                        </label>
+                        <label for="king-upload-spades" class="pic-card-upload-mask">
+                            <img src="images/SpadeIcon-1.png">
+                            <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="king-upload-spades" accept="image/*" placeholder="Spades">
+                        </label>
                     </div>
 
                     <div class="pic-card-upload">
                         <label>Queen Images:</label>
-                        <input type="file" id="queen-upload-diamonds" accept="image/*" placeholder="Diamonds">
-                        <input type="file" id="queen-upload-hearts" accept="image/*" placeholder="Hearts">
-                        <input type="file" id="queen-upload-clubs" accept="image/*" placeholder="Clubs">
-                        <input type="file" id="queen-upload-spades" accept="image/*" placeholder="Spades">
+                        <label for="queen-upload-diamonds" class="pic-card-upload-mask">
+                            <img src="images/DiamondIcon-1.png">
+                            <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="queen-upload-diamonds" accept="image/*" placeholder="Diamonds">
+                        </label>
+                        <label for="queen-upload-hearts" class="pic-card-upload-mask">
+                            <img src="images/HeartIcon-1.png">
+                            <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="queen-upload-hearts" accept="image/*" placeholder="Hearts">
+                        </label>
+                        <label for="queen-upload-clubs" class="pic-card-upload-mask">
+                            <img src="images/ClubIcon-1.png">
+                            <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="queen-upload-clubs" accept="image/*" placeholder="Clubs">
+                        </label>
+                        <label for="queen-upload-spades" class="pic-card-upload-mask">
+                            <img src="images/SpadeIcon-1.png">
+                            <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="queen-upload-spades" accept="image/*" placeholder="Spades">
+                        </label>
                     </div>
 
                     <div class="pic-card-upload">
                         <label>Jack Images:</label>
-                        <input type="file" id="jack-upload-diamonds" accept="image/*" placeholder="Diamonds">
-                        <input type="file" id="jack-upload-hearts" accept="image/*" placeholder="Hearts">
-                        <input type="file" id="jack-upload-clubs" accept="image/*" placeholder="Clubs">
-                        <input type="file" id="jack-upload-spades" accept="image/*" placeholder="Spades">
+                        <label for="jack-upload-diamonds" class="pic-card-upload-mask">
+                            <img src="images/DiamondIcon-1.png">
+                            <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="jack-upload-diamonds" accept="image/*" placeholder="Diamonds">
+                        </label>
+                        <label for="jack-upload-hearts" class="pic-card-upload-mask">
+                            <img src="images/HeartIcon-1.png">
+                            <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="jack-upload-hearts" accept="image/*" placeholder="Hearts">
+                        </label>
+                        <label for="jack-upload-clubs" class="pic-card-upload-mask">
+                            <img src="images/ClubIcon-1.png">
+                            <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="jack-upload-clubs" accept="image/*" placeholder="Clubs">
+                        </label>
+                        <label for="jack-upload-spades" class="pic-card-upload-mask">
+                            <img src="images/SpadeIcon-1.png">
+                            <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
+                            <input type="file" id="jack-upload-spades" accept="image/*" placeholder="Spades">
+                        </label>
                     </div>
 
                     <div class="pic-card-upload">
                         <label>Joker Image:</label>
-                        <input type="file" id="joker-upload" accept="image/*">
+                        <div class="pic-card-upload-mask"><input type="file" id="joker-upload" accept="image/*"></div>
                     </div>
                     <div id="mirror-btns">
                         <button id="MirrorBtn" type="button">Mirror Picture Cards</button>
@@ -267,6 +338,22 @@
             </section>
         </div> 
         
+        <div class="tab" id="deck-preview">
+            <!-- Deck Preview Section -->
+            <section id="deck-preview">
+                <div class="tab-title">
+                    <h2>Deck Preview</h2>
+                    
+                </div>
+                <div id="deck-container">
+                    <!-- The dynamically updated deck preview will be displayed here -->
+                    <div id="deck">
+                        <p>Deck Preview will be displayed here.</p>
+                    </div>
+                </div>
+            </section>
+           
+            
         
     </main>
 
