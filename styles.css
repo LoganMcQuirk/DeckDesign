@@ -158,6 +158,8 @@ h2 {
 
 .tab-title button:hover {
     border-color: #ff1e1e;
+  
+    box-shadow: inset 0px 0px 4px rgba(255, 30, 30, 1);
 }
 
 label {
@@ -209,6 +211,7 @@ select {
 input[type="file"]:hover,
 select:hover {
     border-color: #ff1e1e; /* Red Border on Hover */
+    box-shadow: inset 0px 0px 10px rgba(255, 30, 30, 1);
 }
 
 input[type="file"]::-webkit-file-upload-button {
@@ -261,6 +264,33 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 20px;
     position: absolute;
     
+}
+
+.button-menu {
+    /* display: flex; */
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+.button-menu button:hover {
+    border-color: #ff1e1e; /* Red Border on Hover */
+    box-shadow: inset 0px 0px 10px rgba(255, 30, 30, 1);
+    transition: 0.3s;
+    
+}
+
+.button-menu button {
+    flex: 1;
+    margin: 0 0;
+    padding: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .pic-card-upload label {
@@ -500,7 +530,10 @@ button.preset-option:hover {
 .bottom-right-class {
     transform: scale(-1, -1);
 }
-
+.corner-class {
+    color: rgb(0, 0, 0); 
+    font-family: Solway, sans-serif;
+}
 
 #card img.corner-suit {
     display: flex;

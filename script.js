@@ -151,6 +151,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let redSuitColor = "#BC2024";
     let blackSuitColor = "#000000";
+
+    const cornerText = document.querySelectorAll("p.corner-class");
     
 
 //Back designer TOGGLE VIEW
@@ -1914,6 +1916,57 @@ function UPLOADJOKER() {
     }
 }
 
+    
+const fontSelect = document.getElementById('font-select');
+// const fontPreview = document.getElementById('font-preview');
+
+
+fontSelect.addEventListener('change', function() {
+    const font = this.value;
+    
+    // Load the font from Google Fonts
+    const linkId = 'dynamic-google-font';
+    let link = document.getElementById(linkId);
+    if (!link) {
+        link = document.createElement('link');
+        link.id = linkId;
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+    }
+    link.href = `https://fonts.googleapis.com/css?family=${font.replace(/ /g, '+')}:400,700&display=swap`;
+
+    // Apply the font to .corner-class
+    document.querySelectorAll('.corner-class').forEach(el => {
+        el.style.fontFamily = `'${font}', sans-serif`;
+    });
+    applyDefaultFont(); // Reset to default font if necessary
+    
+});
+
+    fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDGsX2AD7Z88SlXm8dyP7y1bq3njxUMjvs')
+        .then(response => response.json())
+        .then(data => {
+            
+            data.items.forEach(font => {
+            const option = document.createElement('option');
+            option.value = font.family;
+            option.textContent = font.family;
+            fontSelect.appendChild(option);
+            
+        });
+
+    });
+
+    function applyDefaultFont() {
+        if (fontSelect.value === "default") {
+            document.querySelectorAll('.corner-class').forEach(el => {
+                el.style.fontFamily = "Solway, sans-serif";
+            });
+        }
+    }
+
+
+
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
     //     if (currentSuit === "diamond") {
@@ -1947,7 +2000,5 @@ function UPLOADJOKER() {
     // css mediaqueries for mobile
 //
 //
-//    
-
-
+//    // Add "Flavors" font family to a preset for fonts
 });
