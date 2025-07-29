@@ -2001,4 +2001,6 @@ fontSelect.addEventListener('change', function() {
 //
 //
 //    // Add "Flavors" font family to a preset for fonts
+    //"New Rocker" font preset?
+    //"sue ellen francisco" font preset, cute feminine style
 });
