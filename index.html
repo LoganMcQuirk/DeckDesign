@@ -145,84 +145,93 @@
                         <button class="preset-option">Preset 2</button>
                         <button class="preset-option">Preset 3</button>
                     </div>
-                    
-                    <div class="pic-card-upload">
-                        <label>King Images:</label>
-                        <div class="button-menu"><button>King</button><button>Queen</button><button>Jack</button>
+                    <div id="pic-card-upload-container">
+
+                        <div id="upload-tab-btns">
+                            <button class="upload-tab-btn selectedTab" id="kng-tab">King</button>
+                            <button class="upload-tab-btn" id="qn-tab">Queen</button>
+                            <button class="upload-tab-btn" id="jck-tab">Jack</button>
+                            <button class="upload-tab-btn"id="jkr-tab">Joker</button>
                         </div>
-                        <label for="king-upload-diamonds" class="pic-card-upload-mask">
-                            <img src="images/DiamondIcon-1.png">
-                            <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="king-upload-diamonds" accept="image/*" placeholder="Diamonds">
-                        </label>
-                        <label for="king-upload-hearts" class="pic-card-upload-mask">
-                            <img src="images/HeartIcon-1.png">
-                            <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="king-upload-hearts" accept="image/*" placeholder="Hearts">
-                        </label>
-                        <label for="king-upload-clubs" class="pic-card-upload-mask">
-                            <img src="images/ClubIcon-1.png">
-                            <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="king-upload-clubs" accept="image/*" placeholder="Clubs">
-                        </label>
-                        <label for="king-upload-spades" class="pic-card-upload-mask">
-                            <img src="images/SpadeIcon-1.png">
-                            <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="king-upload-spades" accept="image/*" placeholder="Spades">
-                        </label>
-                    </div>
+                        
+                        <div class="pic-card-upload" id="king-pic-card-upload">
+                            <!-- <label class="pic-upload-label">King Images:</label> -->
+                            <div class="button-menu"><button>King</button><button>Queen</button><button>Jack</button>
+                            </div>
+                            <label for="king-upload-diamonds" class="pic-card-upload-mask">
+                                <img src="images/DiamondIcon-1.png">
+                                <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="king-upload-diamonds" accept="image/*" placeholder="Diamonds">
+                            </label>
+                            <label for="king-upload-hearts" class="pic-card-upload-mask">
+                                <img src="images/HeartIcon-1.png">
+                                <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="king-upload-hearts" accept="image/*" placeholder="Hearts">
+                            </label>
+                            <label for="king-upload-clubs" class="pic-card-upload-mask">
+                                <img src="images/ClubIcon-1.png">
+                                <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="king-upload-clubs" accept="image/*" placeholder="Clubs">
+                            </label>
+                            <label for="king-upload-spades" class="pic-card-upload-mask">
+                                <img src="images/SpadeIcon-1.png">
+                                <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="king-upload-spades" accept="image/*" placeholder="Spades">
+                            </label>
+                        </div>
 
-                    <div class="pic-card-upload">
-                        <label>Queen Images:</label>
-                        <label for="queen-upload-diamonds" class="pic-card-upload-mask">
-                            <img src="images/DiamondIcon-1.png">
-                            <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="queen-upload-diamonds" accept="image/*" placeholder="Diamonds">
-                        </label>
-                        <label for="queen-upload-hearts" class="pic-card-upload-mask">
-                            <img src="images/HeartIcon-1.png">
-                            <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="queen-upload-hearts" accept="image/*" placeholder="Hearts">
-                        </label>
-                        <label for="queen-upload-clubs" class="pic-card-upload-mask">
-                            <img src="images/ClubIcon-1.png">
-                            <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="queen-upload-clubs" accept="image/*" placeholder="Clubs">
-                        </label>
-                        <label for="queen-upload-spades" class="pic-card-upload-mask">
-                            <img src="images/SpadeIcon-1.png">
-                            <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="queen-upload-spades" accept="image/*" placeholder="Spades">
-                        </label>
-                    </div>
+                        <div class="pic-card-upload" id="queen-pic-card-upload">
+                            <!-- <label class="pic-upload-label">Queen Images:</label> -->
+                            <label for="queen-upload-diamonds" class="pic-card-upload-mask">
+                                <img src="images/DiamondIcon-1.png">
+                                <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="queen-upload-diamonds" accept="image/*" placeholder="Diamonds">
+                            </label>
+                            <label for="queen-upload-hearts" class="pic-card-upload-mask">
+                                <img src="images/HeartIcon-1.png">
+                                <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="queen-upload-hearts" accept="image/*" placeholder="Hearts">
+                            </label>
+                            <label for="queen-upload-clubs" class="pic-card-upload-mask">
+                                <img src="images/ClubIcon-1.png">
+                                <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="queen-upload-clubs" accept="image/*" placeholder="Clubs">
+                            </label>
+                            <label for="queen-upload-spades" class="pic-card-upload-mask">
+                                <img src="images/SpadeIcon-1.png">
+                                <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="queen-upload-spades" accept="image/*" placeholder="Spades">
+                            </label>
+                        </div>
 
-                    <div class="pic-card-upload">
-                        <label>Jack Images:</label>
-                        <label for="jack-upload-diamonds" class="pic-card-upload-mask">
-                            <img src="images/DiamondIcon-1.png">
-                            <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="jack-upload-diamonds" accept="image/*" placeholder="Diamonds">
-                        </label>
-                        <label for="jack-upload-hearts" class="pic-card-upload-mask">
-                            <img src="images/HeartIcon-1.png">
-                            <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="jack-upload-hearts" accept="image/*" placeholder="Hearts">
-                        </label>
-                        <label for="jack-upload-clubs" class="pic-card-upload-mask">
-                            <img src="images/ClubIcon-1.png">
-                            <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="jack-upload-clubs" accept="image/*" placeholder="Clubs">
-                        </label>
-                        <label for="jack-upload-spades" class="pic-card-upload-mask">
-                            <img src="images/SpadeIcon-1.png">
-                            <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
-                            <input type="file" id="jack-upload-spades" accept="image/*" placeholder="Spades">
-                        </label>
-                    </div>
+                        <div class="pic-card-upload" id="jack-pic-card-upload">
+                            <!-- <label class="pic-upload-label">Jack Images:</label> -->
+                            <label for="jack-upload-diamonds" class="pic-card-upload-mask">
+                                <img src="images/DiamondIcon-1.png">
+                                <img src="images/DiamondIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="jack-upload-diamonds" accept="image/*" placeholder="Diamonds">
+                            </label>
+                            <label for="jack-upload-hearts" class="pic-card-upload-mask">
+                                <img src="images/HeartIcon-1.png">
+                                <img src="images/HeartIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="jack-upload-hearts" accept="image/*" placeholder="Hearts">
+                            </label>
+                            <label for="jack-upload-clubs" class="pic-card-upload-mask">
+                                <img src="images/ClubIcon-1.png">
+                                <img src="images/ClubIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="jack-upload-clubs" accept="image/*" placeholder="Clubs">
+                            </label>
+                            <label for="jack-upload-spades" class="pic-card-upload-mask">
+                                <img src="images/SpadeIcon-1.png">
+                                <img src="images/SpadeIcon-1.png" class="pic-upload-img-right">
+                                <input type="file" id="jack-upload-spades" accept="image/*" placeholder="Spades">
+                            </label>
+                        </div>
 
-                    <div class="pic-card-upload">
-                        <label>Joker Image:</label>
-                        <div class="pic-card-upload-mask"><input type="file" id="joker-upload" accept="image/*"></div>
+                        <div class="pic-card-upload" id="joker-pic-card-upload">
+                            <!-- <label class="pic-upload-label">Joker Image:</label> -->
+                            <div class="pic-card-upload-mask"><input type="file" id="joker-upload" accept="image/*"></div>
+                        </div>
                     </div>
                     <div id="mirror-btns">
                         <button id="MirrorBtn" type="button">Mirror Picture Cards</button>

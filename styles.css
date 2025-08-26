@@ -297,6 +297,7 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .pic-card-upload label {
+    
     flex-direction: column;
     align-items: flex-start;
     display: flex;
@@ -332,7 +333,86 @@ input[type="file"]::-webkit-file-upload-button {
 
 }
 
+.pic-upload-label {
+    display: none;
+}
 
+div#pic-card-upload-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: white 2px solid;
+    border-radius: 5px;
+    
+}
+
+#upload-tab-btns {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: -2px -2px 0px -2px;
+    border: white 2px solid;
+    border-radius: 5px;
+    
+}
+button.upload-tab-btn {
+    
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    font-size: 1em;
+    width: 25%;
+    flex-direction: row;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    margin-right: -1px;
+    margin-left: -1px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: white 2px solid;
+    border-radius: 5px;
+    width: 100%;
+    z-index: 100;
+}
+
+button.upload-tab-btn:hover {
+    border: rgba(226, 26, 26, 1) 2px solid;
+    transition: .3s ;
+    z-index: 101;
+
+}
+
+button.upload-tab-btn.selectedTab {
+    background-color: rgba(226, 26, 26, 1);
+}
+
+
+button.upload-tab-btn#kng-tab {
+    margin-left: -2px;
+}
+button.upload-tab-btn#jkr-tab {
+    margin-right: -2px;
+}
+
+
+
+
+div.pic-card-upload {
+    justify-content: space-evenly;
+}
+div.pic-card-upload#king-pic-card-upload {
+    display: flex;
+    
+}
+div.pic-card-upload#queen-pic-card-upload {
+    display: none;
+}
+div.pic-card-upload#jack-pic-card-upload {
+    display: none;
+}
+div.pic-card-upload#joker-pic-card-upload {
+    display: none;
+    
+}
 
 button.preset-option {
     padding: 10px 15px;

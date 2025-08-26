@@ -1969,6 +1969,24 @@ fontSelect.addEventListener('change', function() {
         }
     }
 
+    const uploadTabBtns = document.querySelectorAll("button.upload-tab-btn");
+const picCardUploads = [
+    document.getElementById("king-pic-card-upload"),
+    document.getElementById("queen-pic-card-upload"),
+    document.getElementById("jack-pic-card-upload"),
+    document.getElementById("joker-pic-card-upload")
+];
+
+uploadTabBtns.forEach((button, idx) => {
+    button.addEventListener("click", function() {
+        uploadTabBtns.forEach(btn => btn.classList.remove('selectedTab'));
+        this.classList.add('selectedTab');
+        // Hide all upload sections
+        picCardUploads.forEach(div => div.style.display = "none");
+        // Show the selected section
+        picCardUploads[idx].style.display = "flex";
+    });
+});
 
 
     // function checkPicCardSuit() {
