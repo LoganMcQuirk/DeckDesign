@@ -263,6 +263,9 @@ input[type="file"]::-webkit-file-upload-button {
     padding: 1px;
     border-radius: 20px;
     position: absolute;
+
+    /* make appear at right*/
+    align-self: flex-end;
     
 }
 
@@ -303,15 +306,17 @@ input[type="file"]::-webkit-file-upload-button {
 
 
 .pic-card-upload img {
+    
     max-height: 21px;
     margin-top: 1px;
     padding: 1px;
     border-radius: 20px;
     position: absolute;
+    align-self: flex-end;
     
 }
 .pic-upload-img-right {
-    
+    visibility: hidden;
     align-self: flex-end;
     position: absolute;
     
@@ -320,11 +325,14 @@ input[type="file"]::-webkit-file-upload-button {
     display: flex;
     justify-self: center;
     font-family: "Montserrat","Montserrat Alternates", Arial, Helvetica, sans-serif, monospace;
+    text-align: center;
     width: 200%;
     border: 0px;
     margin: -2px -2px 2px -2px;
 
 }
+
+
 
 button.preset-option {
     padding: 10px 15px;

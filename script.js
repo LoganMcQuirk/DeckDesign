@@ -296,6 +296,10 @@ function switchToFront() {
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
+        // document.querySelectorAll('.corner-class').forEach(el => {
+        //         el.style.fontFamily = `"Flavors", sans-serif`;
+        // });
+        
     });
     preset3Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPreset3.png";
@@ -1960,7 +1964,7 @@ fontSelect.addEventListener('change', function() {
     function applyDefaultFont() {
         if (fontSelect.value === "default") {
             document.querySelectorAll('.corner-class').forEach(el => {
-                el.style.fontFamily = "Solway, sans-serif";
+                el.style.fontFamily = `"Solway", sans-serif`;
             });
         }
     }
