@@ -265,7 +265,7 @@ input[type="file"]::-webkit-file-upload-button {
     position: absolute;
 
     /* make appear at right*/
-    align-self: flex-end;
+   /* align-self: flex-end; */
     
 }
 
@@ -312,11 +312,11 @@ input[type="file"]::-webkit-file-upload-button {
     padding: 1px;
     border-radius: 20px;
     position: absolute;
-    align-self: flex-end;
+    /* align-self: flex-end; */
     
 }
 .pic-upload-img-right {
-    visibility: hidden;
+    
     align-self: flex-end;
     position: absolute;
     
