@@ -83,9 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const cardIMGStyle = cardImageBack;
     function CoverModeON() {
         // cardIMGStyle.style.objectFit = 'cover';
-        cardIMGStyle.style.objectFit = 'fill';
-        cardIMGStyle.style.overflow = 'hidden';
-        cardImageBack.style.maxWidth = '150%';
 
     }
     function CoverModeOFF() {
@@ -158,8 +155,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let blackSuitColor = "#000000";
 
     const cornerText = document.querySelectorAll("p.corner-class");
+    const backContainer = document.getElementById("back-container");
+    
+    
 
     
+    
+
     
 
 //Back designer TOGGLE VIEW
@@ -223,6 +225,7 @@ function switchToFront() {
         // cardBackBtn.style.display = 'block';
 
         cardBorderDiv.style.display = 'none';
+        backContainer.style.display = 'none';
 
         // cardImageFront.src = "images/CardFrontPlaceholder.svg";
         cardImageFront.style.zIndex = '101';
@@ -257,7 +260,8 @@ function switchToFront() {
         // cardBackBtn.style.display = 'none';
         // cardFrontBtn.style.display = 'block';
 
-        cardBorderDiv.style.display = 'block';
+        // cardBorderDiv.style.display = 'block';
+        backContainer.style.display = 'flex';
 
         cardImageBack.src = cardBackCurrentImage;
         cardImageFront.style.zIndex = '100';
@@ -396,13 +400,26 @@ function switchToFront() {
             cardImageBorderRadius = (borderSliderValue*1) + 8;
         }
         cardImageBack.style.borderWidth = borderSliderValue + 'px';
-        cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
+        // cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
         cardBorderDiv.style.borderWidth = borderSliderValue + 'px';
         cardBorderDiv.style.borderRadius = cardImageBorderRadius + 'px';
-         if (!cardIsOnBack) {
+        backContainer.style.borderWidth = borderSliderValue + 'px';
+        backContainer.style.borderRadius = cardImageBorderRadius + 'px';
+
+        copyCardBorderStyles();
+        
+        
+        if (!cardIsOnBack) {
             switchToBack();
         }
+        
     });
+        cardImageBack.style.borderWidth = borderControl.value + 'px';
+        cardBorderDiv.style.borderWidth = borderControl.value + 'px';
+        cardBorderDiv.style.borderRadius = (borderControl.value*1) + 8 + 'px';
+        backContainer.style.borderWidth = borderControl.value + 'px';
+        backContainer.style.borderRadius = (borderControl.value*1) + 8 + 'px';
+   
 // Control border colour select ----------------------------------------------------------------------------------------------------
     
     borderColourer.addEventListener('input', function() { 
@@ -416,6 +433,7 @@ function switchToFront() {
     function RecolourBorder() {
         cardImageBack.style.borderColor = borderColourValue;
         transparencyBG.style.backgroundColor = borderColourValue;
+        backContainer.style.borderColor = borderColourValue;
     }
 
 // Control displayed suit class --------------------------------------------------------------------------------------------------------
@@ -2039,4 +2057,7 @@ uploadTabBtns.forEach((button, idx) => {
     //"New Rocker" font preset?
     //"sue ellen francisco" font preset, cute feminine style
     // "Agu display" funky style
+
+
+    // add fill or cover modes
 });
