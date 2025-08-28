@@ -378,6 +378,7 @@ button.upload-tab-btn:hover {
     border: rgba(226, 26, 26, 1) 2px solid;
     transition: .3s ;
     z-index: 101;
+    box-shadow: inset 0px 0px 5px rgba(255, 30, 30, 1);
 
 }
 
@@ -550,11 +551,14 @@ button.preset-option:hover {
     border-radius: 14px;
     z-index: 101;
     object-fit: fill;
+    overflow: hidden;
+    
 }
 
 #card-image {
     height: 100%;
     z-index: 99;
+    
 }
 
 
@@ -619,7 +623,7 @@ button.preset-option:hover {
     transform: scale(-1, -1);
 }
 .corner-class {
-    color: rgb(0, 0, 0); 
+    /* color: rgb(0, 0, 0);  */
     font-family: Solway, sans-serif;
 }
 

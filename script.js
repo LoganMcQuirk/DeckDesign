@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const iconSizeControl = document.getElementById('SuitIconSizer');
     const iconSizerDisplay = document.getElementById('icon-sizer-display');
+
 // SUIT CHANGING BUTTONS -----------------------------------------------------------------------v
     const diamondBtn = document.getElementById("diamondBtn");
     const heartBtn = document.getElementById("heartBtn");
@@ -81,7 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cardIMGStyle = cardImageBack;
     function CoverModeON() {
-        cardIMGStyle.style.objectFit = 'cover';
+        // cardIMGStyle.style.objectFit = 'cover';
+        cardIMGStyle.style.objectFit = 'fill';
+        cardIMGStyle.style.overflow = 'hidden';
+        cardImageBack.style.maxWidth = '150%';
+
     }
     function CoverModeOFF() {
         cardIMGStyle.style.objectFit = 'fill';
@@ -153,6 +158,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let blackSuitColor = "#000000";
 
     const cornerText = document.querySelectorAll("p.corner-class");
+
+    
     
 
 //Back designer TOGGLE VIEW
@@ -226,6 +233,7 @@ function switchToFront() {
         cardIsOnBack = false;
        // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
        tallyLayout.style.display = 'flex';
+       applySuitColor();
     }
     // Flip card and switch button on click
     cardFrontBtn.addEventListener('click', function() {
@@ -235,6 +243,7 @@ function switchToFront() {
     flipperBtn.addEventListener('click', function() {
             if (cardIsOnBack) {
                 switchToFront();
+                applySuitColor();
             } else {
                 switchToBack();
             }
@@ -340,6 +349,7 @@ function switchToFront() {
         } else {
             console.error("No file was selected for upload."); // Debugging output
         }
+         
 
     }
     backsideUpload.addEventListener('change', function(event) {
@@ -347,6 +357,7 @@ function switchToFront() {
         CUSTOMIMAGE();
         CoverModeON();
         hideFlipBtn();
+        
 
     });
     
@@ -1989,6 +2000,8 @@ uploadTabBtns.forEach((button, idx) => {
 });
 
 
+
+
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
     //     if (currentSuit === "diamond") {
@@ -2009,7 +2022,7 @@ uploadTabBtns.forEach((button, idx) => {
 
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
 
-    // Add variable image for each picture card type so images are separate for each
+    
     // Suit dependant variations also for picture cards - SEPARATE BUTTONS - option to have black/red?
 
     // pic card mirror button/ pic card img resizer
@@ -2025,4 +2038,5 @@ uploadTabBtns.forEach((button, idx) => {
 //    // Add "Flavors" font family to a preset for fonts
     //"New Rocker" font preset?
     //"sue ellen francisco" font preset, cute feminine style
+    // "Agu display" funky style
 });
