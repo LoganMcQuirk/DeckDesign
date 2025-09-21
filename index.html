@@ -228,12 +228,14 @@
                                 <input type="file" id="jack-upload-spades" accept="image/*" placeholder="Spades">
                             </label>
                         </div>
-
+                        
                         <div class="pic-card-upload" id="joker-pic-card-upload">
                             <!-- <label class="pic-upload-label">Joker Image:</label> -->
                             <div class="pic-card-upload-mask"><input type="file" id="joker-upload" accept="image/*"></div>
                         </div>
                     </div>
+                    <label for="picCardImgSizer">Image Size</label><p id="pic-card-sizer-display">50</p>
+                    <input type="range" min="1" max="100" value="50" id="picCardImgSizer">
                     <div id="mirror-btns">
                         <button id="MirrorBtn" type="button">Mirror Picture Cards</button>
                         <button id="BorderPicBtn" type="button">Add Inner Border</button>

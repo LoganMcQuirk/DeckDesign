@@ -827,13 +827,13 @@ img.pic-img#pictureImage,
 img.pic-img#pictureImage2,
 .pic-img {
     width: auto;
-    max-width: 100%;
+    max-width: 500%;
     max-height: 50%;
     object-fit: contain;
     left: unset;
     top: unset;
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 img.pic-img#pictureImage2 {
     display: none;

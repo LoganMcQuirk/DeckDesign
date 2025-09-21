@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cardIdentP = document.getElementById("cardIdent");
 
+    const picCardImageSizeDisplay = document.getElementById("pic-card-sizer-display");
+    
+
     
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
@@ -2018,6 +2021,14 @@ uploadTabBtns.forEach((button, idx) => {
 });
 
 
+picCardImgSizer.addEventListener('input', function() {
+    picCardImage.style.maxHeight = picCardImgSizer.value + '%';
+    picCardImage2.style.maxHeight = picCardImgSizer.value + '%';
+    
+    picCardImageSizeDisplay.innerHTML = picCardImgSizer.value;
+    switchToFront();
+    
+});
 
 
     // function checkPicCardSuit() {
