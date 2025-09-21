@@ -2053,7 +2053,7 @@ picCardImgSizer.addEventListener('input', function() {
     
     // Suit dependant variations also for picture cards - SEPARATE BUTTONS - option to have black/red?
 
-    // pic card mirror button/ pic card img resizer
+    // pic card mirror button/
     // pic card borderless button scrpt
     // remove object fit from apply btn
 
