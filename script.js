@@ -2039,7 +2039,6 @@ uploadTabBtns.forEach((button, idx) => {
     // 
 
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
-
     
     // Suit dependant variations also for picture cards - SEPARATE BUTTONS - option to have black/red?
 
