@@ -99,11 +99,16 @@
                         </div>
 
                         <div>
-                            <label for="SuitIconSizer">Suit Icon Size</label><p id="icon-sizer-display">30</p>
-                                <input type="range" min="34" max="99" value="64" id="SuitIconSizer"> 
-
-                                <label for="SuitClassSizer">Suit Corner Icon Size</label><p id="suit-sizer-display">20</p>
-                                <input type="range" min="20" max="40" value="40" id="SuitClassSizer"> 
+                            <div class="labelContainer">
+                                <label for="SuitIconSizer">Suit Icon Size:</label><p id="icon-sizer-display">30</p>
+                            </div>
+                             <input type="range" min="34" max="99" value="64" id="SuitIconSizer"> 
+                            
+                            <div class="labelContainer">
+                                <label for="SuitClassSizer">Suit Corner Icon Size:</label><p id="suit-sizer-display">20</p>
+                            </div>
+                             <input type="range" min="20" max="40" value="40" id="SuitClassSizer"> 
+                            
                         </div>
                         
                     </div>
@@ -234,12 +239,13 @@
                             <div class="pic-card-upload-mask"><input type="file" id="joker-upload" accept="image/*"></div>
                         </div>
                     </div>
-                    <div class="labelContainer"><label for="picCardImgSizer">Image Size:</label><p id="pic-card-sizer-display">50</p></div>
-                    <input type="range" min="1" max="100" value="50" step="1" id="picCardImgSizer">
+                    
                     <div id="mirror-btns">
                         <button id="MirrorBtn" type="button" class="preset-option">Picture Mirror</button>
                         <button id="BorderPicBtn" type="button" class="preset-option">Picture Border</button>
                     </div>
+                    <div class="labelContainer"><label for="picCardImgSizer">Image Size:</label><p id="pic-card-sizer-display">50</p></div>
+                    <input type="range" min="1" max="100" value="50" step="1" id="picCardImgSizer">
                     
                 </div>        
             </section>

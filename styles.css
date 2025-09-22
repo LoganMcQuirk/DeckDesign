@@ -461,7 +461,7 @@ button.preset-option:hover {
 
 #mirror-btns {
     display: flex;
-    
+
     justify-content: space-evenly;
     
 }
@@ -656,6 +656,10 @@ img.back-image#card-image-back {
 }
 #card .id-front-layout {
     display: flex;
+}
+#cardIdent {
+    visibility: hidden;
+    margin-top: -12px;
 }
 
 .id-front-layout {
