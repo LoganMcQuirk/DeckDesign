@@ -44,8 +44,8 @@
                     <label for="backside-upload">Upload Card Back Image:</label>
                     <div id="upload-buttons">
                         <input type="file" id="backside-upload" accept="image/*">
-                        <button id="apply-back-image" class="preset-option">Apply</button>
-                        <!-- Apply also changes objectFill to cover ATM -->
+                        <button id="apply-back-image" class="preset-option">Apply Image</button>
+                        <button type="button" id="image-squash-btn" class="preset-option">Fill Image</button>
                     </div>
                     <label for="border-control">Border Thickness</label>
                     <input type="range" min="0" max="44" value="8" id="border-control">
@@ -235,13 +235,12 @@
                         </div>
                     </div>
                     <div class="labelContainer"><label for="picCardImgSizer">Image Size:</label><p id="pic-card-sizer-display">50</p></div>
-                    <input type="range" min="1" max="100" value="50" id="picCardImgSizer">
+                    <input type="range" min="1" max="100" value="50" step="1" id="picCardImgSizer">
                     <div id="mirror-btns">
-                        <button id="MirrorBtn" type="button">Mirror Picture Cards</button>
-                        <button id="BorderPicBtn" type="button">Add Inner Border</button>
+                        <button id="MirrorBtn" type="button" class="preset-option">Picture Mirror</button>
+                        <button id="BorderPicBtn" type="button" class="preset-option">Picture Border</button>
                     </div>
-                    <label>Border</label>
-                    <input type="checkbox" id="picCardBorder">
+                    
                 </div>        
             </section>
         </div>

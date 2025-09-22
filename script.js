@@ -2025,12 +2025,26 @@ picCardImgSizer.addEventListener('input', function() {
     picCardImage.style.maxHeight = picCardImgSizer.value + '%';
     picCardImage2.style.maxHeight = picCardImgSizer.value + '%';
     
-    picCardImageSizeDisplay.innerHTML = picCardImgSizer.value;
+    picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -1;
     switchToFront();
     
 });
 
+    const imageSquashBtn = document.getElementById('image-squash-btn');
+    let isImageSquashed = true;
 
+    imageSquashBtn.addEventListener('click', function() {
+        if (isImageSquashed) {
+            cardImageBack.style.width = 'fit-content';
+            imageSquashBtn.innerText = 'Fit Image';
+            isImageSquashed = false;
+        } else if (!isImageSquashed) {
+            cardImageBack.style.width = '100%';
+            imageSquashBtn.innerText = 'Fill Image';
+            isImageSquashed = true;
+        }
+        switchToBack();
+    });
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
     //     if (currentSuit === "diamond") {

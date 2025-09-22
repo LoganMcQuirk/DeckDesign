@@ -459,7 +459,12 @@ button.preset-option:hover {
     flex-direction: row;
 }
 
-
+#mirror-btns {
+    display: flex;
+    
+    justify-content: space-evenly;
+    
+}
 
 
 #card-preview {
@@ -579,7 +584,7 @@ button.preset-option:hover {
     height: 100%;
     max-height: 100%;
     max-width: 5000%;
-    width: 5000%;
+    width: 100%;
     justify-content: center;
     overflow: hidden;
     object-fit: cover;
@@ -598,7 +603,7 @@ img.back-image#card-image-back {
     border-radius: 14px; */
     z-index: 101;
     object-fit: fill;
-    width: fit-content;
+    width: null;
     margin-left: 0%;
     margin-right: 0%;
     
