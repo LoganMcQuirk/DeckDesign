@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const editPic = document.getElementById("editPic");
     editPic.style.display = "none";
+    
 
     const toggleBackBtn = document.getElementById("editBackBtn");
     const toggleSuitBtn = document.getElementById("editSuitBtn");
@@ -159,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cornerText = document.querySelectorAll("p.corner-class");
     const backContainer = document.getElementById("back-container");
+    
     
     
 
@@ -2045,6 +2047,36 @@ picCardImgSizer.addEventListener('input', function() {
         }
         switchToBack();
     });
+
+    
+    const mirrorPicCardBtn = document.getElementById('MirrorBtn');
+        let isPicCardMirrored = true;
+
+    mirrorPicCardBtn.addEventListener('click', function() { 
+        if (isPicCardMirrored) {
+            picCardImage2.style.display = 'none';
+            isPicCardMirrored = false;
+        } else if (!isPicCardMirrored) {
+            picCardImage2.style.display = 'block';
+            isPicCardMirrored = true;
+        }
+    });
+
+    const borderPicCardBtn = document.getElementById('BorderPicBtn');
+    let isPicCardBordered = true;
+
+    // const picContainer = document.getElementById("picture-container");
+
+    borderPicCardBtn.addEventListener('click', function() { 
+        if (isPicCardBordered) {
+            pictureContainer.classList.add('borderless');
+            isPicCardBordered = false;
+        } else if (!isPicCardBordered) {
+            pictureContainer.classList.remove('borderless');
+            isPicCardBordered = true;
+        }
+    });
+
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
     //     if (currentSuit === "diamond") {
@@ -2065,14 +2097,7 @@ picCardImgSizer.addEventListener('input', function() {
 
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
     
-    // Suit dependant variations also for picture cards - SEPARATE BUTTONS - option to have black/red?
-
-    // pic card mirror button/
-    // pic card borderless button scrpt
-    // remove object fit from apply btn
-
     // font selection and size control
-    // pic card image size controls
     // pic card image suit corner option
     // css mediaqueries for mobile
 //
@@ -2082,6 +2107,4 @@ picCardImgSizer.addEventListener('input', function() {
     //"sue ellen francisco" font preset, cute feminine style
     // "Agu display" funky style
 
-
-    // add fill or cover modes
 });
