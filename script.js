@@ -161,9 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const cornerText = document.querySelectorAll("p.corner-class");
     const backContainer = document.getElementById("back-container");
     
+    const mirrorPicCardBtn = document.getElementById('MirrorBtn');
+        let isPicCardMirrored = true;
     
-    
+    const borderPicCardBtn = document.getElementById('BorderPicBtn');
+    let isPicCardBordered = true;
 
+    let mirrorState = 'block';
     
     
 
@@ -1399,7 +1403,7 @@ function switchToFront() {
         } else {
             // Not Joker: set color based on hovered button's suit
             isJokerActive = false;
-            picCardImage2.style.display = 'block';
+            picCardImage2.style.display = mirrorState;
             // Example: map hoveredBtnIndex to suit
             if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(hoveredBtnIndex)) {
                 // Use your own mapping logic for suit
@@ -1934,17 +1938,17 @@ function UPLOADJOKER() {
 
         picCardImage.src = jackImage;
         picCardImage2.src = jackImage;
-        picCardImage2.style.display = 'block';
+        picCardImage2.style.display = mirrorState;
     } else if (selectedCardClass === "Q") {     
         
         picCardImage.src = queenImage;
         picCardImage2.src = queenImage;
-        picCardImage2.style.display = 'block';
+        picCardImage2.style.display = mirrorState;
     } else if (selectedCardClass === "K") {     
         
         picCardImage.src = kingImage;
         picCardImage2.src = kingImage;
-        picCardImage2.style.display = 'block';
+        picCardImage2.style.display = mirrorState;
     } else if (selectedCardClass === "?") {     
         picCardImage.src = jokerImage;
         picCardImage2.src = jokerImage;
@@ -2049,25 +2053,30 @@ picCardImgSizer.addEventListener('input', function() {
     });
 
     
-    const mirrorPicCardBtn = document.getElementById('MirrorBtn');
-        let isPicCardMirrored = true;
+    
 
     mirrorPicCardBtn.addEventListener('click', function() { 
+        MirrorPicCardToggle();
+    });
+    function MirrorPicCardToggle() {
         if (isPicCardMirrored) {
             picCardImage2.style.display = 'none';
             isPicCardMirrored = false;
+            mirrorState = 'none';
         } else if (!isPicCardMirrored) {
             picCardImage2.style.display = 'block';
             isPicCardMirrored = true;
+            mirrorState = 'block';
         }
-    });
+    }
 
-    const borderPicCardBtn = document.getElementById('BorderPicBtn');
-    let isPicCardBordered = true;
 
     // const picContainer = document.getElementById("picture-container");
 
     borderPicCardBtn.addEventListener('click', function() { 
+        BorderPicCardToggle();
+    });
+    function BorderPicCardToggle() {
         if (isPicCardBordered) {
             pictureContainer.classList.add('borderless');
             isPicCardBordered = false;
@@ -2075,7 +2084,7 @@ picCardImgSizer.addEventListener('input', function() {
             pictureContainer.classList.remove('borderless');
             isPicCardBordered = true;
         }
-    });
+    }
 
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
