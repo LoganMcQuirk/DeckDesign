@@ -169,8 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let mirrorState = 'block';
     
-    
-
+    const picImageContainer = document.querySelector('div#pictureImage1-container.pic-img-container');
+    const picImageContainer2 = document.querySelector('div#pictureImage2-container.pic-img-container');
     
 
 //Back designer TOGGLE VIEW
@@ -2028,11 +2028,12 @@ uploadTabBtns.forEach((button, idx) => {
 
 
 picCardImgSizer.addEventListener('input', function() {
-    picCardImage.style.maxHeight = picCardImgSizer.value + '%';
-    picCardImage2.style.maxHeight = picCardImgSizer.value + '%';
+    picImageContainer.style.maxHeight = picCardImgSizer.value + '%';
+    picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
     
     picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -1;
     switchToFront();
+    syncPicImgContainers();
     
 });
 
@@ -2063,10 +2064,12 @@ picCardImgSizer.addEventListener('input', function() {
             picCardImage2.style.display = 'none';
             isPicCardMirrored = false;
             mirrorState = 'none';
+            picImageContainer.style.justifyContent = 'center';
         } else if (!isPicCardMirrored) {
             picCardImage2.style.display = 'block';
             isPicCardMirrored = true;
             mirrorState = 'block';
+            picImageContainer.style.justifyContent = 'flex-end';
         }
     }
 
@@ -2086,6 +2089,8 @@ picCardImgSizer.addEventListener('input', function() {
         }
     }
 
+ 
+
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly
     //     if (currentSuit === "diamond") {
@@ -2102,7 +2107,8 @@ picCardImgSizer.addEventListener('input', function() {
     // Saving card images as files
     // Host on Netlify?
     // SQL save local changes to server
-    // 
+    // fix Joker sizing and mirror flex issues
+    // add picimage height position control
 
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
     
@@ -2111,7 +2117,7 @@ picCardImgSizer.addEventListener('input', function() {
     // css mediaqueries for mobile
 //
 //
-//    // Add "Flavors" font family to a preset for fonts
+//    // Add "Flavors" ' chewy also font family to a preset for fonts
     //"New Rocker" font preset?
     //"sue ellen francisco" font preset, cute feminine style
     // "Agu display" funky style

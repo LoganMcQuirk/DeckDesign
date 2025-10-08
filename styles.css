@@ -647,6 +647,11 @@ img.back-image#card-image-back {
     visibility: hidden;
     
 }
+
+
+
+
+
 #front-layout img {
     object-fit: contain;
    /* filter: grayscale(100%) brightness(1) contrast(1.1) sepia(1) hue-rotate(-50deg) saturate(6); */
@@ -844,7 +849,24 @@ img#pictureImage2 {
     transform: scale(-1, -1);
     
 }
-
+div#pictureImage1-container.pic-img-container , div#pictureImage2-container.pic-img-container {
+    width: auto;
+    max-width: 500%;
+    max-height: 50%;
+    object-fit: contain;
+    left: unset;
+    top: unset;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    
+}
+div#pictureImage1-container.pic-img-container {
+    justify-content: flex-end;
+}
+div#pictureImage2-container.pic-img-container {
+    justify-content: flex-start;
+}
 /* Fix for picture card images */
 img.pic-img#pictureImage,
 img.pic-img#pictureImage2,
