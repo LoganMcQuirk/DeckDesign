@@ -174,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const picCardImgStyles = document.querySelector('img.pic-img#pictureImage');
     const picCardImgStyles2 = document.querySelector('img.pic-img#pictureImage2');
 
+    const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
+    const AdjusterLabels = document.getElementById('adjusterLabels');
 //Back designer TOGGLE VIEW
     toggleBackBtn.addEventListener('click', function() {
         if (editBack.style.display === "none") {
@@ -2074,6 +2076,11 @@ picCardImgSizer.addEventListener('input', function() {
             mirrorState = 'none';
             picImageContainer.style.justifyContent = 'center';
             picImageContainer2.style.minHeight = '0%';
+            picCardImgAdjuster.style.display = 'none';
+            AdjusterLabels.style.display = 'none';
+            picCardImgStyles.style.top = '0';
+            picCardImgAdjuster.value = 0;
+            
 
         } else if (!isPicCardMirrored) {
             picCardImage2.style.display = 'block';
@@ -2081,6 +2088,10 @@ picCardImgSizer.addEventListener('input', function() {
             mirrorState = 'block';
             picImageContainer.style.justifyContent = 'flex-end';
             picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
+            picCardImgAdjuster.style.display = 'block';
+            AdjusterLabels.style.display = 'block';
+            
+            
         }
     }
 
@@ -2100,7 +2111,7 @@ picCardImgSizer.addEventListener('input', function() {
         }
     }
 
-    const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
+    
 
     picCardImgAdjuster.addEventListener('input', function() {
         picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
