@@ -171,7 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const picImageContainer = document.querySelector('div#pictureImage1-container.pic-img-container');
     const picImageContainer2 = document.querySelector('div#pictureImage2-container.pic-img-container');
-    
+    const picCardImgStyles = document.querySelector('img.pic-img#pictureImage');
+    const picCardImgStyles2 = document.querySelector('img.pic-img#pictureImage2');
 
 //Back designer TOGGLE VIEW
     toggleBackBtn.addEventListener('click', function() {
@@ -2030,10 +2031,17 @@ uploadTabBtns.forEach((button, idx) => {
 picCardImgSizer.addEventListener('input', function() {
     picImageContainer.style.maxHeight = picCardImgSizer.value + '%';
     picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
-    
-    picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -1;
+     
+    if (isPicCardMirrored) {
+        picImageContainer.style.minHeight = picCardImgSizer.value + '%';
+        picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
+    } else if (!isPicCardMirrored) {
+        picImageContainer.style.minHeight = picCardImgSizer.value + '%';
+        picImageContainer2.style.minHeight = '0%';
+    }
+    picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -23;
     switchToFront();
-    syncPicImgContainers();
+    
     
 });
 
@@ -2065,11 +2073,14 @@ picCardImgSizer.addEventListener('input', function() {
             isPicCardMirrored = false;
             mirrorState = 'none';
             picImageContainer.style.justifyContent = 'center';
+            picImageContainer2.style.minHeight = '0%';
+
         } else if (!isPicCardMirrored) {
             picCardImage2.style.display = 'block';
             isPicCardMirrored = true;
             mirrorState = 'block';
             picImageContainer.style.justifyContent = 'flex-end';
+            picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
         }
     }
 
@@ -2089,6 +2100,14 @@ picCardImgSizer.addEventListener('input', function() {
         }
     }
 
+    const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
+
+    picCardImgAdjuster.addEventListener('input', function() {
+        picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
+        picCardImgStyles2.style.bottom = picCardImgAdjuster.value + 'px';
+        picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
+        switchToFront();
+    });
  
 
     // function checkPicCardSuit() {

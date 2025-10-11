@@ -849,7 +849,8 @@ img#pictureImage2 {
     transform: scale(-1, -1);
     
 }
-div#pictureImage1-container.pic-img-container , div#pictureImage2-container.pic-img-container {
+div#pictureImage1-container.pic-img-container , 
+div#pictureImage2-container.pic-img-container {
     width: auto;
     max-width: 500%;
     max-height: 50%;
@@ -873,7 +874,7 @@ img.pic-img#pictureImage2,
 .pic-img {
     width: auto;
     max-width: 500%;
-    max-height: 50%;
+    max-height: 100%;
     object-fit: contain;
     left: unset;
     top: unset;
