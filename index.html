@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
 
@@ -247,7 +249,7 @@
                     <div class="labelContainer"><label for="picCardImgSizer">Image Size:</label><p id="pic-card-sizer-display">50</p></div>
                     <input type="range" min="24" max="123" value="74" step="1" id="picCardImgSizer">
                     <div class="labelContainer" id="adjusterLabels"><label for="picCardImgAdjuster">Mirror Level:</label><p id="pic-card-adjuster-display">0</p></div>
-                    <input type="range" min="-93" max="173" value="0" step="1" id="picCardImgAdjuster">
+                    <input type="range" min="-95" max="175" value="0" step="1" id="picCardImgAdjuster">
                 </div>        
             </section>
         </div>
@@ -452,7 +454,6 @@
     <script src="script.js"></script> <!-- Link to my JavaScript file -->
     <script>
     
-    
     document.getElementById("downloadBtn").addEventListener('click', () => {
         console.log("Download button clicked!");
 
@@ -502,6 +503,7 @@
     });
     
     </script>
+    
 
     <!-- Library Scripts -->
     

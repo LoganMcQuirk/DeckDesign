@@ -1,4 +1,7 @@
 // Wait for DOM load
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const editBack = document.getElementById("editBack");
@@ -2111,7 +2114,7 @@ picCardImgSizer.addEventListener('input', function() {
         }
     }
 
-    
+    const picCardImgAdjusterDisplay = document.getElementById('pic-card-adjuster-display');
 
     picCardImgAdjuster.addEventListener('input', function() {
         picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
@@ -2120,6 +2123,71 @@ picCardImgSizer.addEventListener('input', function() {
         switchToFront();
     });
  
+    const zip = new JSZip();
+    const deckFolder = zip.folder('deck-images');
+
+    function addCardToZip(canvas, fileName) {
+        const imageData = canvas.toDataURL('image/png');
+        deckFolder.file(fileName, imageData.split(',')[1], {base64: true});
+    }
+
+    document.getElementById('downloadAllBtn').addEventListener('click', () => {
+        
+        
+        // Use html2canvas to capture the body as an image
+        cycleDiamonds();
+        cycleHearts();
+        cycleClubs();
+        cycleSpades();
+        
+        async function cycleDiamonds() { 
+            changeSuitDiamonds();
+            for (let i = 0; i < classBtns.length; i++) {
+                classBtns[i].click();
+                await html2canvas(card).then((canvas) => {
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(canvas, fileName);
+                });
+            }
+        } 
+        async function cycleHearts() { 
+            changeSuitHearts();
+            for (let i = 0; i < classBtns.length; i++) {
+                classBtns[i].click();
+                await html2canvas(card).then((canvas) => {
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(canvas, fileName);
+                });
+            }
+        } 
+        
+        async function cycleClubs() { 
+            changeSuitClubs();
+            for (let i = 0; i < classBtns.length; i++) {
+                classBtns[i].click();
+                await html2canvas(card).then((canvas) => {
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(canvas, fileName);
+                });
+            }
+        } 
+        async function cycleSpades() { 
+            changeSuitSpades();
+            for (let i = 0; i < classBtns.length; i++) {   
+                classBtns[i].click();
+                await html2canvas(card).then((canvas) => {
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(canvas, fileName);
+                });
+            }
+        }
+        
+        
+
+
+
+
+    });
 
     // function checkPicCardSuit() {
     //     // Check the current suit and update the card image accordingly

@@ -99,6 +99,10 @@ input {
     font-family: "Montserrat","Montserrat Alternates", Arial, Helvetica, sans-serif;
 }
 
+#deck-preview{
+    display: none;
+}
+
 .labelContainer {
     display: flex;
     justify-content: flex-start;
