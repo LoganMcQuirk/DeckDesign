@@ -2390,24 +2390,23 @@ picCardImgSizer.addEventListener('input', function() {
 
     });
 
-    // function checkPicCardSuit() {
-    //     // Check the current suit and update the card image accordingly
-    //     if (currentSuit === "diamond") {
-            
-    //     } else if (currentSuit === "heart") {
-            
-    //     } else if (currentSuit === "club") {
-            
-    //     } else if (currentSuit === "spade") {
-            
-    //     }
-    // }
-    // Features to add next:
-    // Saving card images as files
+    
+    // Features to add next: -------------------------------
+    
     // Host on Netlify?
     // SQL save local changes to server
+
     // fix Joker sizing and mirror flex issues
+    // fix ace largemode issues
     // add picimage height position control
+    // remove scrollbar from pictureImageContainer
+    // add bleed margin option toggle to download all
+    // make html canvas solo function for download all
+    // ace icon canvas fix
+    // sort font options
+    // sort font colour change options
+    // sort borderless toggle override
+    // add joker to download all
 
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
     
