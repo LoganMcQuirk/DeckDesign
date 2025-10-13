@@ -409,6 +409,7 @@ function switchToFront() {
 
 // Control border thickness slider ----------------------------------------------------------------------------------------------------
     borderControl.addEventListener('input', function() { 
+        switchToBack();
         let borderSliderValue = borderControl.value;
         let cardImageBorderRadius = borderSliderValue;
         if (borderSliderValue > 0) {
@@ -424,9 +425,9 @@ function switchToFront() {
         copyCardBorderStyles();
         
         
-        if (!cardIsOnBack) {
-            switchToBack();
-        }
+        
+        
+        
         
     });
         cardImageBack.style.borderWidth = borderControl.value + 'px';
@@ -1351,7 +1352,6 @@ function switchToFront() {
                 }
          else if (pictureCardIdentity === "?") {
                 selectedCardClass = "?";
-                
                 p.innerHTML = "J<br>O<br>K<br>E<br>R";
                 }
 
@@ -1375,9 +1375,14 @@ function switchToFront() {
         pictureCardLayout.style.display = 'flex';
         if (pictureCardIdentity === "?") {
             pictureContainer.classList.add('borderless');
-        } else {
+        } else if (!isPicCardBordered) {
+            pictureContainer.classList.add('borderless');
+        } else if (isPicCardBordered) {
+            pictureContainer.classList.remove('borderless');
+        } else  {
             pictureContainer.classList.remove('borderless');
         }
+        
        
 
         updatePicCardImage();
@@ -1437,7 +1442,7 @@ function switchToFront() {
     cornerIcons.forEach(icon => {
         icon.style.display = isJokerActive ? "none" : "";
     });
-    updatePicCardImage(); // Update the picture card image based on the current state
+    updatePicCardImage();
     }
 
 
@@ -2133,59 +2138,255 @@ picCardImgSizer.addEventListener('input', function() {
 
     document.getElementById('downloadAllBtn').addEventListener('click', () => {
         
-        
-        // Use html2canvas to capture the body as an image
-        cycleDiamonds();
-        cycleHearts();
-        cycleClubs();
-        cycleSpades();
-        
+        (async function downloadAllCards() {
+            await cycleSuitless();
+            await cycleDiamonds();
+            await cycleHearts();
+            await cycleClubs();
+            await cycleSpades();
+            
+
+            // Generate and download the zip after all cards are added
+            zip.generateAsync({ type: "blob" }).then(function(content) {
+                saveAs(content, "deck-images.zip");
+            });
+        })();
+
         async function cycleDiamonds() { 
             changeSuitDiamonds();
-            for (let i = 0; i < classBtns.length; i++) {
-                classBtns[i].click();
-                await html2canvas(card).then((canvas) => {
+            for (let i = 1; i < 14; i++) {
+                if (i === 1) {
+                    IconLayout1();
+                }  else if (i === 2) {
+                    IconLayout2();
+                } else if (i === 3) {
+                    IconLayout3();
+                } else if (i === 4) {  
+                    IconLayout4();
+                } else if (i === 5) {  
+                    IconLayout5();
+                } else if (i === 6) {  
+                    IconLayout6();
+                } else if (i === 7) {  
+                    IconLayout7();
+                } else if (i === 8) {  
+                    IconLayout8();
+                } else if (i === 9) {  
+                    IconLayout9();
+                } else if (i === 10) {  
+                    IconLayout10();
+                } else if (i === 11) {
+                    IconLayoutPicture("J");
+                } else if (i === 12) {
+                    IconLayoutPicture("Q");
+                } else if (i === 13) {
+                    IconLayoutPicture("K");
+                } 
+
+                // Render the card with html2canvas
+                await html2canvas(card, {
+                    scale: 3,
+                    useCORS: true,
+                    allowTaint: true,
+                }).then((canvas) => {
+                    const bleedMargin = 36;
+                    const newCanvas = document.createElement("canvas");
+                    newCanvas.width = canvas.width + bleedMargin * 2;
+                    newCanvas.height = canvas.height + bleedMargin * 2;
+
+                    const ctx = newCanvas.getContext("2d");
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+                    ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
                     const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
-                    addCardToZip(canvas, fileName);
-                });
-            }
-        } 
-        async function cycleHearts() { 
-            changeSuitHearts();
-            for (let i = 0; i < classBtns.length; i++) {
-                classBtns[i].click();
-                await html2canvas(card).then((canvas) => {
-                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
-                    addCardToZip(canvas, fileName);
-                });
-            }
-        } 
-        
-        async function cycleClubs() { 
-            changeSuitClubs();
-            for (let i = 0; i < classBtns.length; i++) {
-                classBtns[i].click();
-                await html2canvas(card).then((canvas) => {
-                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
-                    addCardToZip(canvas, fileName);
-                });
-            }
-        } 
-        async function cycleSpades() { 
-            changeSuitSpades();
-            for (let i = 0; i < classBtns.length; i++) {   
-                classBtns[i].click();
-                await html2canvas(card).then((canvas) => {
-                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
-                    addCardToZip(canvas, fileName);
+                    addCardToZip(newCanvas, fileName);
                 });
             }
         }
-        
-        
 
+        async function cycleHearts() { 
+            changeSuitHearts();
+            for (let i = 1; i < 14; i++) {
+                if (i === 1) {
+                    IconLayout1();
+                }  else if (i === 2) {
+                    IconLayout2();
+                } else if (i === 3) {
+                    IconLayout3();
+                } else if (i === 4) {  
+                    IconLayout4();
+                } else if (i === 5) {  
+                    IconLayout5();
+                } else if (i === 6) {  
+                    IconLayout6();
+                } else if (i === 7) {  
+                    IconLayout7();
+                } else if (i === 8) {  
+                    IconLayout8();
+                } else if (i === 9) {  
+                    IconLayout9();
+                } else if (i === 10) {  
+                    IconLayout10();
+                } else if (i === 11) {
+                    IconLayoutPicture("J");
+                } else if (i === 12) {
+                    IconLayoutPicture("Q");
+                } else if (i === 13) {
+                    IconLayoutPicture("K");
+                } 
+                await html2canvas(card, {
+                    scale: 3,
+                    useCORS: true,
+                    allowTaint: true,
+                }).then((canvas) => {
+                    const bleedMargin = 36;
+                    const newCanvas = document.createElement("canvas");
+                    newCanvas.width = canvas.width + bleedMargin * 2;
+                    newCanvas.height = canvas.height + bleedMargin * 2;
 
+                    const ctx = newCanvas.getContext("2d");
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+                    ctx.drawImage(canvas, bleedMargin, bleedMargin);
 
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(newCanvas, fileName);
+                });
+            }
+        }
+
+        async function cycleClubs() { 
+            changeSuitClubs();
+            for (let i = 1; i < 14; i++) {
+                
+                if (i === 1) {
+                    IconLayout1();
+                }  else if (i === 2) {
+                    IconLayout2();
+                } else if (i === 3) {
+                    IconLayout3();
+                } else if (i === 4) {  
+                    IconLayout4();
+                } else if (i === 5) {  
+                    IconLayout5();
+                } else if (i === 6) {  
+                    IconLayout6();
+                } else if (i === 7) {  
+                    IconLayout7();
+                } else if (i === 8) {  
+                    IconLayout8();
+                } else if (i === 9) {  
+                    IconLayout9();
+                } else if (i === 10) {  
+                    IconLayout10();
+                } else if (i === 11) {
+                    IconLayoutPicture("J");
+                } else if (i === 12) {
+                    IconLayoutPicture("Q");
+                } else if (i === 13) {
+                    IconLayoutPicture("K");
+                } 
+                
+                
+                await html2canvas(card, {
+                    scale: 3,
+                    useCORS: true,
+                    allowTaint: true,
+                }).then((canvas) => {
+                    const bleedMargin = 36;
+                    const newCanvas = document.createElement("canvas");
+                    newCanvas.width = canvas.width + bleedMargin * 2;
+                    newCanvas.height = canvas.height + bleedMargin * 2;
+
+                    const ctx = newCanvas.getContext("2d");
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+                    ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(newCanvas, fileName);
+                });
+            }
+        }
+
+        async function cycleSpades() { 
+            changeSuitSpades();
+            for (let i = 1; i < 14; i++) {
+                if (i === 1) {
+                    IconLayout1();
+                }  else if (i === 2) {
+                    IconLayout2();
+                } else if (i === 3) {
+                    IconLayout3();
+                } else if (i === 4) {  
+                    IconLayout4();
+                } else if (i === 5) {  
+                    IconLayout5();
+                } else if (i === 6) {  
+                    IconLayout6();
+                } else if (i === 7) {  
+                    IconLayout7();
+                } else if (i === 8) {  
+                    IconLayout8();
+                } else if (i === 9) {  
+                    IconLayout9();
+                } else if (i === 10) {  
+                    IconLayout10();
+                } else if (i === 11) {
+                    IconLayoutPicture("J");
+                } else if (i === 12) {
+                    IconLayoutPicture("Q");
+                } else if (i === 13) {
+                    IconLayoutPicture("K");
+                } 
+                
+                await html2canvas(card, {
+                    scale: 3,
+                    useCORS: true,
+                    allowTaint: true,
+                }).then((canvas) => {
+                    const bleedMargin = 36;
+                    const newCanvas = document.createElement("canvas");
+                    newCanvas.width = canvas.width + bleedMargin * 2;
+                    newCanvas.height = canvas.height + bleedMargin * 2;
+
+                    const ctx = newCanvas.getContext("2d");
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+                    ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
+                    const fileName = `card_${currentSuit}_${selectedCardClass}.png`;
+                    addCardToZip(newCanvas, fileName);
+                });
+            }
+        }
+        async function cycleSuitless() {
+            let cardFileName = '';
+            switchToBack();
+            cardFileName = 'card-back';
+            
+            await new Promise(resolve => setTimeout(resolve, 100));
+            await html2canvas(card, {
+                        scale: 3,
+                        useCORS: true,
+                        allowTaint: true,
+                    }).then((canvas) => {
+                        const bleedMargin = 36;
+                        const newCanvas = document.createElement("canvas");
+                        newCanvas.width = canvas.width + bleedMargin * 2;
+                        newCanvas.height = canvas.height + bleedMargin * 2;
+
+                        const ctx = newCanvas.getContext("2d");
+                        ctx.fillStyle = "white";
+                        ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+                        ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
+                        const fileName = `${cardFileName}.png`;
+                        addCardToZip(newCanvas, fileName);
+                    });
+            
+        }
 
     });
 
