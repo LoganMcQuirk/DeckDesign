@@ -2423,11 +2423,11 @@ picCardImgSizer.addEventListener('input', function() {
 
     // fix Joker sizing and mirror flex issues
     // fix ace largemode issues
-    // add picimage height position control
+    // x
     // remove scrollbar from pictureImageContainer
     // add bleed margin option toggle to download all
     // make html canvas solo function for download all
-    // ace icon canvas fix
+    // x
     // sort font options
     // sort font colour change options
     // sort borderless toggle override
