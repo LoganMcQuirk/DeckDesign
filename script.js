@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const picCardImageSizeDisplay = document.getElementById("pic-card-sizer-display");
     
-
+    
     
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
@@ -895,6 +895,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
 
     }
     
@@ -933,7 +934,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
-        
+        tallyLayout.style.width = "100%";
     }
 
     eightButton.addEventListener('mouseenter', function() {
@@ -970,6 +971,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
     }
 
     sevenButton.addEventListener('mouseenter', function() {
@@ -1011,6 +1013,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
     }
 
     sixButton.addEventListener('mouseenter', function() {
@@ -1052,6 +1055,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
     }
 
     fiveButton.addEventListener('mouseenter', function() {
@@ -1094,6 +1098,7 @@ function switchToFront() {
 
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
     }
 
     fourButton.addEventListener('mouseenter', function() {
@@ -1136,6 +1141,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
     }
     threeButton.addEventListener('mouseenter', function() {
         IconLayout3();
@@ -1178,6 +1184,7 @@ function switchToFront() {
         });
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
 
     }
     twoButton.addEventListener('mouseenter', function() {
@@ -1223,6 +1230,7 @@ function switchToFront() {
         
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "100%";
     }
 
     aceButton.addEventListener('mouseenter', function() {
@@ -1267,6 +1275,7 @@ function switchToFront() {
        // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
         tallyLayout.style.display = 'flex';
         pictureCardLayout.style.display = 'none';
+        tallyLayout.style.width = "auto";
         
     }
 
@@ -1318,7 +1327,7 @@ function switchToFront() {
 
         cardIdentP.innerHTML = selectedCardClass;
         ApplyCenterHeightValue();
-        
+        tallyLayout.style.width = "100%";
 
         for (let i = 1; i <= 10; i++) { //Set icon display style
             const tallyIcon = document.querySelector(`#Icon-${i}.icon.tally-icon.icon-number`);
@@ -1480,8 +1489,12 @@ function applySuitColor() {
         } else {
             tallyIconStyle5b.marginTop = 0;
         }
-    }
 
+        
+            
+        
+    }
+    
     
 
     iconSizeControl.addEventListener('input', function() { 
@@ -2084,10 +2097,13 @@ picCardImgSizer.addEventListener('input', function() {
             mirrorState = 'none';
             picImageContainer.style.justifyContent = 'center';
             picImageContainer2.style.minHeight = '0%';
+            
             picCardImgAdjuster.style.display = 'none';
             AdjusterLabels.style.display = 'none';
             picCardImgStyles.style.top = '0';
             picCardImgAdjuster.value = 0;
+            
+
             
 
         } else if (!isPicCardMirrored) {
@@ -2095,9 +2111,16 @@ picCardImgSizer.addEventListener('input', function() {
             isPicCardMirrored = true;
             mirrorState = 'block';
             picImageContainer.style.justifyContent = 'flex-end';
-            picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
+            
+
             picCardImgAdjuster.style.display = 'block';
             AdjusterLabels.style.display = 'block';
+            picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
+            picCardImgStyles2.style.bottom = picCardImgAdjuster.value + 'px';
+            picImageContainer.style.minHeight = "50%";
+            picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
+            picImageContainer.style.minHeight = picCardImgSizer.value + '%';
+            
             
             
         }

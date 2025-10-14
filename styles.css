@@ -785,7 +785,9 @@ img.back-image#card-image-back {
     justify-content: center; /* Center horizontally */
 
 }
-
+#center-icon {
+    width: auto;
+}
 
 
 #tally-layout img.icon-number {
@@ -856,7 +858,7 @@ img#pictureImage2 {
 div#pictureImage1-container.pic-img-container , 
 div#pictureImage2-container.pic-img-container {
     width: auto;
-    max-width: 500%;
+    
     max-height: 50%;
     object-fit: contain;
     left: unset;
