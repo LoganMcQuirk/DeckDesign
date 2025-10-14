@@ -2091,6 +2091,7 @@ picCardImgSizer.addEventListener('input', function() {
         MirrorPicCardToggle();
     });
     function MirrorPicCardToggle() {
+
         if (isPicCardMirrored) {
             picCardImage2.style.display = 'none';
             isPicCardMirrored = false;
@@ -2102,6 +2103,7 @@ picCardImgSizer.addEventListener('input', function() {
             AdjusterLabels.style.display = 'none';
             picCardImgStyles.style.top = '0';
             picCardImgAdjuster.value = 0;
+            picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
             
 
             
@@ -2121,9 +2123,9 @@ picCardImgSizer.addEventListener('input', function() {
             picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
             picImageContainer.style.minHeight = picCardImgSizer.value + '%';
             
-            
-            
         }
+        
+
     }
 
 
