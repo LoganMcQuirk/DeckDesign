@@ -243,8 +243,8 @@
                     </div>
                     
                     <div id="mirror-btns">
-                        <button id="MirrorBtn" type="button" class="preset-option">Picture Mirror</button>
-                        <button id="BorderPicBtn" type="button" class="preset-option">Picture Border</button>
+                        <button id="MirrorBtn" type="button" class="preset-option">Mirror: On</button>
+                        <button id="BorderPicBtn" type="button" class="preset-option">Border: On</button>
                     </div>
                     <div class="labelContainer"><label for="picCardImgSizer">Image Size:</label><p id="pic-card-sizer-display">50</p></div>
                     <input type="range" min="24" max="123" value="74" step="1" id="picCardImgSizer">
@@ -367,6 +367,7 @@
                     <button id="downloadBtn" class="downloadBtn" type="button">Download Card</button>
                     <button id="downloadAllBtn" class="downloadBtn" type="button">Download Deck</button>
                 </div>
+                <div id="bleed-btn-container"><button id="bleedBtn" class="bleed-btn bleed-on" type="button">Bleed: On</button></div>
             </section>
         </div> 
         
@@ -452,57 +453,7 @@
 
     
     <script src="script.js"></script> <!-- Link to my JavaScript file -->
-    <script>
     
-    document.getElementById("downloadBtn").addEventListener('click', () => {
-        console.log("Download button clicked!");
-
-        // Get the content of the card element
-        const cardElement = document.getElementById("card");
-
-        const originalStyle = cardElement.style.overflow;
-        cardElement.style.overflow = "visible";
-
-        // Use html2canvas to render the card element as an image
-        html2canvas(cardElement, {
-            scale: 3,
-            useCORS: true,
-            
-            allowTaint: true,
-            
-        }).then((canvas) => {
-            // Restore the original styles
-            cardElement.style.overflow = originalStyle;
-
-            // Create a new canvas with extra space for the bleed margin
-            const bleedMargin = 36; // 36 pixels for bleed
-            const newCanvas = document.createElement("canvas");
-            newCanvas.width = canvas.width + bleedMargin * 2;
-            newCanvas.height = canvas.height + bleedMargin * 2;
-
-            const ctx = newCanvas.getContext("2d");
-
-            // Fill the background with white (optional, for transparency handling)
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
-
-            // Draw the original canvas onto the new canvas with the bleed margin
-            ctx.drawImage(canvas, bleedMargin, bleedMargin);
-
-            // Convert the new canvas to a data URL
-            const imgData = newCanvas.toDataURL("image/png");
-
-            // Create a temporary link element
-            const link = document.createElement("a");
-            link.href = imgData;
-            link.download = "card_with_bleed.png"; // Set the filename for the downloaded image
-
-            // Trigger the download
-            link.click();
-        });
-    });
-    
-    </script>
     
 
     <!-- Library Scripts -->

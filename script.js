@@ -2111,6 +2111,7 @@ picCardImgSizer.addEventListener('input', function() {
             picCardImgStyles.style.top = '0';
             picCardImgAdjuster.value = 0;
             picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
+            mirrorPicCardBtn.innerText = "Mirror: Off";
             
 
             
@@ -2129,6 +2130,7 @@ picCardImgSizer.addEventListener('input', function() {
             picImageContainer.style.minHeight = "50%";
             picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
             picImageContainer.style.minHeight = picCardImgSizer.value + '%';
+            mirrorPicCardBtn.innerText = "Mirror: On";
             
         }
         updateJokerDisplay();
@@ -2145,9 +2147,11 @@ picCardImgSizer.addEventListener('input', function() {
         if (isPicCardBordered) {
             pictureContainer.classList.add('borderless');
             isPicCardBordered = false;
+            borderPicCardBtn.innerText = "Border: Off";
         } else if (!isPicCardBordered) {
             pictureContainer.classList.remove('borderless');
             isPicCardBordered = true;
+            borderPicCardBtn.innerText = "Border: On";
         }
     }
 
@@ -2162,7 +2166,24 @@ picCardImgSizer.addEventListener('input', function() {
         picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
         switchToFront();
     });
- 
+
+    const bleedBtn = document.getElementById('bleedBtn');
+    let bleedMargin = 36;
+    let isBleedOn = true;
+    bleedBtn.addEventListener('click', function() {
+        if (isBleedOn) {
+            bleedBtn.innerText = "Bleed: Off";
+            bleedBtn.classList.add('bleed-off');
+            isBleedOn = false;
+            bleedMargin = 0;
+        } else {
+            bleedBtn.innerText = "Bleed: On";
+            bleedBtn.classList.remove('bleed-off');
+            isBleedOn = true;
+            bleedMargin = 36;
+        }
+    });
+            
     const zip = new JSZip();
     const deckFolder = zip.folder('deck-images');
 
@@ -2224,7 +2245,6 @@ picCardImgSizer.addEventListener('input', function() {
                     useCORS: true,
                     allowTaint: true,
                 }).then((canvas) => {
-                    const bleedMargin = 36;
                     const newCanvas = document.createElement("canvas");
                     newCanvas.width = canvas.width + bleedMargin * 2;
                     newCanvas.height = canvas.height + bleedMargin * 2;
@@ -2275,7 +2295,7 @@ picCardImgSizer.addEventListener('input', function() {
                     useCORS: true,
                     allowTaint: true,
                 }).then((canvas) => {
-                    const bleedMargin = 36;
+                    
                     const newCanvas = document.createElement("canvas");
                     newCanvas.width = canvas.width + bleedMargin * 2;
                     newCanvas.height = canvas.height + bleedMargin * 2;
@@ -2329,7 +2349,6 @@ picCardImgSizer.addEventListener('input', function() {
                     useCORS: true,
                     allowTaint: true,
                 }).then((canvas) => {
-                    const bleedMargin = 36;
                     const newCanvas = document.createElement("canvas");
                     newCanvas.width = canvas.width + bleedMargin * 2;
                     newCanvas.height = canvas.height + bleedMargin * 2;
@@ -2381,7 +2400,6 @@ picCardImgSizer.addEventListener('input', function() {
                     useCORS: true,
                     allowTaint: true,
                 }).then((canvas) => {
-                    const bleedMargin = 36;
                     const newCanvas = document.createElement("canvas");
                     newCanvas.width = canvas.width + bleedMargin * 2;
                     newCanvas.height = canvas.height + bleedMargin * 2;
@@ -2407,7 +2425,6 @@ picCardImgSizer.addEventListener('input', function() {
                         useCORS: true,
                         allowTaint: true,
                     }).then((canvas) => {
-                        const bleedMargin = 36;
                         const newCanvas = document.createElement("canvas");
                         newCanvas.width = canvas.width + bleedMargin * 2;
                         newCanvas.height = canvas.height + bleedMargin * 2;
@@ -2424,6 +2441,53 @@ picCardImgSizer.addEventListener('input', function() {
         }
 
     });
+    document.getElementById("downloadBtn").addEventListener('click', () => {
+        console.log("Download button clicked!");
+
+        // Get the content of the card element
+        const cardElement = document.getElementById("card");
+
+        const originalStyle = cardElement.style.overflow;
+        cardElement.style.overflow = "visible";
+
+        // Use html2canvas to render the card element as an image
+        html2canvas(cardElement, {
+            scale: 3,
+            useCORS: true,
+            
+            allowTaint: true,
+            
+        }).then((canvas) => {
+            // Restore the original styles
+            cardElement.style.overflow = originalStyle;
+
+            // Create a new canvas with extra space for the bleed margin
+            
+            const newCanvas = document.createElement("canvas");
+            newCanvas.width = canvas.width + bleedMargin * 2;
+            newCanvas.height = canvas.height + bleedMargin * 2;
+
+            const ctx = newCanvas.getContext("2d");
+
+            // Fill the background with white (optional, for transparency handling)
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+            // Draw the original canvas onto the new canvas with the bleed margin
+            ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
+            // Convert the new canvas to a data URL
+            const imgData = newCanvas.toDataURL("image/png");
+
+            // Create a temporary link element
+            const link = document.createElement("a");
+            link.href = imgData;
+            link.download = "card_with_bleed.png"; // Set the filename for the downloaded image
+
+            // Trigger the download
+            link.click();
+        });
+    });
 
     
     // Features to add next: -------------------------------
@@ -2434,8 +2498,8 @@ picCardImgSizer.addEventListener('input', function() {
     // fix Joker sizing and mirror flex issues
     // fix ace largemode issues
     // x
-    // remove scrollbar from pictureImageContainer
-    // add bleed margin option toggle to download all
+    // X
+    // X
     // make html canvas solo function for download all
     // x
     // sort font options
