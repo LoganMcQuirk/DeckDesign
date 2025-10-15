@@ -1420,13 +1420,20 @@ function switchToFront() {
             AceIcon.style.display = 'none';
             picCardImage2.style.display = 'none';
             picCardImage.style.display = 'block';
+            picCardImgStyles.style.top = 0;
+            picCardImgStyles2.style.bottom = 0;
+            
+
         } else {
             // Not Joker: set color based on hovered button's suit
             isJokerActive = false;
             picCardImage2.style.display = mirrorState;
+            console.log("Mirror State: " + mirrorState);
+            picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
+            picCardImgStyles2.style.bottom = picCardImgAdjuster.value + 'px';
             // Example: map hoveredBtnIndex to suit
             if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(hoveredBtnIndex)) {
-                // Use your own mapping logic for suit
+                
                 color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
                 
             }
@@ -2124,7 +2131,7 @@ picCardImgSizer.addEventListener('input', function() {
             picImageContainer.style.minHeight = picCardImgSizer.value + '%';
             
         }
-        
+        updateJokerDisplay();
 
     }
 
@@ -2147,8 +2154,11 @@ picCardImgSizer.addEventListener('input', function() {
     const picCardImgAdjusterDisplay = document.getElementById('pic-card-adjuster-display');
 
     picCardImgAdjuster.addEventListener('input', function() {
-        picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
-        picCardImgStyles2.style.bottom = picCardImgAdjuster.value + 'px';
+        
+        if (selectedCardClass !== "?") {
+            picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
+            picCardImgStyles2.style.bottom = picCardImgAdjuster.value + 'px';
+        }
         picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
         switchToFront();
     });
