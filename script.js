@@ -1463,21 +1463,34 @@ function switchToFront() {
 
 
 // Change Color of text                      -----------------------------------------------------------------------------------
+let suitClassColor = redSuitColor;
+
+
+
 
 function applySuitColor() { 
     if (currentSuit === "diamond" || currentSuit === "heart") {
         cardImageFront.classList.add('red-suit-color');
+        suitClassColor = redSuitColor;
     } else if (currentSuit === "club" || currentSuit === "spade") {
         cardImageFront.classList.remove('red-suit-color');
+        suitClassColor = blackSuitColor;
     } 
     if (selectedCardClass === "?") {
         cardImageFront.classList.add('joker-text');
         cardImageFront.classList.remove('red-suit-color');
+        suitClassColor = blackSuitColor;
+
     } else {
         cardImageFront.classList.remove('joker-text'); 
     }
-}
 
+    defineSuitColour();
+}
+function defineSuitColour() {
+    cardImageFront.style.color = suitClassColor;
+    console.log("Suit color applied: " + suitClassColor);
+    }
 // Control size of card front icons for suits and card identity -----------------------------------------------------------------------
     
     
@@ -2033,22 +2046,19 @@ fontSelect.addEventListener('change', function() {
         }
     }
 
-    const suitColorPicker = document.getElementById('color-select');
-    let suitColorValue = null;
+    const fontColorPicker = document.getElementById('font-color-select');
     
-    suitColorPicker.addEventListener('input', function() {
-        suitColorValue = this.value;
+    
+    fontColorPicker.addEventListener('input', function() {
+        redSuitColor = fontColorPicker.value;
+        console.log(fontColorPicker.value);
         applySuitColor();
+        defineSuitColour();
         updateJokerDisplay();
-        updateRedSuitColor();
+        console.log("Suit color changed to: " + redSuitColor);
     });
    
-    function updateRedSuitColor() {
-        cardImageFront.style.color = suitColorValue;
-        document.querySelectorAll('#front-layout .corner-class').forEach(el => {
-    el.style.color = suitColorValue;
-    });
-    }
+    
     
 
     const uploadTabBtns = document.querySelectorAll("button.upload-tab-btn");
