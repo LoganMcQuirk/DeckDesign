@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 // Card flipping and switching view functions -----------------------------------------------------------------------------------------   
-   // NEED TO ADD ANIMATION TO FLIP FOR SATISFYING 3D EFFECT
+  
 
 function switchToFront() {
         cardSideBtn = cardBackBtn;
@@ -1467,19 +1467,14 @@ function switchToFront() {
 function applySuitColor() { 
     if (currentSuit === "diamond" || currentSuit === "heart") {
         cardImageFront.classList.add('red-suit-color');
-        cardImageFront.classList.remove('black-suit-color');
-        
     } else if (currentSuit === "club" || currentSuit === "spade") {
-        cardImageFront.classList.add('black-suit-color');
         cardImageFront.classList.remove('red-suit-color');
     } 
-    
     if (selectedCardClass === "?") {
         cardImageFront.classList.add('joker-text');
         cardImageFront.classList.remove('red-suit-color');
     } else {
-        cardImageFront.classList.remove('joker-text');
-        
+        cardImageFront.classList.remove('joker-text'); 
     }
 }
 
@@ -1529,7 +1524,7 @@ function applySuitColor() {
         const iconColumnMiddle = document.getElementById("iconColumnMiddle");
         const iconColumnRight = document.getElementById("iconColumnRight");
 
-        const overlapOffset = parseInt(iconNormalHeight) / 2; // Adjust overlap based on icon size
+        const overlapOffset = parseInt(iconNormalHeight) / 2; 
         iconColumnLeft.style.left = `${32 - overlapOffset}px`;
         iconColumnRight.style.right = `${32 - overlapOffset}px`;
 
@@ -1823,51 +1818,51 @@ function UPLOADJACKDIAMONDS() {
     if (jackDiamondsUpload.files && jackDiamondsUpload.files[0]) {
         const file = jackDiamondsUpload.files[0];
 
-        // Check if it's an image file
+        
         if (!file.type.startsWith("image/")) {
             alert("Please upload a valid image file.");
             return;
         }
-        const reader = new FileReader(); // Create a new FileReader object
-        // Function to run when the file is read
+        const reader = new FileReader(); 
+        
         reader.onload = function(e) {
-            // Set the card back image to the uploaded image
-            jackImageDiamond = e.target.result; // e.target.result contains the image data URL
-            console.log("Uploaded image set as Jack", e.target.result); // Debugging output
-            picCardImage.src = jackImage; // Update the picture card image
-            picCardImage2.src = jackImage; // Update the second picture card image
-            updatePicCardImage(); // Update the picture card image
+            
+            jackImageDiamond = e.target.result;
+            console.log("Uploaded image set as Jack", e.target.result); 
+            picCardImage.src = jackImage; 
+            picCardImage2.src = jackImage; 
+            updatePicCardImage(); 
         };
 
-        // Read the uploaded image as a data URL
+        
         reader.readAsDataURL(file);
     } else {
-        console.error("No file was selected for upload."); // Debugging output
+        console.error("No file was selected for upload.");
     }
 }
 function UPLOADJACKHEARTS() {
     if (jackHeartsUpload.files && jackHeartsUpload.files[0]) {
         const file = jackHeartsUpload.files[0];
 
-        // Check if it's an image file
+        
         if (!file.type.startsWith("image/")) {
             alert("Please upload a valid image file.");
             return;
         }
-        const reader = new FileReader(); // Create a new FileReader object
-        // Function to run when the file is read
+        const reader = new FileReader();
+        
         reader.onload = function(e) {
-            // Set the card back image to the uploaded image
-            jackImageHeart = e.target.result; // e.target.result contains the image data URL
-            console.log("Uploaded image set as Jack", e.target.result); // Debugging output
+            
+            jackImageHeart = e.target.result; 
+            console.log("Uploaded image set as Jack", e.target.result); 
 
-            updatePicCardImage(); // Update the picture card image
+            updatePicCardImage(); 
         };
 
-        // Read the uploaded image as a data URL
+        
         reader.readAsDataURL(file);
     } else {
-        console.error("No file was selected for upload."); // Debugging output
+        console.error("No file was selected for upload."); 
     }
 }
 function UPLOADJACKCLUBS() {
@@ -1945,7 +1940,7 @@ function UPLOADJOKER() {
 
     function updatePicCardImage() {
         
-    // Update the picture card image based on the selected suit
+    // Update the picture card image based on selected suit
     if (currentSuit === "diamond") {
             kingImage = kingImageDiamond;
             queenImage = queenImageDiamond;
@@ -1963,7 +1958,7 @@ function UPLOADJOKER() {
             jackImage = jackImageSpade;
             queenImage = queenImageSpade;
         } 
-    // Set the image source based on the selected card class
+    // Set image source based on selected class
 
     if (selectedCardClass === "J") {      
 
@@ -2037,6 +2032,24 @@ fontSelect.addEventListener('change', function() {
             });
         }
     }
+
+    const suitColorPicker = document.getElementById('color-select');
+    let suitColorValue = null;
+    
+    suitColorPicker.addEventListener('input', function() {
+        suitColorValue = this.value;
+        applySuitColor();
+        updateJokerDisplay();
+        updateRedSuitColor();
+    });
+   
+    function updateRedSuitColor() {
+        cardImageFront.style.color = suitColorValue;
+        document.querySelectorAll('#front-layout .corner-class').forEach(el => {
+    el.style.color = suitColorValue;
+    });
+    }
+    
 
     const uploadTabBtns = document.querySelectorAll("button.upload-tab-btn");
 const picCardUploads = [
@@ -2183,6 +2196,8 @@ picCardImgSizer.addEventListener('input', function() {
             bleedMargin = 36;
         }
     });
+
+    // Download All Cards as ZIP -----------------------------------------------------------------------------------
             
     const zip = new JSZip();
     const deckFolder = zip.folder('deck-images');
@@ -2237,9 +2252,9 @@ picCardImgSizer.addEventListener('input', function() {
                     IconLayoutPicture("Q");
                 } else if (i === 13) {
                     IconLayoutPicture("K");
-                } 
+                }
 
-                // Render the card with html2canvas
+                
                 await html2canvas(card, {
                     scale: 3,
                     useCORS: true,
@@ -2444,24 +2459,22 @@ picCardImgSizer.addEventListener('input', function() {
     document.getElementById("downloadBtn").addEventListener('click', () => {
         console.log("Download button clicked!");
 
-        // Get the content of the card element
+       
         const cardElement = document.getElementById("card");
 
         const originalStyle = cardElement.style.overflow;
         cardElement.style.overflow = "visible";
 
-        // Use html2canvas to render the card element as an image
+        
         html2canvas(cardElement, {
             scale: 3,
             useCORS: true,
-            
             allowTaint: true,
-            
         }).then((canvas) => {
             // Restore the original styles
             cardElement.style.overflow = originalStyle;
 
-            // Create a new canvas with extra space for the bleed margin
+            
             
             const newCanvas = document.createElement("canvas");
             newCanvas.width = canvas.width + bleedMargin * 2;
@@ -2469,22 +2482,22 @@ picCardImgSizer.addEventListener('input', function() {
 
             const ctx = newCanvas.getContext("2d");
 
-            // Fill the background with white (optional, for transparency handling)
+            
             ctx.fillStyle = "white";
             ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-            // Draw the original canvas onto the new canvas with the bleed margin
+            
             ctx.drawImage(canvas, bleedMargin, bleedMargin);
 
-            // Convert the new canvas to a data URL
+            
             const imgData = newCanvas.toDataURL("image/png");
 
-            // Create a temporary link element
+            
             const link = document.createElement("a");
             link.href = imgData;
-            link.download = "card_with_bleed.png"; // Set the filename for the downloaded image
+            link.download = "card_with_bleed.png"; 
 
-            // Trigger the download
+            
             link.click();
         });
     });
