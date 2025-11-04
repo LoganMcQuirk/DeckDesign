@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
     const AdjusterLabels = document.getElementById('adjusterLabels');
-    
+
 //Back designer TOGGLE VIEW
     toggleBackBtn.addEventListener('click', function() {
         if (editBack.style.display === "none") {
@@ -806,11 +806,13 @@ function switchToFront() {
             switchToFront();
             applySuitColor();
             updateJokerDisplay();
+            updatePictureBorder();
         });
         button.addEventListener('mouseleave', function() {
             showSelectedIconLayout();
             applySuitColor();
             updateJokerDisplay();
+            updatePictureBorder();
             
         });
     });
@@ -1387,20 +1389,21 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         // AceIcon.style.top = iconSizeControl.value * -0.5 + 202 + 'px';
         pictureCardLayout.style.display = 'flex';
-        if (pictureCardIdentity === "?") {
-            pictureContainer.classList.add('borderless');
-        } else if (!isPicCardBordered) {
-            pictureContainer.classList.add('borderless');
-        } else if (isPicCardBordered) {
-            pictureContainer.classList.remove('borderless');
-        } else  {
-            pictureContainer.classList.remove('borderless');
-        }
+        // if (pictureCardIdentity === "?") {
+        //     pictureContainer.classList.add('borderless');
+        // } else if (!isPicCardBordered) {
+        //     pictureContainer.classList.add('borderless');
+        // } else if (isPicCardBordered) {
+        //     pictureContainer.classList.remove('borderless');
+        // } else  {
+        //     pictureContainer.classList.remove('borderless');
+        // }
         
        
         applySuitColor();
         updateJokerDisplay();
         updatePicCardImage();
+        updatePictureBorder();
     }
 
     
@@ -1421,7 +1424,8 @@ function switchToFront() {
             
             isJokerActive = true;
             color = blackSuitColor;
-            pictureContainer.classList.add('borderless');
+            // pictureContainer.classList.add('borderless');
+            updatePictureBorder();
             selectedCardClass = '?';
             AceIcon.style.display = 'none';
             picCardImage2.style.display = 'none';
@@ -1443,7 +1447,8 @@ function switchToFront() {
                 color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
                 
             }
-            pictureContainer.classList.remove('borderless');
+            // pictureContainer.classList.remove('borderless');
+            updatePictureBorder();
         }
     } else {
         // No hover: use selected
@@ -2180,6 +2185,18 @@ picCardImgSizer.addEventListener('input', function() {
             borderPicCardBtn.innerText = "Border: On";
         }
     }
+    function updatePictureBorder() {
+    
+    if (selectedCardClass === '?') {
+        pictureContainer.classList.add('borderless');
+    } else if (!isPicCardBordered) {
+        
+        pictureContainer.classList.add('borderless');
+    } else {
+        
+        pictureContainer.classList.remove('borderless');
+    }
+}
 
     const picCardImgAdjusterDisplay = document.getElementById('pic-card-adjuster-display');
 
