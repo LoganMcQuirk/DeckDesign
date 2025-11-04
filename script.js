@@ -179,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
     const AdjusterLabels = document.getElementById('adjusterLabels');
+    
 //Back designer TOGGLE VIEW
     toggleBackBtn.addEventListener('click', function() {
         if (editBack.style.display === "none") {
@@ -236,9 +237,6 @@ function switchToFront() {
         cardSideBtn = cardBackBtn;
         cardNotSide = cardFrontBtn;
 
-        // cardFrontBtn.style.display = 'none';
-        // cardBackBtn.style.display = 'block';
-
         cardBorderDiv.style.display = 'none';
         backContainer.style.display = 'none';
 
@@ -271,11 +269,6 @@ function switchToFront() {
     function switchToBack() {
         cardSideBtn = cardFrontBtn;
         cardNotSide = cardBackBtn;
-
-        // cardBackBtn.style.display = 'none';
-        // cardFrontBtn.style.display = 'block';
-
-        // cardBorderDiv.style.display = 'block';
         backContainer.style.display = 'flex';
 
         cardImageBack.src = cardBackCurrentImage;
@@ -324,9 +317,6 @@ function switchToFront() {
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
-        // document.querySelectorAll('.corner-class').forEach(el => {
-        //         el.style.fontFamily = `"Flavors", sans-serif`;
-        // });
         
     });
     preset3Btn.addEventListener('click', function() {
@@ -343,22 +333,19 @@ function switchToFront() {
         if (backsideUpload.files && backsideUpload.files[0]) {
             const file = backsideUpload.files[0];
             
-
-            // Check if it's an image file
             if (!file.type.startsWith("image/")) {
                 alert("Please upload a valid image file.");
                 return;
             }
 
-            const reader = new FileReader(); // Create a new FileReader object
+            const reader = new FileReader();
 
             // Function to run when the file is read
             reader.onload = function(e) {
                 // Set the card back image to the uploaded image
-                cardBackCurrentImage = e.target.result; // e.target.result contains the image data URL
-                console.log("Uploaded image set as card back", e.target.result); // Debugging output
+                cardBackCurrentImage = e.target.result; 
                 CoverModeON();
-                switchToBack(); // Optionally, switch the preview to show the back side
+                switchToBack();
                 
             };
 
@@ -416,7 +403,7 @@ function switchToFront() {
             cardImageBorderRadius = (borderSliderValue*1) + 8;
         }
         cardImageBack.style.borderWidth = borderSliderValue + 'px';
-        // cardImageBack.style.borderRadius = cardImageBorderRadius + 'px';
+        
         cardBorderDiv.style.borderWidth = borderSliderValue + 'px';
         cardBorderDiv.style.borderRadius = cardImageBorderRadius + 'px';
         backContainer.style.borderWidth = borderSliderValue + 'px';
@@ -465,7 +452,7 @@ function switchToFront() {
     let changeSuitUnconditally = false;
 
     diamondUpload.addEventListener('change', function(event) {
-        // Check if a file has been uploaded
+        
         UPLOADICONDIAMOND();
     });
     function UPLOADICONDIAMOND() {
@@ -499,7 +486,7 @@ function switchToFront() {
 
     
     heartUpload.addEventListener('change', function(event) {
-        // Check if a file has been uploaded
+        
         UPLOADICONHEART();
     });
     function UPLOADICONHEART() {
@@ -533,7 +520,7 @@ function switchToFront() {
 
     // CLUB UPLOAD
     clubUpload.addEventListener('change', function(event) {
-        // Trigger the club upload handler
+        
         UPLOADICONCLUB();
     });
     function UPLOADICONCLUB() {
@@ -566,7 +553,7 @@ function switchToFront() {
     }
 
     spadeUpload.addEventListener('change', function(event) {
-        // Trigger the spade upload handler
+        
         UPLOADICONSPADE();
     });
     
@@ -2179,9 +2166,6 @@ picCardImgSizer.addEventListener('input', function() {
 
     }
 
-
-    // const picContainer = document.getElementById("picture-container");
-
     borderPicCardBtn.addEventListener('click', function() { 
         BorderPicCardToggle();
     });
@@ -2245,8 +2229,6 @@ picCardImgSizer.addEventListener('input', function() {
             await cycleClubs();
             await cycleSpades();
             
-
-            // Generate and download the zip after all cards are added
             zip.generateAsync({ type: "blob" }).then(function(content) {
                 saveAs(content, "deck-images.zip");
             });
@@ -2500,7 +2482,7 @@ picCardImgSizer.addEventListener('input', function() {
             useCORS: true,
             allowTaint: true,
         }).then((canvas) => {
-            // Restore the original styles
+            
             cardElement.style.overflow = originalStyle;
 
             
@@ -2520,8 +2502,6 @@ picCardImgSizer.addEventListener('input', function() {
 
             
             const imgData = newCanvas.toDataURL("image/png");
-
-            
             const link = document.createElement("a");
             link.href = imgData;
             link.download = "card_with_bleed.png"; 
