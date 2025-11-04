@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const picCardImageSizeDisplay = document.getElementById("pic-card-sizer-display");
     
-    
+    let downloadInProgress = false;
     
     document.getElementById("diamondBtn").addEventListener('click', function() {
         changeSuitDiamonds();
@@ -1464,6 +1464,17 @@ function switchToFront() {
             applyMirrorState();
             pictureContainer.classList.remove('borderless');
             color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
+        } 
+        
+        if (selectedCardClass === '?') {
+            isJokerActive = true;
+            color = blackSuitColor;
+            pictureContainer.classList.add('borderless');
+            removeMirrorState();
+        } else if (downloadInProgress) {
+            applyMirrorState();
+            pictureContainer.classList.remove('borderless');
+            color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
         }
     }
 
@@ -1521,9 +1532,6 @@ function defineSuitColour() {
             tallyIconStyle5b.marginTop = 0;
         }
 
-        
-            
-        
     }
     
     
@@ -2248,8 +2256,9 @@ picCardImgSizer.addEventListener('input', function() {
     }
 
     document.getElementById('downloadAllBtn').addEventListener('click', () => {
-        
+        downloadInProgress = true;
         (async function downloadAllCards() {
+
             await cycleSuitless();
             await cycleDiamonds();
             await cycleHearts();
@@ -2258,11 +2267,13 @@ picCardImgSizer.addEventListener('input', function() {
             
             zip.generateAsync({ type: "blob" }).then(function(content) {
                 saveAs(content, "deck-images.zip");
+                downloadInProgress = false;
             });
         })();
 
         async function cycleDiamonds() { 
             changeSuitDiamonds();
+            suitClassColor = redSuitColor;
             for (let i = 1; i < 14; i++) {
                 if (i === 1) {
                     IconLayout1();
