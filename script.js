@@ -896,6 +896,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
 
     }
     
@@ -935,6 +937,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     eightButton.addEventListener('mouseenter', function() {
@@ -972,6 +976,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     sevenButton.addEventListener('mouseenter', function() {
@@ -1014,6 +1020,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     sixButton.addEventListener('mouseenter', function() {
@@ -1056,6 +1064,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     fiveButton.addEventListener('mouseenter', function() {
@@ -1099,6 +1109,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     fourButton.addEventListener('mouseenter', function() {
@@ -1142,6 +1154,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
     threeButton.addEventListener('mouseenter', function() {
         IconLayout3();
@@ -1185,6 +1199,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
 
     }
     twoButton.addEventListener('mouseenter', function() {
@@ -1231,6 +1247,8 @@ function switchToFront() {
         AceIcon.style.display = 'none';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "100%";
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     aceButton.addEventListener('mouseenter', function() {
@@ -1238,8 +1256,7 @@ function switchToFront() {
         switchToFront();
         applySuitColor();
         updateJokerDisplay();
-        
-        
+
     });
     function IconLayout1() { 
         selectedCardClass = 1;
@@ -1276,7 +1293,8 @@ function switchToFront() {
         tallyLayout.style.display = 'flex';
         pictureCardLayout.style.display = 'none';
         tallyLayout.style.width = "auto";
-        
+        applySuitColor();
+        updateJokerDisplay();
     }
 
     
@@ -1376,7 +1394,7 @@ function switchToFront() {
                 cornerImage.style.display = "none";
                 cardImageFront.classList.add('joker-text');
             }
-            updateJokerDisplay();
+            
             
         
         AceIcon.style.display = 'none';
@@ -1393,7 +1411,8 @@ function switchToFront() {
         }
         
        
-
+        applySuitColor();
+        updateJokerDisplay();
         updatePicCardImage();
     }
 
@@ -2526,7 +2545,7 @@ picCardImgSizer.addEventListener('input', function() {
     // make html canvas solo function for download all
     // x
     // sort font options
-    // sort font colour change options
+    // x
     // sort borderless toggle override
     // add joker to download all
 
