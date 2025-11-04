@@ -1426,6 +1426,7 @@ function switchToFront() {
             color = blackSuitColor;
             // pictureContainer.classList.add('borderless');
             updatePictureBorder();
+            removeMirrorState();
             selectedCardClass = '?';
             AceIcon.style.display = 'none';
             picCardImage2.style.display = 'none';
@@ -1439,6 +1440,7 @@ function switchToFront() {
             isJokerActive = false;
             picCardImage2.style.display = mirrorState;
             console.log("Mirror State: " + mirrorState);
+            
             picCardImgStyles.style.top = picCardImgAdjuster.value + 'px';
             picCardImgStyles2.style.bottom = picCardImgAdjuster.value + 'px';
             // Example: map hoveredBtnIndex to suit
@@ -1449,6 +1451,7 @@ function switchToFront() {
             }
             // pictureContainer.classList.remove('borderless');
             updatePictureBorder();
+            applyMirrorState();
         }
     } else {
         // No hover: use selected
@@ -1456,7 +1459,9 @@ function switchToFront() {
             isJokerActive = true;
             color = blackSuitColor;
             pictureContainer.classList.add('borderless');
+            removeMirrorState();
         } else {
+            applyMirrorState();
             pictureContainer.classList.remove('borderless');
             color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
         }
@@ -2134,11 +2139,9 @@ picCardImgSizer.addEventListener('input', function() {
     function MirrorPicCardToggle() {
 
         if (isPicCardMirrored) {
-            picCardImage2.style.display = 'none';
+            
             isPicCardMirrored = false;
-            mirrorState = 'none';
-            picImageContainer.style.justifyContent = 'center';
-            picImageContainer2.style.minHeight = '0%';
+            removeMirrorState();
             
             picCardImgAdjuster.style.display = 'none';
             AdjusterLabels.style.display = 'none';
@@ -2146,16 +2149,11 @@ picCardImgSizer.addEventListener('input', function() {
             picCardImgAdjuster.value = 0;
             picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
             mirrorPicCardBtn.innerText = "Mirror: Off";
-            
-
-            
 
         } else if (!isPicCardMirrored) {
-            picCardImage2.style.display = 'block';
-            isPicCardMirrored = true;
-            mirrorState = 'block';
-            picImageContainer.style.justifyContent = 'flex-end';
             
+            isPicCardMirrored = true;
+            applyMirrorState();
 
             picCardImgAdjuster.style.display = 'block';
             AdjusterLabels.style.display = 'block';
@@ -2168,7 +2166,19 @@ picCardImgSizer.addEventListener('input', function() {
             
         }
         updateJokerDisplay();
-
+    }
+    function removeMirrorState() {
+        picCardImage2.style.display = 'none';
+        mirrorState = 'none';
+        picImageContainer.style.justifyContent = 'center';
+        picImageContainer2.style.minHeight = '0%';
+    }
+    function applyMirrorState() {
+        if (isPicCardMirrored) {
+            picCardImage2.style.display = 'block';
+            mirrorState = 'block';
+            picImageContainer.style.justifyContent = 'flex-end';
+        }
     }
 
     borderPicCardBtn.addEventListener('click', function() { 
