@@ -699,6 +699,8 @@ img.back-image#card-image-back {
 .corner-class {
     /* color: rgb(0, 0, 0);  */
     font-family: Solway, sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    z-index:103
 }
 
 #card img.corner-suit {
@@ -866,8 +868,8 @@ div#pictureImage2-container.pic-img-container {
     top: unset;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
+    
     
 }
 div#pictureImage1-container.pic-img-container {
@@ -1075,16 +1077,25 @@ button.bleed-btn {
     
     transition: background-color 0.3s;
 }
-button.bleed-btn.bleed-off {
+button.bleed-btn.bleed-off, button.toggle-button.toggle-off {
     background-color: #ff1e1e;
     color: white;
 }
-button.bleed-btn:hover {
+button.bleed-btn:hover, button.toggle-button:hover {
     background-color: #272727;
 }
-button.bleed-btn.bleed-off:hover {
+button.bleed-btn.bleed-off:hover, button.toggle-button.toggle-off:hover {
     background-color: #cc0000;
     color: white;
+}
+button.toggle-button {
+    background-color: #333;
+    color: #ffffff;
+    border: 2px #ff1e1e solid;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 #deck-preview {

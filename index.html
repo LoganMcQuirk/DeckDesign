@@ -20,8 +20,6 @@
 
     <header>
         <img src="images/Deck-design-visuals.png" style=" margin-top: -30px; margin-bottom: -30px;">
-        
-        
     </header>
 
     <!-- Main Content Section -->
@@ -34,8 +32,7 @@
                     <h2>Back of Card</h2>
                     <button class="editButton" id="editBackBtn">Edit</button>
                 </div>
-                <div id="editBack" class="minimise">
-                     
+                <div id="editBack" class="minimise">     
                     <div id="backside-presets">
                         <h3>Choose a Preset:</h3>
                         <button class="preset-option">Preset 1</button>
@@ -51,7 +48,6 @@
                     <label for="border-control">Border Thickness</label>
                     <input type="range" min="0" max="44" value="8" id="border-control">
                     <label for="color-select">Choose Background Colour:</label><input id="color-select" type="color">
-                    
                 </div>        
             </section>
 
@@ -133,7 +129,7 @@
                         <option value="default">Default</option>
                         
                     </select>
-                    <label for="font-color-select">Choose Colour:</label>
+                    <label for="font-color-select">Choose Hearts/Diamonds Font Colour:</label>
                     <input id="font-color-select" type="color">
                 </div>
             </section>
@@ -242,8 +238,8 @@
                     </div>
                     
                     <div id="mirror-btns">
-                        <button id="MirrorBtn" type="button" class="preset-option">Mirror: On</button>
-                        <button id="BorderPicBtn" type="button" class="preset-option">Border: On</button>
+                        <button id="MirrorBtn" type="button" class="toggle-button">Mirror: On</button>
+                        <button id="BorderPicBtn" type="button" class="toggle-button">Border: On</button>
                     </div>
                     <div class="labelContainer"><label for="picCardImgSizer">Image Size:</label><p id="pic-card-sizer-display">50</p></div>
                     <input type="range" min="24" max="123" value="74" step="1" id="picCardImgSizer">

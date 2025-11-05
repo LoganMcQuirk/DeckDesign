@@ -774,14 +774,7 @@ function switchToFront() {
     const jokerButton = classBtns[13];
     
 
-    classBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            // Reset all buttons to default state
-            classBtns.forEach(btn => btn.classList.remove('selected'));
-            // Add 'selected' class to the clicked button
-            button.classList.add('selected');
-        });
-    });
+
 
     let hoveredBtnIndex = null;
 
@@ -797,8 +790,12 @@ function switchToFront() {
         button.addEventListener('click', function() {
             classBtns.forEach(btn => btn.classList.remove('selected'));
             button.classList.add('selected');
+            if (idx === 13) {
+                selectedCardClass = "?";
+            }
             updateJokerDisplay();
         });
+
     });
 
     classBtns.forEach(button => {
@@ -1324,6 +1321,7 @@ function switchToFront() {
         selectedCardClass = '?';
         cardIdentP.innerHTML = selectedCardClass;
         updatePicCardImage("?");
+        isJokerActive = true;
     });
     jokerButton.addEventListener('mouseleave', function() {
         applySuitColor();
@@ -1380,7 +1378,7 @@ function switchToFront() {
                 pictureImage.classList.add('king');
             } else if (pictureCardIdentity === "?") {
                 selectedCardClass = "?";
-                cornerImage.style.display = "none";
+                // cornerImage.style.display = "none";
                 cardImageFront.classList.add('joker-text');
             }
             
@@ -1405,10 +1403,10 @@ function switchToFront() {
         updatePicCardImage();
         updatePictureBorder();
     }
-
+    
     
     function updateJokerDisplay() {
-
+        
         
     const cornerPs = document.querySelectorAll('.corner-class');
     const cornerIcons = document.querySelectorAll('.icon.corner-suit');
@@ -1420,7 +1418,8 @@ function switchToFront() {
 
     if (hoveredBtnIndex !== null) {
         // If hovering Joker
-        if (hoveredBtnIndex === jokerBtnIndex) {
+        if (hoveredBtnIndex === jokerBtnIndex || isJokerActive) {
+            pictureCardLayout.style.display = 'flex';
             
             isJokerActive = true;
             color = blackSuitColor;
@@ -1456,7 +1455,13 @@ function switchToFront() {
     } else {
         // No hover: use selected
         if (classBtns[jokerBtnIndex].classList.contains('selected')) {
+            pictureCardLayout.style.display = 'flex';
+            picCardImage.src = jokerImage;
             isJokerActive = true;
+            AceIcon.style.display = 'none';
+            picCardImage.style.display = 'block';
+            picCardImgStyles.style.top = 0;
+            picCardImgStyles2.style.bottom = 0;
             color = blackSuitColor;
             pictureContainer.classList.add('borderless');
             removeMirrorState();
@@ -1467,13 +1472,19 @@ function switchToFront() {
         } 
         
         if (selectedCardClass === '?') {
+            pictureCardLayout.style.display = 'flex';
+            picCardImage.src = jokerImage;
             isJokerActive = true;
+            AceIcon.style.display = 'none';
+            picCardImage.style.display = 'block';
+            picCardImgStyles.style.top = 0;
+            picCardImgStyles2.style.bottom = 0;
             color = blackSuitColor;
-            pictureContainer.classList.add('borderless');
+            updatePictureBorder();
             removeMirrorState();
         } else if (downloadInProgress) {
             applyMirrorState();
-            pictureContainer.classList.remove('borderless');
+            updatePictureBorder
             color = (currentSuit === "diamond" || currentSuit === "heart") ? redSuitColor : blackSuitColor;
         }
     }
@@ -1489,7 +1500,7 @@ function switchToFront() {
     }
 
 
-// Change Color of text                      -----------------------------------------------------------------------------------
+// Change Color of text -----------------------------------------------------------------------------------
 let suitClassColor = redSuitColor;
 
 
@@ -1516,7 +1527,7 @@ function applySuitColor() {
 }
 function defineSuitColour() {
     cardImageFront.style.color = suitClassColor;
-    console.log("Suit color applied: " + suitClassColor);
+    
     }
 // Control size of card front icons for suits and card identity -----------------------------------------------------------------------
     
@@ -2110,13 +2121,16 @@ picCardImgSizer.addEventListener('input', function() {
     picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
      
     if (isPicCardMirrored) {
+        
         applyMirrorState();
+        updateJokerDisplay();
+        
     } else if (!isPicCardMirrored) {
         removeMirrorState();
     }
     picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -23;
     switchToFront();
-    
+    updatePictureBorder();
     
 });
 
@@ -2155,6 +2169,7 @@ picCardImgSizer.addEventListener('input', function() {
             picCardImgAdjuster.value = 0;
             picCardImgAdjusterDisplay.innerHTML = picCardImgAdjuster.value;
             mirrorPicCardBtn.innerText = "Mirror: Off";
+            mirrorPicCardBtn.classList.add('toggle-off');
 
         } else if (!isPicCardMirrored) {
             
@@ -2169,6 +2184,7 @@ picCardImgSizer.addEventListener('input', function() {
             picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
             picImageContainer.style.minHeight = picCardImgSizer.value + '%';
             mirrorPicCardBtn.innerText = "Mirror: On";
+            mirrorPicCardBtn.classList.remove('toggle-off');
             
         }
         updateJokerDisplay();
@@ -2198,10 +2214,12 @@ picCardImgSizer.addEventListener('input', function() {
             pictureContainer.classList.add('borderless');
             isPicCardBordered = false;
             borderPicCardBtn.innerText = "Border: Off";
+            borderPicCardBtn.classList.add('toggle-off');
         } else if (!isPicCardBordered) {
             pictureContainer.classList.remove('borderless');
             isPicCardBordered = true;
             borderPicCardBtn.innerText = "Border: On";
+            borderPicCardBtn.classList.remove('toggle-off');
         }
     }
     function updatePictureBorder() {
@@ -2213,7 +2231,7 @@ picCardImgSizer.addEventListener('input', function() {
         pictureContainer.classList.add('borderless');
     } else {
         
-        pictureContainer.classList.remove('borderless');
+        pictureContainer.classList.remove('borderless');  
     }
 }
 
@@ -2258,6 +2276,12 @@ picCardImgSizer.addEventListener('input', function() {
 
     document.getElementById('downloadAllBtn').addEventListener('click', () => {
         downloadInProgress = true;
+        classBtns.forEach(btn => btn.classList.remove('selected'));
+        selectedCardClass = 'A';
+        updateJokerDisplay();
+        
+        
+
         (async function downloadAllCards() {
 
             await cycleSuitless();
@@ -2265,12 +2289,17 @@ picCardImgSizer.addEventListener('input', function() {
             await cycleHearts();
             await cycleClubs();
             await cycleSpades();
+            await cycleJoker();
             
             zip.generateAsync({ type: "blob" }).then(function(content) {
                 saveAs(content, "deck-images.zip");
                 downloadInProgress = false;
+                
+                updateJokerDisplay();
             });
         })();
+
+        
 
         async function cycleDiamonds() { 
             changeSuitDiamonds();
@@ -2502,10 +2531,45 @@ picCardImgSizer.addEventListener('input', function() {
                         const fileName = `${cardFileName}.png`;
                         addCardToZip(newCanvas, fileName);
                     });
-            
+
+                    
         }
 
+        async function cycleJoker() {
+            // Set up joker layout
+            IconLayoutPicture("?");
+            // Wait for layout and image updates
+            await new Promise(resolve => setTimeout(resolve, 200));
+
+            try {
+                const canvas = await html2canvas(card, {
+                    scale: 3,
+                    useCORS: true,
+                    allowTaint: true,
+                });
+                
+                const newCanvas = document.createElement("canvas");
+                newCanvas.width = canvas.width + bleedMargin * 2;
+                newCanvas.height = canvas.height + bleedMargin * 2;
+
+                const ctx = newCanvas.getContext("2d");
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+                ctx.drawImage(canvas, bleedMargin, bleedMargin);
+
+                addCardToZip(newCanvas, 'joker_card.png');
+            } catch (err) {
+                console.error('Error in cycleJoker:', err);
+            }
+        }
+       
+
     });
+
+        
+
+
+
     document.getElementById("downloadBtn").addEventListener('click', () => {
         console.log("Download button clicked!");
 
