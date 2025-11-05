@@ -2110,11 +2110,9 @@ picCardImgSizer.addEventListener('input', function() {
     picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
      
     if (isPicCardMirrored) {
-        picImageContainer.style.minHeight = picCardImgSizer.value + '%';
-        picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
+        applyMirrorState();
     } else if (!isPicCardMirrored) {
-        picImageContainer.style.minHeight = picCardImgSizer.value + '%';
-        picImageContainer2.style.minHeight = '0%';
+        removeMirrorState();
     }
     picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -23;
     switchToFront();
@@ -2186,6 +2184,9 @@ picCardImgSizer.addEventListener('input', function() {
             picCardImage2.style.display = 'block';
             mirrorState = 'block';
             picImageContainer.style.justifyContent = 'flex-end';
+            picImageContainer.style.minHeight = "50%";
+            picImageContainer2.style.minHeight = picCardImgSizer.value + '%';
+            picImageContainer.style.minHeight = picCardImgSizer.value + '%';
         }
     }
 
