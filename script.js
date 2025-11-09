@@ -1994,21 +1994,25 @@ function UPLOADJOKER() {
         
     // Update the picture card image based on selected suit
     if (currentSuit === "diamond") {
-            kingImage = kingImageDiamond;
-            queenImage = queenImageDiamond;
             jackImage = jackImageDiamond;
+            queenImage = queenImageDiamond;
+            kingImage = kingImageDiamond;
+           
         } else if (currentSuit === "heart") {
+            queenImage = queenImageHeart;
             kingImage = kingImageHeart;
             jackImage = jackImageHeart;
-            queenImage = queenImageHeart;
+            
         } else if (currentSuit === "club") {
-            kingImage = kingImageClub;
             jackImage = jackImageClub;
             queenImage = queenImageClub;
+            kingImage = kingImageClub;
+            
         } else if (currentSuit === "spade") {
-            kingImage = kingImageSpade;
             jackImage = jackImageSpade;
             queenImage = queenImageSpade;
+            kingImage = kingImageSpade;
+            
         } 
     // Set image source based on selected class
 
@@ -2308,6 +2312,7 @@ picCardImgSizer.addEventListener('input', function() {
         async function cycleDiamonds() { 
             changeSuitDiamonds();
             suitClassColor = redSuitColor;
+            await new Promise(resolve => setTimeout(resolve, 50));
             for (let i = 1; i < 14; i++) {
                 if (i === 1) {
                     IconLayout1();
@@ -2331,10 +2336,16 @@ picCardImgSizer.addEventListener('input', function() {
                     IconLayout10();
                 } else if (i === 11) {
                     IconLayoutPicture("J");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } else if (i === 12) {
                     IconLayoutPicture("Q");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } else if (i === 13) {
                     IconLayoutPicture("K");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 }
 
                 
@@ -2360,6 +2371,7 @@ picCardImgSizer.addEventListener('input', function() {
 
         async function cycleHearts() { 
             changeSuitHearts();
+            await new Promise(resolve => setTimeout(resolve, 50));
             for (let i = 1; i < 14; i++) {
                 if (i === 1) {
                     IconLayout1();
@@ -2383,10 +2395,16 @@ picCardImgSizer.addEventListener('input', function() {
                     IconLayout10();
                 } else if (i === 11) {
                     IconLayoutPicture("J");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } else if (i === 12) {
                     IconLayoutPicture("Q");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } else if (i === 13) {
                     IconLayoutPicture("K");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } 
                 await html2canvas(card, {
                     scale: 3,
@@ -2411,6 +2429,7 @@ picCardImgSizer.addEventListener('input', function() {
 
         async function cycleClubs() { 
             changeSuitClubs();
+            await new Promise(resolve => setTimeout(resolve, 50));
             for (let i = 1; i < 14; i++) {
                 
                 if (i === 1) {
@@ -2435,10 +2454,17 @@ picCardImgSizer.addEventListener('input', function() {
                     IconLayout10();
                 } else if (i === 11) {
                     IconLayoutPicture("J");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
                 } else if (i === 12) {
                     IconLayoutPicture("Q");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 80));
                 } else if (i === 13) {
                     IconLayoutPicture("K");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 80));
                 } 
                 
                 
@@ -2464,6 +2490,7 @@ picCardImgSizer.addEventListener('input', function() {
 
         async function cycleSpades() { 
             changeSuitSpades();
+            await new Promise(resolve => setTimeout(resolve, 50));
             for (let i = 1; i < 14; i++) {
                 if (i === 1) {
                     IconLayout1();
@@ -2487,10 +2514,16 @@ picCardImgSizer.addEventListener('input', function() {
                     IconLayout10();
                 } else if (i === 11) {
                     IconLayoutPicture("J");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } else if (i === 12) {
                     IconLayoutPicture("Q");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } else if (i === 13) {
                     IconLayoutPicture("K");
+                    updatePicCardImage();
+                    await new Promise(resolve => setTimeout(resolve, 50));
                 } 
                 
                 await html2canvas(card, {
