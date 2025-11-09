@@ -955,7 +955,7 @@ img.pic-img#pictureImage2 {
 #suit-selection {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 1.4em;
+    /*  padding-top: 1.4em; */
 }
 #suit-selection button {
     display: flex;

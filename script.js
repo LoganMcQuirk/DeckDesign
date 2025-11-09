@@ -616,6 +616,7 @@ function switchToFront() {
         switchToFront();
         updateJokerDisplay();
         updatePicCardImage();
+        updatePictureBorder();
     }
     
     function changeSuitHearts() {
@@ -644,6 +645,7 @@ function switchToFront() {
         switchToFront();
         updateJokerDisplay();
         updatePicCardImage();
+        updatePictureBorder();
     }
  
     function changeSuitClubs() {
@@ -672,6 +674,7 @@ function switchToFront() {
         switchToFront();
         updateJokerDisplay();
         updatePicCardImage();
+        updatePictureBorder();
     }
     
     function changeSuitSpades() {
@@ -703,6 +706,7 @@ function switchToFront() {
         switchToFront();
         updateJokerDisplay();
         updatePicCardImage();
+        updatePictureBorder();
     }
     
     function resetSuitSelection() {
@@ -2618,30 +2622,29 @@ picCardImgSizer.addEventListener('input', function() {
     // Features to add next: -------------------------------
     
     // Host on Netlify?
-    // SQL save local changes to server
 
-    // fix Joker sizing and mirror flex issues
+    // x
     // fix ace largemode issues
     // x
     // X
     // X
-    // make html canvas solo function for download all
+    // make html canvas solo function for download all x
     // x
-    // sort font options
+    // sort font options x
     // x
-    // sort borderless toggle override
-    // add joker to download all
+    // x
+    // x
 
     // TO DO = = = = = = = = = = = = = = = = = = = v v v
     
     // font selection and size control
     // pic card image suit corner option
-    // css mediaqueries for mobile
+    
 //
 //
 //    // Add "Flavors" ' chewy also font family to a preset for fonts
     //"New Rocker" font preset?
     //"sue ellen francisco" font preset, cute feminine style
     // "Agu display" funky style
-
+    // caeser dressing Viking font? 
 });
