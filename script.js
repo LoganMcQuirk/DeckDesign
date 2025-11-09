@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const picCardImgStyles = document.querySelector('img.pic-img#pictureImage');
     const picCardImgStyles2 = document.querySelector('img.pic-img#pictureImage2');
 
+    const picCardImgSizer = document.getElementById('picCardImgSizer');
     const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
     const AdjusterLabels = document.getElementById('adjusterLabels');
 
@@ -307,16 +308,61 @@ function switchToFront() {
         CoverModeOFF();
         switchToBack();
         hideFlipBtn();
+        applyDefaultFont();
+        applyPresetFont("Solway");
+
+        diamondIcon = "images/DiamondIcon-1.png";
+        heartIcon = "images/HeartIcon-1.png";
+        clubIcon = "images/clubIcon-1.png";
+        spadeIcon = "images/spadeIcon-1.png";
+        changeSuitUnconditally = true; // Force icon update
+        changeSuitDiamonds();
+
         cardSideBtn.style.opacity = '0';
         cardSideBtn.style.display = 'none';
+        switchToBack();
     });
     preset2Btn.addEventListener('click', function() {
         cardBackCurrentImage = "images/CardPreset2.png";
         borderColourValue =  "rgb(30, 12, 76)";
         RecolourBorder();
         CoverModeOFF();
-        switchToBack();
         hideFlipBtn();
+
+        const font2 = 'Caesar Dressing';
+        applyPresetFont(font2);
+
+        jackImageSpade = "images/JackSpades.png";
+        jackImageClub = "images/JackClubs.png";
+        jackImageHeart = "images/JackHearts.png";
+        jackImageDiamond = "images/JackDiamonds.png";
+
+        queenImageSpade = "images/QueenSpades.png";
+        queenImageClub = "images/QueenClubs.png";
+        queenImageHeart = "images/QueenHearts.png";
+        queenImageDiamond = "images/QueenDiamonds.png";
+
+        kingImageSpade = "images/KingSpades.png";
+        kingImageClub = "images/KingClubs.png";
+        kingImageHeart = "images/KingHearts.png";
+        kingImageDiamond = "images/KingDiamonds.png";
+        jokerImage = "images/JokerArcher.png";
+
+        diamondIcon = "images/diamondsIcon.png";
+        heartIcon = "images/heartsIcon.png";
+        clubIcon = "images/clubsIcon.png";
+        spadeIcon = "images/spadesIcon.png";
+        changeSuitUnconditally = true; // Force icon update
+        changeSuitDiamonds();
+ 
+        isPicCardBordered = true;
+        isPicCardMirrored = true;
+        MirrorPicCardToggle();
+        BorderPicCardToggle();
+        removeMirrorState();
+        updatePictureBorder();
+        switchToBack();
+
         
     });
     preset3Btn.addEventListener('click', function() {
@@ -324,10 +370,43 @@ function switchToFront() {
         borderColourValue = "rgb(8, 6, 5)";
         RecolourBorder();
         CoverModeOFF();
-        switchToBack();
+        
         hideFlipBtn();
-        console.log(uploadedBackImage);
+
+        const font3 = 'Flavors';
+        applyPresetFont(font3);
+    
+        diamondIcon = "images/DiamondPreset3.png";
+        heartIcon = "images/HeartPreset3.png";
+        clubIcon = "images/ClubPreset3.png";
+        spadeIcon = "images/SkullPreset3.png";
+        changeSuitUnconditally = true; // Force icon update
+        changeSuitDiamonds();
+        switchToBack();
     });
+
+    function applyPresetFont(font) {
+        const linkId = 'dynamic-google-font';
+        let link = document.getElementById(linkId);
+        if (!link) {
+            link = document.createElement('link');
+            link.id = linkId;
+            link.rel = 'stylesheet';
+            document.head.appendChild(link);
+        }
+        link.href = `https://fonts.googleapis.com/css?family=${font.replace(/ /g, '+')}:400,700&display=swap`;
+
+        // Apply font to corner text
+        document.querySelectorAll('.corner-class').forEach(el => {
+            el.style.fontFamily = `'${font}', sans-serif`;
+        });
+
+        // Update font select dropdown to match
+        if (fontSelect) fontSelect.value = font;
+    }
+
+
+
     function CUSTOMIMAGE() {
         
         if (backsideUpload.files && backsideUpload.files[0]) {
@@ -2105,42 +2184,45 @@ fontSelect.addEventListener('change', function() {
     
 
     const uploadTabBtns = document.querySelectorAll("button.upload-tab-btn");
-const picCardUploads = [
-    document.getElementById("king-pic-card-upload"),
-    document.getElementById("queen-pic-card-upload"),
-    document.getElementById("jack-pic-card-upload"),
-    document.getElementById("joker-pic-card-upload")
-];
+    const picCardUploads = [
+        document.getElementById("king-pic-card-upload"),
+        document.getElementById("queen-pic-card-upload"),
+        document.getElementById("jack-pic-card-upload"),
+        document.getElementById("joker-pic-card-upload")
+    ];
 
-uploadTabBtns.forEach((button, idx) => {
-    button.addEventListener("click", function() {
-        uploadTabBtns.forEach(btn => btn.classList.remove('selectedTab'));
-        this.classList.add('selectedTab');
-        // Hide all upload sections
-        picCardUploads.forEach(div => div.style.display = "none");
-        // Show the selected section
-        picCardUploads[idx].style.display = "flex";
+    uploadTabBtns.forEach((button, idx) => {
+        button.addEventListener("click", function() {
+            uploadTabBtns.forEach(btn => btn.classList.remove('selectedTab'));
+            this.classList.add('selectedTab');
+            // Hide all upload sections
+            picCardUploads.forEach(div => div.style.display = "none");
+            // Show the selected section
+            picCardUploads[idx].style.display = "flex";
+        });
     });
-});
 
 
-picCardImgSizer.addEventListener('input', function() {
-    picImageContainer.style.maxHeight = picCardImgSizer.value + '%';
-    picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
-     
-    if (isPicCardMirrored) {
+    picCardImgSizer.addEventListener('input', function() {
+        applyPicImgSize(picCardImgSizer.value);
+        if (isPicCardMirrored) {
+            
+            applyMirrorState();
+            updateJokerDisplay();
+            
+        } else if (!isPicCardMirrored) {
+            removeMirrorState();
+        }
         
-        applyMirrorState();
-        updateJokerDisplay();
+        switchToFront();
+        updatePictureBorder();
         
-    } else if (!isPicCardMirrored) {
-        removeMirrorState();
+    });
+    function applyPicImgSize(sizeInt) {
+        picImageContainer.style.maxHeight = sizeInt + '%';
+        picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
+        picCardImageSizeDisplay.innerHTML = sizeInt -23;
     }
-    picCardImageSizeDisplay.innerHTML = picCardImgSizer.value -23;
-    switchToFront();
-    updatePictureBorder();
-    
-});
 
     const imageSquashBtn = document.getElementById('image-squash-btn');
     let isImageSquashed = true;
