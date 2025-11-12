@@ -687,10 +687,15 @@ img.back-image#card-image-back {
     min-width: 40px;
     max-width: 40px;
     
+    
+}
+img#top-left-icon, img#bottom-right-icon {
+    z-index: 102;
 }
 #top-left-id {
     min-width: 40px;
     max-width: 40px;
+    
     
 }
 .bottom-right-class {
@@ -831,7 +836,7 @@ img.back-image#card-image-back {
 }
 #pictureContainer.picture-card {
     height: 86%;
-    
+    z-index: 103;
     border: 2px solid black;
     padding: none;
     overflow: hidden;

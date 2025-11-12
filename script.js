@@ -2206,21 +2206,19 @@ fontSelect.addEventListener('change', function() {
     picCardImgSizer.addEventListener('input', function() {
         applyPicImgSize(picCardImgSizer.value);
         if (isPicCardMirrored) {
-            
             applyMirrorState();
             updateJokerDisplay();
-            
         } else if (!isPicCardMirrored) {
             removeMirrorState();
         }
-        
         switchToFront();
-        updatePictureBorder();
-        
+        updatePictureBorder();  
     });
     function applyPicImgSize(sizeInt) {
         picImageContainer.style.maxHeight = sizeInt + '%';
-        picImageContainer2.style.maxHeight = picCardImgSizer.value + '%';
+        picImageContainer.style.minHeight = sizeInt + '%';
+        picImageContainer2.style.maxHeight = sizeInt + '%';
+        picImageContainer2.style.minHeight = sizeInt + '%';
         picCardImageSizeDisplay.innerHTML = sizeInt -23;
     }
 
@@ -2278,6 +2276,7 @@ fontSelect.addEventListener('change', function() {
             
         }
         updateJokerDisplay();
+        updatePictureBorder();
     }
     function removeMirrorState() {
         picCardImage2.style.display = 'none';
@@ -2649,9 +2648,7 @@ fontSelect.addEventListener('change', function() {
 
                         const fileName = `${cardFileName}.png`;
                         addCardToZip(newCanvas, fileName);
-                    });
-
-                    
+                    });           
         }
 
         async function cycleJoker() {
