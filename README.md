@@ -1,10 +1,7 @@
-# Decksterity
+# DeckDesign
 
-Decksterity is a client-side playing-card designer built with plain HTML, CSS and JavaScript.  
+DeckDesign is a client-side playing-card designer built with plain HTML, CSS and JavaScript.  
 It lets users customize card backs, suit icons, corner fonts/colors, and picture-card images (J/Q/K/Joker), preview changes live, and export a printable deck as PNGs (html2canvas + JSZip + FileSaver). Designed as a learning portfolio project to demonstrate practical front‑end skills.
-
-## Quick pitch (1 sentence)
-Interactive, in‑browser card designer that supports image uploads, presets, mirror/border controls, live preview and full‑deck export — useful as a beginner front‑end portfolio piece.
 
 ## Key features
 - Live preview of a single card (front/back)
@@ -27,13 +24,13 @@ This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaS
 - Iterative problem solving and feature growth from a minimal idea to a fuller app
 
 ## Tech stack
-- HTML5, CSS3
-- Vanilla JavaScript (ES6)
+- HTML5, CSS
+- Vanilla JavaScript
 - html2canvas — DOM → Canvas capture
 - JSZip + FileSaver — bundle and download ZIPs
 - Google Fonts
 
-## Running locally (quick)
+## Running locally
 - Open `index.html` in your browser (double‑click the file).  
 - For live development with auto reload, use VS Code + Live Server extension and open the workspace root.
 
@@ -42,19 +39,15 @@ This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaS
 - Large images or high html2canvas scale values can slow or fail the export — scale down if needed.
 - Some interactive logic (mirror/border, joker special cases, hover vs selected state) has nuanced behavior; the code balances many features and should be refactored for clarity.
 
-## Lessons learned (short)
+## Lessons learned
 - Centralize UI state: prefer a single source of truth (variables) over scattering logic across DOM checks.
 - Wait for images to load before rendering exports — otherwise html2canvas can capture the wrong state or hang.
 - Use CSS variables for themeable colors (easier to update from JS).
 - Keep update/render functions small and single‑responsibility to avoid conflicting side effects.
 
-## Future improvements (good talking points for interviews)
+## Future improvements
 - Refactor code into smaller modules and remove duplicated event handlers.
 - Move from ad‑hoc DOM state checks to a state manager or simple reactive layer.
 - Add progress UI and error reporting for exports.
 - Improve accessibility (labels, keyboard navigation).
 - Add unit tests for utility functions.
-
-## Contribution & contact
-- This is a personal learning project. If you fork or suggest improvements, please open a PR with a focused change.  
-- For questions about implementation decisions or help reproducing issues, open an issue in the repo or contact me via the project GitHub profile.
