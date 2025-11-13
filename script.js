@@ -139,23 +139,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const picCardImage = document.getElementById("pictureImage");
     const picCardImage2 = document.getElementById("pictureImage2");
-    let kingImage = "images/CardPreset3.svg";
-    let queenImage = "images/CardPreset3.svg";
-    let jackImage = "images/CardPreset3.svg"; 
-    let jokerImage = "images/CardPreset3.svg";
+    let kingImage = "images/placeholder-img.png";
+    let queenImage = "images/placeholder-img.png";
+    let jackImage = "images/placeholder-img.png"; 
+    let jokerImage = "images/placeholder-img.png";
 
-    let jackImageDiamond = "images/CardPreset3.svg";
-    let queenImageDiamond = "images/CardPreset3.svg";
-    let kingImageDiamond = "images/CardPreset3.svg";
-    let jackImageHeart = "images/CardPreset3.svg"; 
-    let queenImageHeart = "images/CardPreset3.svg";
-    let kingImageHeart = "images/CardPreset3.svg";
-    let jackImageClub = "images/CardPreset3.svg";
-    let queenImageClub = "images/CardPreset3.svg";
-    let kingImageClub = "images/CardPreset3.svg";
-    let jackImageSpade = "images/CardPreset3.svg";
-    let queenImageSpade = "images/CardPreset3.svg";
-    let kingImageSpade = "images/CardPreset3.svg";
+    let jackImageDiamond = "images/placeholder-img.png";
+    let queenImageDiamond = "images/placeholder-img.png";
+    let kingImageDiamond = "images/placeholder-img.png";
+    let jackImageHeart = "images/placeholder-img.png"; 
+    let queenImageHeart = "images/placeholder-img.png";
+    let kingImageHeart = "images/placeholder-img.png";
+    let jackImageClub = "images/placeholder-img.png";
+    let queenImageClub = "images/placeholder-img.png";
+    let kingImageClub = "images/placeholder-img.png";
+    let jackImageSpade = "images/placeholder-img.png";
+    let queenImageSpade = "images/placeholder-img.png";
+    let kingImageSpade = "images/placeholder-img.png";
        
     
     let redSuitColor = "#BC2024";
