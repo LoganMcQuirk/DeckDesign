@@ -6,7 +6,7 @@ It lets users customize card backs, suit icons, corner fonts/colors, and picture
 ## Key features
 - Live preview of a single card (front/back)
 - Replace suit icons and picture-card images with user uploads
-- Preset images and preset styles
+- Alternative of preset images and preset styles
 - Mirror image toggle and image position/size controls
 - Toggle card border (borderless mode)
 - Export single cards or the entire deck as PNGs with bleed margins (html2canvas, JSZip)
@@ -37,17 +37,17 @@ This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaS
 ## Notes on reliability & known caveats
 - Exports depend on images being loaded and CORS; embedded uploads (data URLs) are most reliable.
 - Large images or high html2canvas scale values can slow or fail the export — scale down if needed.
-- Some interactive logic (mirror/border, joker special cases, hover vs selected state) has nuanced behavior; the code balances many features and should be refactored for clarity.
+- Some interactive logic (mirror/border, joker special cases, hover vs selected state) has nuanced behavior, the code balances many features and should be refactored for clarity.
 
 ## Lessons learned
-- Centralize UI state: prefer a single source of truth (variables) over scattering logic across DOM checks.
-- Wait for images to load before rendering exports — otherwise html2canvas can capture the wrong state or hang.
-- Use CSS variables for themeable colors (easier to update from JS).
+- Centralise UI state: aim for a single source of truth (variables) over scattering logic across DOM checks.
 - Keep update/render functions small and single‑responsibility to avoid conflicting side effects.
 
 ## Future improvements
-- Refactor code into smaller modules and remove duplicated event handlers.
-- Move from ad‑hoc DOM state checks to a state manager or simple reactive layer.
+- Wait for images to load before rendering exports to avoid html2canvas capturing the wrong state or failing.
+- Features for user to save design progress to avoid loss of progress.
+- Refactor code into smaller modules and remove repetetive code and event handling.
+- Add more controllable elements for user interaction with graphical interface and preview area.
 - Add progress UI and error reporting for exports.
-- Improve accessibility (labels, keyboard navigation).
-- Add unit tests for utility functions.
+- Improve accessibility and navigation.
+
