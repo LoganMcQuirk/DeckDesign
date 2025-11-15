@@ -310,6 +310,21 @@ function switchToFront() {
         hideFlipBtn();
         applyDefaultFont();
         applyPresetFont("Solway");
+        jackImageSpade = "images/placeholder-img.png";
+        jackImageClub = "images/placeholder-img.png";
+        jackImageHeart = "images/placeholder-img.png";
+        jackImageDiamond = "images/placeholder-img.png";
+
+        queenImageSpade = "images/placeholder-img.png";
+        queenImageClub = "images/placeholder-img.png";
+        queenImageHeart = "images/placeholder-img.png";
+        queenImageDiamond = "images/placeholder-img.png";
+
+        kingImageSpade = "images/placeholder-img.png";
+        kingImageClub = "images/placeholder-img.png";
+        kingImageHeart = "images/placeholder-img.png";
+        kingImageDiamond = "images/placeholder-img.png";
+        jokerImage = "images/placeholder-img.png";
 
         diamondIcon = "images/DiamondIcon-1.png";
         heartIcon = "images/HeartIcon-1.png";
@@ -317,6 +332,16 @@ function switchToFront() {
         spadeIcon = "images/spadeIcon-1.png";
         changeSuitUnconditally = true; // Force icon update
         changeSuitDiamonds();
+
+        picCardImgSizer.value = 48;
+        applyPicImgSize(picCardImgSizer.value);
+
+        isPicCardBordered = false;
+        isPicCardMirrored = false;
+        MirrorPicCardToggle();
+        BorderPicCardToggle();
+        updatePictureBorder();
+        applyMirrorState();
 
         cardSideBtn.style.opacity = '0';
         cardSideBtn.style.display = 'none';
@@ -354,6 +379,9 @@ function switchToFront() {
         spadeIcon = "images/spadesIcon.png";
         changeSuitUnconditally = true; // Force icon update
         changeSuitDiamonds();
+
+        picCardImgSizer.value = 83;
+        applyPicImgSize(picCardImgSizer.value);
  
         isPicCardBordered = true;
         isPicCardMirrored = true;
