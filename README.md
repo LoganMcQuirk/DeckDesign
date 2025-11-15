@@ -30,6 +30,9 @@ This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaS
 - JSZip + FileSaver — bundle and download ZIPs
 - Google Fonts
 
+## Netlify link
+- (https://lovely-figolla-915b36.netlify.app/)
+
 ## Running locally
 - Open `index.html` in your browser (double‑click the file).  
 - For live development with auto reload, use VS Code + Live Server extension and open the workspace root.
