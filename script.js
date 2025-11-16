@@ -22,15 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleFontBtn = document.getElementById("editFontBtn");
     const togglePicBtn = document.getElementById("editPicBtn");
 
-    const sectionBackside = document.getElementById("card-backside");
-
     const cardFrontBtn = document.getElementById("card-front");
     const cardBackBtn = document.getElementById("card-back");
     const flipperBtn = document.getElementById("flipper");
 
     const previewTab = document.getElementById("preview-container");
     let cardSideBtn = cardFrontBtn;
-    let cardNotSide = cardBackBtn;
     let cardIsOnBack = true;
 
     const card = document.getElementById("card");
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const clubUpload = document.getElementById("club-icon");
     const spadeUpload = document.getElementById("spade-icon");
     const allIcons = document.querySelectorAll('.icon');
-
 
     const iconSizeControl = document.getElementById('SuitIconSizer');
     const iconSizerDisplay = document.getElementById('icon-sizer-display');
@@ -64,37 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let downloadInProgress = false;
     
-    document.getElementById("diamondBtn").addEventListener('click', function() {
-        changeSuitDiamonds();
-        switchToFront();
-       
-    });
-    document.getElementById("heartBtn").addEventListener('click', function() {
-        changeSuitHearts();
-        switchToFront();
-    });
-    document.getElementById("clubBtn").addEventListener('click', function() {
-        changeSuitClubs(); 
-        switchToFront();
-    });
-    document.getElementById("spadeBtn").addEventListener('click', function() {
-        changeSuitSpades();
-        switchToFront();
-    }); 
+    
+
     //-------------------------------------------------------------------------------------------^
     const cardImageBack = document.getElementById("card-image-back");
     const cardImageFront = document.getElementById("front-layout");
     cardImageFront.classList.add('red-suit-color');
     
 
-    const cardIMGStyle = cardImageBack;
-    function CoverModeON() {
-        // cardIMGStyle.style.objectFit = 'cover';
-
-    }
-    function CoverModeOFF() {
-        cardIMGStyle.style.objectFit = 'fill';
-    }
+    
 
     let cardBackCurrentImage = "images/CardPresetOne.png";
     cardImageBack.src = cardBackCurrentImage;
@@ -180,6 +154,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const picCardImgSizer = document.getElementById('picCardImgSizer');
     const picCardImgAdjuster = document.getElementById('picCardImgAdjuster');
     const AdjusterLabels = document.getElementById('adjusterLabels');
+
+    const cardIMGStyle = cardImageBack;
+
+    document.getElementById("diamondBtn").addEventListener('click', function() {
+        changeSuitDiamonds();
+        switchToFront();
+       
+    });
+    document.getElementById("heartBtn").addEventListener('click', function() {
+        changeSuitHearts();
+        switchToFront();
+    });
+    document.getElementById("clubBtn").addEventListener('click', function() {
+        changeSuitClubs(); 
+        switchToFront();
+    });
+    document.getElementById("spadeBtn").addEventListener('click', function() {
+        changeSuitSpades();
+        switchToFront();
+    }); 
+
+    
+    function CoverModeON() {
+        // cardIMGStyle.style.objectFit = 'cover';
+
+    }
+    function CoverModeOFF() {
+        cardIMGStyle.style.objectFit = 'fill';
+    }
+
+
 
 //Back designer TOGGLE VIEW
     toggleBackBtn.addEventListener('click', function() {

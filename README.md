@@ -13,7 +13,7 @@ It lets users customize card backs, suit icons, corner fonts/colors, and picture
 - Uses Google Fonts for typographic presets
 
 ## Why I built it
-This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaScript without following a tutorial. The goal was to build a real interactive UI, handle user image uploads, and implement a client‑side export pipeline — all things useful in front‑end roles.
+This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaScript without following a tutorial. The goal was to build a real interactive UI, handle user image uploads, and implement a client‑side export workflow.
 
 ## What this demonstrates for a portfolio
 - DOM manipulation and event handling at scale
@@ -38,7 +38,8 @@ This started as a self‑directed challenge to learn HTML, CSS and vanilla JavaS
 - For live development with auto reload, use VS Code + Live Server extension and open the workspace root.
 
 ## Notes on reliability & known caveats
-- Exports depend on images being loaded and CORS; embedded uploads (data URLs) are most reliable.
+- Exports depend on images being loaded and CORS. 
+- Custom icons have no simple button to reapply if removed by presets.
 - Large images or high html2canvas scale values can slow or fail the export — scale down if needed.
 - Some interactive logic (mirror/border, joker special cases, hover vs selected state) has nuanced behavior, the code balances many features and should be refactored for clarity.
 
